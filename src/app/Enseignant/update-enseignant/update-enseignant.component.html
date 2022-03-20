@@ -1,0 +1,40 @@
+
+<div class="col-md-6 offset-md-3">
+    <h4>Modifier Enseignant</h4>
+    <form (ngSubmit)="onSubmit()"> 
+        <div class="form-group">
+            <label>Prénom: </label>
+            <input type="text" class="form-control" id="firstName" 
+            [(ngModel)]="enseignant.firstName" name="firstName">
+        </div>
+        <div class="form-group">
+            <label> Nom: </label>
+            <input type="text" class="form-control" id="lastName" 
+            [(ngModel)]="enseignant.lastName" name="lastName">
+        </div>
+        <div class="form-group">
+            <label> Adresse: </label>
+            <input type="text" class="form-control" id="adress" 
+            [(ngModel)]="enseignant.adress" name="adress">
+        </div>
+        <div class="form-group">
+            <label> Email: </label>
+            <input type="text" class="form-control" id="mail" 
+            [(ngModel)]="enseignant.mail" name="mail" style="margin-bottom: 10px">
+        </div>
+        <div class="form-group">
+            <label> Statut: </label>
+            <input type="text" class="form-control" id="statut" 
+            [(ngModel)]="enseignant.statut" name="statut">
+        </div>
+        <div class="form-group">
+            <label> Téléphone: </label>
+            <input type="text" class="form-control" id="telephone" 
+            [(ngModel)]="enseignant.telephone" name="telephone">
+        </div>
+        
+            <button class="btn btn-success" type="submit"> Valider</button>
+        
+    </form>
+    </div>
+

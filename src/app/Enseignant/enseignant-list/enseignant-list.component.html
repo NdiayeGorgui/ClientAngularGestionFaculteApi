@@ -1,0 +1,30 @@
+<h2>Liste des Enseignants</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Email</th>
+            <th>Statut</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let enseignant of enseignants">
+            <td>{{enseignant.firstName}}</td>
+            <td>{{enseignant.lastName}}</td>
+            <td>{{enseignant.adress}}</td>
+            <td>{{enseignant.mail}}</td>
+            <td>{{enseignant.statut}}</td>
+            <td>{{enseignant.telephone}}</td>
+           
+                <td><button (click)="updateEnseignant(enseignant.id)" class="btn btn-primary">Modifier</button></td>
+                <td><button (click)="deleteEnseignant(enseignant.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td><button (click)="enseignantDetails(enseignant.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+            
+        </tr>
+    </tbody>
+
+</table>       

@@ -1,0 +1,19 @@
+<p></p>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Enseignant</div>
+        <div class="panel-body">
+            <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+                <div class="form-group">
+                    <label for="">Mot Clé:</label>
+                    <input type="text" name="motCle" ngModel required  style="margin-right: 10px; margin-left: 10px ;margin-top: 10px">
+                    <button type="submit" class="btn btn-primary">Chercher</button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
