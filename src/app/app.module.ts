@@ -11,6 +11,7 @@ import { CreateEnseignantComponent } from './Enseignant/create-enseignant/create
 import { UpdateEnseignantComponent } from './Enseignant/update-enseignant/update-enseignant.component';
 import { SearchEnseignantComponent } from './Enseignant/search-enseignant/search-enseignant.component';
 import { EnseignantDeatailsComponent } from './Enseignant/enseignant-deatails/enseignant-deatails.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -27,7 +28,7 @@ import { EnseignantDeatailsComponent } from './Enseignant/enseignant-deatails/en
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

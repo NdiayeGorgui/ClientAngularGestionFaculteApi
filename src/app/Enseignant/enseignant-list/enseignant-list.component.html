@@ -12,7 +12,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let enseignant of enseignants">
+        
+        <tr *ngFor="let enseignant of enseignants | paginate:{
+            id: 'foo',
+            itemsPerPage:4,
+            currentPage:page,
+            totalItems:totalRecords
+        }">
             <td>{{enseignant.firstName}}</td>
             <td>{{enseignant.lastName}}</td>
             <td>{{enseignant.adress}}</td>
@@ -28,3 +34,19 @@
     </tbody>
 
 </table>       
+<pagination-controls
+      id="foo"
+      previousLabel="Precedent"
+      nextLabel="Suivant"
+      [responsive]="true"
+      [autoHide]="true"
+      [directionLinks]="true"
+      [maxSize]="3"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageBoundsCorrection)="handlePageChange($event)"
+      (pageChange)="handlePageChange($event)"
+      screenReaderCurrentLabel="You're on page">
+      
+      
+</pagination-controls>

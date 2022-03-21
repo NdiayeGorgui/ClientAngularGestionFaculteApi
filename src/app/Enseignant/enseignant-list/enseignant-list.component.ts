@@ -9,7 +9,8 @@ import { EnseignantService } from '../enseignant.service';
   styleUrls: ['./enseignant-list.component.css']
 })
 export class EnseignantListComponent implements OnInit {
-
+page:number=1;
+totalRecords!:number;
   enseignants: Enseignant[] = [];
   constructor(private enseignantService:EnseignantService,
     private router:Router) { }
@@ -20,7 +21,11 @@ export class EnseignantListComponent implements OnInit {
 private getEnseignants(){
   this.enseignantService.getEnseignantList().subscribe(data => {
     this.enseignants=data;
+    this.totalRecords=this.enseignants.length;
   });
+}
+handlePageChange(event: number) {
+  this.page = event;
 }
 
 updateEnseignant(id:number){
