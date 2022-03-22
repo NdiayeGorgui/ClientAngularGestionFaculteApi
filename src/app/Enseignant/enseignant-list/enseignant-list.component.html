@@ -1,19 +1,19 @@
 
+
+<div class="">
+    <button (click)="createEnseigant()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+</div>
+
 <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input type="text" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
           class="form-control" placeholder="Rechercher par Nom" />
-  
-       
       </div>
     </div>
 </div>
-<div class="">
-    <button (click)="createEnseigant()"  class="btn btn-success">Ajouter</button>
-</div>
 <div>
-    <h3>Liste des Enseignants</h3>
+    <h4>Liste des Enseignants</h4>
 </div>
 <table class="table table-striped">
     <thead>
@@ -31,7 +31,7 @@
         
         <tr *ngFor="let enseignant of enseignants | paginate:{
             id: 'foo',
-            itemsPerPage:3,
+            itemsPerPage:4,
             currentPage:page,
             totalItems:totalRecords
         }">
