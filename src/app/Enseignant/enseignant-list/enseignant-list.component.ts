@@ -9,8 +9,9 @@ import { EnseignantService } from '../enseignant.service';
   styleUrls: ['./enseignant-list.component.css']
 })
 export class EnseignantListComponent implements OnInit {
-page:number=1;
-totalRecords!:number;
+  nom!:string;
+  page:number=1;
+  totalRecords!:number;
   enseignants: Enseignant[] = [];
   constructor(private enseignantService:EnseignantService,
     private router:Router) { }
@@ -43,5 +44,17 @@ deleteEnseignant(id:number){
 enseignantDetails(id:number){
   this.router.navigate(['enseignant-details',id]);
 }
+searchTitle(){
+  if(this.nom!=""){
+    this.enseignants=this.enseignants.filter(res=>{
+      return res.lastName.toLowerCase().match(this.nom.toLowerCase());
+    });
+  }else if(this.nom==""){
+    this.ngOnInit();
+  }
 
+}
+createEnseigant(){
+    this.router.navigate(['/create-enseignant']);
+  }
 }

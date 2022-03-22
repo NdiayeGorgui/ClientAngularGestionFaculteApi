@@ -1,4 +1,20 @@
-<h2>Liste des Enseignants</h2>
+
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type="text" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
+          class="form-control" placeholder="Rechercher par Nom" />
+  
+       
+      </div>
+    </div>
+</div>
+<div class="">
+    <button (click)="createEnseigant()"  class="btn btn-success">Ajouter</button>
+</div>
+<div>
+    <h3>Liste des Enseignants</h3>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -15,7 +31,7 @@
         
         <tr *ngFor="let enseignant of enseignants | paginate:{
             id: 'foo',
-            itemsPerPage:4,
+            itemsPerPage:3,
             currentPage:page,
             totalItems:totalRecords
         }">

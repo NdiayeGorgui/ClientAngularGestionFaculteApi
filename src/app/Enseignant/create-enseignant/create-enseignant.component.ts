@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Enseignant } from '../enseignant';
+import { Istatus } from '../enseignant-status-interface';
 import { EnseignantService } from '../enseignant.service';
 
 @Component({
@@ -11,11 +12,19 @@ import { EnseignantService } from '../enseignant.service';
 export class CreateEnseignantComponent implements OnInit {
 
   enseignant:Enseignant=new Enseignant();
+  
+  public statues:Array<Istatus>=[{id:1,name:'Permanent'},
+  {id:2,name:'Contractuel'},
+  {id:3,name:'Vacataire'}];
+
+  public statId!:number;
 
   constructor(private enseignantService:EnseignantService,
     private router:Router) { }
 
   ngOnInit(): void {
+
+   
   }
 
   saveEnseignant(){
@@ -30,7 +39,15 @@ export class CreateEnseignantComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.enseignant);
+  
     this.saveEnseignant();
+    
   }
+public onChange(){
+  this.statId;
+  console.log(this.statId);
+}
+
+
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enseignant } from '../enseignant';
+import { Istatus } from '../enseignant-status-interface';
 import { EnseignantService } from '../enseignant.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { EnseignantService } from '../enseignant.service';
 })
 export class UpdateEnseignantComponent implements OnInit {
 
- 
+  public statues:Array<Istatus>=[{id:1,name:'Permanent'},
+  {id:2,name:'Contractuel'},
+  {id:3,name:'Vacataire'}];
+
+  public statId!:number;
 id!: number;
 enseignant:Enseignant=new Enseignant();
 
