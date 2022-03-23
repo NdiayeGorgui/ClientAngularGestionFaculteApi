@@ -6,6 +6,10 @@ import { EnseignantDeatailsComponent } from './Enseignant/enseignant-deatails/en
 import { EnseignantListComponent } from './Enseignant/enseignant-list/enseignant-list.component';
 import { SearchEnseignantComponent } from './Enseignant/search-enseignant/search-enseignant.component';
 import { UpdateEnseignantComponent } from './Enseignant/update-enseignant/update-enseignant.component';
+import { CreateFormationComponent } from './Formation/create-formation/create-formation.component';
+import { FormationDetailsComponent } from './Formation/formation-details/formation-details.component';
+import { FormationListComponent } from './Formation/formation-list/formation-list.component';
+import { UpdateFormationComponent } from './Formation/update-formation/update-formation.component';
 
 const routes: Routes = [
   { path:'home',component:AcueilComponent},
@@ -15,8 +19,12 @@ const routes: Routes = [
 
  { path:'',redirectTo :'home',pathMatch:'full'},
  { path:'update-enseignant/:id',component:UpdateEnseignantComponent},
- { path:'enseignant-details/:id',component:EnseignantDeatailsComponent}
+ { path:'enseignant-details/:id',component:EnseignantDeatailsComponent},
 
+ { path:'formations',component:FormationListComponent},
+ { path:'create-formation',component:CreateFormationComponent},
+ { path:'update-formation/:id',component:UpdateFormationComponent},
+ { path:'formation-details/:id',component:FormationDetailsComponent}
 ];
 
 @NgModule({

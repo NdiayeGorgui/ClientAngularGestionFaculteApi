@@ -1,16 +1,62 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a routerLink="enseignants" routerLinkActive="active" class="nav-link"> Liste Enseignants</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Accueil</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Enseignant
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="enseignants"  >Liste des Enseignants</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#"  >Rechercher un Enseignant</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#"  >Affecter un Enseigant à un groupe</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cours
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="#" >Liste des cours</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#" >Rechercher un cours</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#" >Type de cours cours</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"routerLink="#" >Affecter un cours à une formation</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Formation
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="formations">Liste des formations</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#" >Liste des groupes de formation</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Rechercher une formation</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Rechercher un groupe</a>
+        </div>
       </li>
       <li class="nav-item">
-        <a routerLink="create-enseignant" routerLinkActive="active" class="nav-link">Ajouter Enseignant</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="search-enseignant" routerLinkActive="active" class="nav-link">Chercher Enseignant</a>
+        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    </nav>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
     
     <h1 class="text-center">{{title}}</h1>
     <div class="container">

@@ -1,0 +1,62 @@
+
+
+<div class="">
+    <button (click)="createFormation()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+</div>
+
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type="text" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
+          class="form-control" placeholder="Rechercher par Nom de formation" />
+      </div>
+    </div>
+</div>
+<div>
+    <h4>Liste des Formations</h4>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Formation</th>
+            <th>Année</th>
+            <th>Durée</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let formation of formations | paginate:{
+            id: 'foo',
+            itemsPerPage:3,
+            currentPage:page,
+            totalItems:totalRecords
+        }">
+            <td>{{formation.nomFormation}}</td>
+            <td>{{formation.annee}}</td>
+            <td>{{formation.duree}}<span>h</span></td>
+           
+                <td><button (click)="updateFormation(formation.id)" class="btn btn-primary">Modifier</button></td>
+                <td><button (click)="deleteFormation(formation.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td><button (click)="formationDetails(formation.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+            
+        </tr>
+    </tbody>
+
+</table>       
+<pagination-controls
+      id="foo"
+      previousLabel="Precedent"
+      nextLabel="Suivant"
+      [responsive]="true"
+      [autoHide]="true"
+      [directionLinks]="true"
+      [maxSize]="3"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageBoundsCorrection)="handlePageChange($event)"
+      (pageChange)="handlePageChange($event)"
+      screenReaderCurrentLabel="You're on page">
+      
+      
+</pagination-controls>

@@ -12,6 +12,11 @@ import { UpdateEnseignantComponent } from './Enseignant/update-enseignant/update
 import { SearchEnseignantComponent } from './Enseignant/search-enseignant/search-enseignant.component';
 import { EnseignantDeatailsComponent } from './Enseignant/enseignant-deatails/enseignant-deatails.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormationListComponent } from './Formation/formation-list/formation-list.component';
+import { CreateFormationComponent } from './Formation/create-formation/create-formation.component';
+import { UpdateFormationComponent } from './Formation/update-formation/update-formation.component';
+import { FormationDetailsComponent } from './Formation/formation-details/formation-details.component';
+
 
 
 
@@ -22,7 +27,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CreateEnseignantComponent,
     UpdateEnseignantComponent,
     SearchEnseignantComponent,
-    EnseignantDeatailsComponent
+    EnseignantDeatailsComponent,
+    FormationListComponent,
+    CreateFormationComponent,
+    UpdateFormationComponent,
+    FormationDetailsComponent,
+
   ],
   imports: [
     BrowserModule,
