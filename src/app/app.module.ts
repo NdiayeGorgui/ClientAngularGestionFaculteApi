@@ -16,6 +16,14 @@ import { FormationListComponent } from './Formation/formation-list/formation-lis
 import { CreateFormationComponent } from './Formation/create-formation/create-formation.component';
 import { UpdateFormationComponent } from './Formation/update-formation/update-formation.component';
 import { FormationDetailsComponent } from './Formation/formation-details/formation-details.component';
+import { TypeCoursListComponent } from './Cours/type-cours-list/type-cours-list.component';
+import { TypeCoursDetailsComponent } from './Cours/type-cours-details/type-cours-details.component';
+import { CreateTypeCoursComponent } from './Cours/create-type-cours/create-type-cours.component';
+import { UpdateTypeCoursComponent } from './Cours/update-type-cours/update-type-cours.component';
+import { CoursListComponent } from './Cours/cours-list/cours-list.component';
+import { CoursDetailsComponent } from './Cours/cours-details/cours-details.component';
+import { CreateCoursComponent } from './Cours/create-cours/create-cours.component';
+import { UpdateCoursComponent } from './Cours/update-cours/update-cours.component';
 
 
 
@@ -32,6 +40,14 @@ import { FormationDetailsComponent } from './Formation/formation-details/formati
     CreateFormationComponent,
     UpdateFormationComponent,
     FormationDetailsComponent,
+    TypeCoursListComponent,
+    TypeCoursDetailsComponent,
+    CreateTypeCoursComponent,
+    UpdateTypeCoursComponent,
+    CoursListComponent,
+    CoursDetailsComponent,
+    CreateCoursComponent,
+    UpdateCoursComponent,
 
   ],
   imports: [

@@ -1,0 +1,35 @@
+
+
+<div class="">
+    <button (click)="createTypeCours()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+</div>
+
+
+<div>
+    <h4>Liste des Types de Cours</h4>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Type de cours</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let typeCour of typeCours ">
+            <td>{{typeCour.type}}</td>
+            <td>{{typeCour.prix}}<span>/h</span></td>
+           
+           
+                <td><button (click)="updateTypeCours(typeCour.id)" class="btn btn-primary">Modifier</button></td>
+                <td><button (click)="deleteTypeCours(typeCour.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td><button (click)="typeCoursDetails(typeCour.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+            
+        </tr>
+    </tbody>
+
+</table>       
+
+
