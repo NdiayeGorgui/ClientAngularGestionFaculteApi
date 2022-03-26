@@ -24,6 +24,10 @@ import { CoursListComponent } from './Cours/cours-list/cours-list.component';
 import { CoursDetailsComponent } from './Cours/cours-details/cours-details.component';
 import { CreateCoursComponent } from './Cours/create-cours/create-cours.component';
 import { UpdateCoursComponent } from './Cours/update-cours/update-cours.component';
+import { GroupeListComponent } from './Groupe/groupe-list/groupe-list.component';
+import { GroupeDetailsComponent } from './Groupe/groupe-details/groupe-details.component';
+import { CreateGroupeComponent } from './Groupe/create-groupe/create-groupe.component';
+import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.component';
 
 
 
@@ -48,6 +52,10 @@ import { UpdateCoursComponent } from './Cours/update-cours/update-cours.componen
     CoursDetailsComponent,
     CreateCoursComponent,
     UpdateCoursComponent,
+    GroupeListComponent,
+    GroupeDetailsComponent,
+    CreateGroupeComponent,
+    UpdateGroupeComponent,
 
   ],
   imports: [

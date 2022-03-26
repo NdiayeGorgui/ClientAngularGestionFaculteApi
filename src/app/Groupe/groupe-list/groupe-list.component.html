@@ -1,42 +1,42 @@
 
 <div class="">
-    <button (click)="createCours()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button (click)="createGroupe()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input type="text" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
-          class="form-control" placeholder="Rechercher par libellé du cours" />
+          class="form-control" placeholder="Rechercher par numéro de groupe" />
       </div>
     </div>
 </div>
 <div>
-    <h4>Liste des Cours</h4>
+    <h4>Liste des groupes</h4>
 </div>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Libelle</th>
-            <th>Nombre d'heure</th>
+            <th>Groupe</th>
+            <th>Nom de la formation</th>
             
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         
-        <tr *ngFor="let cour of cours | paginate:{
+        <tr *ngFor="let groupe of groupes | paginate:{
             id: 'foo',
             itemsPerPage:3,
             currentPage:page,
             totalItems:totalRecords
         }">
-            <td>{{cour.libelle}}</td>
-            <td>{{cour.nbeHeure}}</td>
+            <td>{{groupe.numeroGroupe}}</td>
+            <td>{{groupe.formation.nomFormation}}</td>
            
-                <td><button (click)="updateCours(cour.id)" class="btn btn-primary">Modifier</button></td>
-                <td><button (click)="deleteCours(cour.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
-                <td><button (click)="coursDetails(cour.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+                <td><button (click)="updateGroupe(groupe.id)" class="btn btn-primary">Modifier</button></td>
+                <td><button (click)="deleteGroupe(groupe.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td><button (click)="groupeDetails(groupe.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
             
         </tr>
     </tbody>
@@ -58,4 +58,5 @@
       
       
 </pagination-controls>
+
 

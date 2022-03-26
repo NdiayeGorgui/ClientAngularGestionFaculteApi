@@ -1,1 +1,32 @@
-<p>create-cours works!</p>
+
+<div class="col-md-6 offset-md-3">
+    <h4>Créer cours</h4>
+    <form (ngSubmit)="onSubmit()"> 
+        <div class="form-group">
+            <input type="text" class="form-control" id="libelle" placeholder="Libelle du cours" style="margin-top: 10px"
+            [(ngModel)]="cours.libelle" name="libelle"style="margin-bottom: 10px">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="nbeHeure" placeholder="Nombre d'heure" style="margin-top: 10px"
+            [(ngModel)]="cours.nbeHeure" name="prix" style="margin-bottom: 10px">
+        </div>
+        <div class="form-group">
+            
+            <select [(ngModel)]="cours.enseignantId"   name="id" id="id">
+                <option  [ngValue]="null" >-Choisir un enseignant-</option>
+                <option *ngFor="let item of enseignants" value="{{item.id}}">{{item.id}}</option><span>{{cours.enseignant.id}}</span>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" class="form-control" id="typecourId" placeholder="Type cours" style="margin-top: 10px"
+            [(ngModel)]="cours.typecour.id" name="typecourId" style="margin-bottom: 10px">
+        </div>
+            <button class="btn btn-success" type="submit"style="margin-top: 10px"> Valider</button>
+            <button class="btn btn-warning" type="submit"style="margin-top: 10px; margin-left: 10px" > Annuler</button>
+
+    </form>
+    </div>
+
+
+

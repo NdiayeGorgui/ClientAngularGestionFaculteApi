@@ -1,1 +1,20 @@
-<p>cours-details works!</p>
+<h3> Details Cours</h3>
+<div>
+    <div>
+        <label ><b>Libellé du Cours :</b></label>{{cours.libelle}}
+    </div>
+    <div>
+        <label ><b>Nombre d'heure :</b></label>{{cours.nbeHeure}}
+    </div>
+    <div>
+        <label ><b>Enseignant :</b></label><span>{{cours.enseignant.firstName}}</span> &nbsp; <span>{{cours.enseignant.lastName}}</span>
+    </div>
+    <div>
+        <label ><b>Type Cours :</b></label>{{cours.typecour.type}}
+    </div>
+    <div>
+        <label ><b>Prix :</b></label> {{cours.typecour.prix}}<span>$/h</span>
+    </div>
+    
+</div>
+
