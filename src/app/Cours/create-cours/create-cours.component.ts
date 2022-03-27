@@ -4,6 +4,8 @@ import { Enseignant } from 'src/app/Enseignant/enseignant';
 import { EnseignantService } from 'src/app/Enseignant/enseignant.service';
 import { Cours } from '../cours';
 import { CoursService } from '../cours.service';
+import { TypeCours } from '../type-cours';
+import { TypeCoursService } from '../type-cours.service';
 
 @Component({
   selector: 'app-create-cours',
@@ -11,27 +13,48 @@ import { CoursService } from '../cours.service';
   styleUrls: ['./create-cours.component.css']
 })
 export class CreateCoursComponent implements OnInit {
-  id!: number;
+  enseignantId!: number;
+  typecourId!: number;
   enseignants: Enseignant[] = [];
+  typecours: TypeCours[] = [];
+  typecour!:TypeCours;
   cours:Cours=new Cours();
-  constructor(private coursService:CoursService,private enseignantService:EnseignantService,private route:ActivatedRoute,
-    private router:Router) { }
+  
+  enseignant!: Enseignant;
+
+  constructor(private coursService:CoursService,
+              private enseignantService:EnseignantService,
+              private typeCoursService:TypeCoursService,
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void { 
-   
+    
     this.getEnseignants();
+    this.getTypeCours();
   
   }
   private getEnseignants(){
-   
     this.enseignantService.getEnseignantList().subscribe(data => {
+      console.log(data);
       this.enseignants=data;
       console.log('enseignants=>'+JSON.stringify(this.enseignants));
-    });
+    
+    }); 
+   
+  }
+
+  private getTypeCours(){
+    this.typeCoursService.getTypeCoursList().subscribe(data => {
+      console.log(data);
+      this.typecours=data;
+      console.log('typeCours=>'+JSON.stringify(this.typecours));
+    
+    }); 
+   
   }
   saveCours(){
-    let cours = { libelle: this.cours.libelle, nbeHeure: this.cours.nbeHeure,enseignant:{id:this.cours.enseignantId},typecour:{id:null} };
-    this.id=this.route.snapshot.params['id'];
+
     this.coursService.createCours(this.cours).subscribe(data => {
       console.log(data);
       this.goToCoursList();

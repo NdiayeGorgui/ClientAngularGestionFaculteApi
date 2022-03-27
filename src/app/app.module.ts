@@ -28,6 +28,13 @@ import { GroupeListComponent } from './Groupe/groupe-list/groupe-list.component'
 import { GroupeDetailsComponent } from './Groupe/groupe-details/groupe-details.component';
 import { CreateGroupeComponent } from './Groupe/create-groupe/create-groupe.component';
 import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.component';
+import { LoginComponent } from './Login/login/login.component';
+import { UserListComponent } from './User/user-list/user-list.component';
+import { CreateUserComponent } from './User/create-user/create-user.component';
+import { UpdateUserComponent } from './User/update-user/update-user.component';
+import { UserDetailsComponent } from './User/user-details/user-details.component';
+import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
+
 
 
 
@@ -56,6 +63,13 @@ import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.comp
     GroupeDetailsComponent,
     CreateGroupeComponent,
     UpdateGroupeComponent,
+    LoginComponent,
+    UserListComponent,
+    CreateUserComponent,
+    UpdateUserComponent,
+    UserDetailsComponent,
+    ForbiddenComponent,
+   
 
   ],
   imports: [

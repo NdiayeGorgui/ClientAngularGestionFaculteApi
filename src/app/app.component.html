@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Gestion des Enseigments</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -10,63 +11,100 @@
         <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Enseignant
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="enseignants"  >Liste des Enseignants</a>
+          <a class="dropdown-item" routerLink="enseignants">Liste des Enseignants</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#"  >Rechercher un Enseignant</a>
+          <a class="dropdown-item" routerLink="#">Rechercher un Enseignant</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#"  >Affecter un Enseigant à un groupe</a>
+          <a class="dropdown-item" routerLink="#">Affecter un Enseigant à un groupe</a>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Cours
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="cours" >Liste des cours</a>
+          <a class="dropdown-item" routerLink="cours">Liste des cours</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#" >Rechercher un cours</a>
+          <a class="dropdown-item" routerLink="#">Rechercher un cours</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="type-cours" >Type de cours </a>
+          <a class="dropdown-item" routerLink="type-cours">Type de cours </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item"routerLink="#" >Affecter un cours à une formation</a>
+          <a class="dropdown-item" routerLink="#">Affecter un cours à une formation</a>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Formation
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="formations">Liste des formations</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="groupes" >Liste des groupes de formation</a>
+          <a class="dropdown-item" routerLink="groupes">Liste des groupes de formation</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="#">Rechercher une formation</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="#" routerLinkActive="active">Rechercher un groupe</a>
         </div>
       </li>
+      <li *ngIf="authService.isAdmin()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Utilisateur
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a  class="dropdown-item" routerLink="users">Liste des utilisateurs</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Rechercher un utilisateur</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+
+      <li>
+        <a class="nav-link"> {{authService.loggedUser}}</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+
+    <ul>
+
+      <li class="nav-item dropdown">
+
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Connexion
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="login">Login</a>
+          <div class="dropdown-divider"></div>
+          <a *ngIf="authService.isloggedIn" class="dropdown-item" (click)="onLogout()">Logout</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Profil</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>
-    
-    <h1 class="text-center">{{title}}</h1>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-    
-    <footer class="footer">
-      <div class="container">
-        <span>All Right Reserved 2022 @gogo</span>
-      </div>
-    </footer>
+
+<h1 class="text-center">{{title}}</h1>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span>All Right Reserved 2022 @gogo</span>
+  </div>
+</footer>

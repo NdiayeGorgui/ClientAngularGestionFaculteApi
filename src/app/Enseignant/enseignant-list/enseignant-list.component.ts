@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Login/auth.service';
 import { Enseignant } from '../enseignant';
 import { EnseignantService } from '../enseignant.service';
 
@@ -14,7 +15,8 @@ export class EnseignantListComponent implements OnInit {
   totalRecords!:number;
   enseignants: Enseignant[] = [];
   constructor(private enseignantService:EnseignantService,
-    private router:Router) { }
+              private router:Router,
+              public authService:AuthService) { }
 
   ngOnInit(): void {
    this.getEnseignants();
@@ -35,10 +37,14 @@ updateEnseignant(id:number){
 }
 
 deleteEnseignant(id:number){
-  this.enseignantService.deleteEnseignant(id).subscribe(data => {
-    console.log(data);
-    this.getEnseignants();
-  });
+  let conf=confirm("Etes-vous sure ?")
+  if(conf){
+    this.enseignantService.deleteEnseignant(id).subscribe(data => {
+      console.log(data);
+      this.getEnseignants();
+    });
+  }
+  
 }
 
 enseignantDetails(id:number){

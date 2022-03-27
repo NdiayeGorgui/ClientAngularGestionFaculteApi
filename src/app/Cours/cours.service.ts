@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cours } from './cours';
-
+const httOptions={
+  headers:new HttpHeaders({'Content-Type':'application/json'})
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -19,10 +21,8 @@ export class CoursService {
   getCoursById(id:number):Observable<Cours>{
     return this.httpClient.get<Cours>(`${this.baseURL}/${id}`);
   }
-
- 
   createCours(cours:Cours):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,cours);
+    return this.httpClient.post(`${this.baseURL}`,cours,httOptions);
   }
   updateCours(id:number,cours:Cours):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,cours);

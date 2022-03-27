@@ -2,22 +2,22 @@
 <div class="col-md-6 offset-md-3">
     <h4>Modifier cours</h4>
     <form (ngSubmit)="onSubmit()"> 
-        <div class="form-group">
+        <div class="form-group"><label >Libellé </label>
             <input type="text" class="form-control" id="libelle" placeholder="Libelle du cours" style="margin-top: 10px"
             [(ngModel)]="cours.libelle" name="libelle"style="margin-bottom: 10px">
         </div>
-        <div class="form-group">
+        <div class="form-group"><label >Nombre d'heure </label>
             <input type="text" class="form-control" id="nbeHeure" placeholder="Nombre d'heure" style="margin-top: 10px"
-            [(ngModel)]="cours.nbeHeure" name="prix" style="margin-bottom: 10px">
+            [(ngModel)]="cours.nbeHeure" name="nbeHeure" style="margin-bottom: 10px">
         </div>
-        <div class="form-group">
+        <div class="form-group"><label >Enseignant </label>
             <input type="text" class="form-control" id="nbeHeure" placeholder="Enseignant" style="margin-top: 10px"
-            [(ngModel)]="cours.enseignantId" name="enseignantId" style="margin-bottom: 10px">
+            [(ngModel)]="cours.enseignant.id" name="enseignantId" style="margin-bottom: 10px">
         </div>
         
-        <div class="form-group">
+        <div class="form-group"> <label >Type cours </label>
             <input type="text" class="form-control" id="typecourId" placeholder="Nombre d'heure" style="margin-top: 10px"
-            [(ngModel)]="cours.typecourId" name="typecourId" style="margin-bottom: 10px">
+            [(ngModel)]="cours.typecour.id" name="typecourId" style="margin-bottom: 10px">
         </div>
             <button class="btn btn-success" type="submit"style="margin-top: 10px"> Valider</button>
             <button class="btn btn-warning" type="submit"style="margin-top: 10px; margin-left: 10px" > Annuler</button>

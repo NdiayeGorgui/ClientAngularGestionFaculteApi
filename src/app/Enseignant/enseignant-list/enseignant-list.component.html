@@ -1,7 +1,7 @@
 
 
 <div class="">
-    <button (click)="createEnseigant()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button *ngIf="authService.isAdmin()" (click)="createEnseigant()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
@@ -42,8 +42,8 @@
             <td>{{enseignant.statut}}</td>
             <td>{{enseignant.telephone}}</td>
            
-                <td><button (click)="updateEnseignant(enseignant.id)" class="btn btn-primary">Modifier</button></td>
-                <td><button (click)="deleteEnseignant(enseignant.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="updateEnseignant(enseignant.id)" class="btn btn-primary">Modifier</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteEnseignant(enseignant.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
                 <td><button (click)="enseignantDetails(enseignant.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
             
         </tr>

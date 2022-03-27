@@ -22,11 +22,16 @@ import { CreateGroupeComponent } from './Groupe/create-groupe/create-groupe.comp
 import { GroupeDetailsComponent } from './Groupe/groupe-details/groupe-details.component';
 import { GroupeListComponent } from './Groupe/groupe-list/groupe-list.component';
 import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.component';
+import { EnseignementGuard } from './Guard/enseignement.guard';
+import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
+import { LoginComponent } from './Login/login/login.component';
+import { UserListComponent } from './User/user-list/user-list.component';
 
 const routes: Routes = [
+  { path:'login',component:LoginComponent},
  { path:'home',component:AcueilComponent},
  { path:'enseignants',component:EnseignantListComponent},
- { path:'create-enseignant',component:CreateEnseignantComponent},
+ { path:'create-enseignant',component:CreateEnseignantComponent,canActivate:[EnseignementGuard]},
  { path:'search-enseignant',component:SearchEnseignantComponent},
 
  { path:'',redirectTo :'home',pathMatch:'full'},
@@ -51,7 +56,14 @@ const routes: Routes = [
  { path:'groupes',component:GroupeListComponent},
  { path:'create-groupe',component:CreateGroupeComponent},
  { path:'update-groupe/:id',component:UpdateGroupeComponent},
- { path:'groupe-details/:id',component:GroupeDetailsComponent}
+ { path:'groupe-details/:id',component:GroupeDetailsComponent},
+
+ 
+
+ { path:'users',component:UserListComponent},
+
+ { path:'forbidden',component:ForbiddenComponent},
+
 ];
 
 @NgModule({

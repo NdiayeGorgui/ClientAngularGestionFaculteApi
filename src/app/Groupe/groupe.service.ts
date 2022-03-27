@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Groupe } from './groupe';
-
+const httOptions={
+  headers:new HttpHeaders({'Content-Type':'application/json'})
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +24,7 @@ export class GroupeService {
 
  
   createGroupe(groupe:Groupe):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,groupe);
+    return this.httpClient.post(`${this.baseURL}`,groupe,httOptions);
   }
   updateGroupe(id:number,groupe:Groupe):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,groupe);

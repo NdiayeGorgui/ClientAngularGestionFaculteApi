@@ -12,9 +12,11 @@ import { GroupeService } from '../groupe.service';
 })
 export class CreateGroupeComponent implements OnInit {
   formations: Formation[] = [];
+  formationId!: number;
   groupe:Groupe=new Groupe();
-  constructor(private groupeService:GroupeService,private formationService:FormationService,
-    private router:Router) { }
+  constructor(private groupeService:GroupeService,
+              private formationService:FormationService,
+              private router:Router) { }
 
   ngOnInit(): void { 
     this.getFormations();
