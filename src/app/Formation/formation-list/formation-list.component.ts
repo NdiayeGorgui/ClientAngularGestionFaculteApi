@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Login/auth.service';
 import { Formation } from '../formation';
 import { FormationService } from '../formation.service';
 
@@ -15,7 +16,8 @@ export class FormationListComponent implements OnInit {
   totalRecords!:number;
   formations: Formation[] = [];
   constructor(private formationService:FormationService,
-    private router:Router) { }
+    private router:Router,
+    public authService:AuthService) { }
 
   ngOnInit(): void {
    this.getFormations();
@@ -36,10 +38,13 @@ updateFormation(id:number){
 }
 
 deleteFormation(id:number){
+  let conf=confirm("Etes-vous sure ?")
+  if(conf){
   this.formationService.deleteFormation(id).subscribe(data => {
     console.log(data);
     this.getFormations();
   });
+}
 }
 
 formationDetails(id:number){

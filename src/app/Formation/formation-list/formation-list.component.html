@@ -1,7 +1,7 @@
 
 
 <div class="">
-    <button (click)="createFormation()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button  *ngIf="authService.isAdmin()" (click)="createFormation()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
@@ -10,7 +10,7 @@
         <input type="text" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
           class="form-control" placeholder="Rechercher par Nom de formation" />
       </div>
-    </div>
+    </div> 
 </div>
 <div>
     <h4>Liste des Formations</h4>
@@ -36,8 +36,8 @@
             <td>{{formation.annee}}</td>
             <td>{{formation.duree}}<span>h</span></td>
            
-                <td><button (click)="updateFormation(formation.id)" class="btn btn-primary">Modifier</button></td>
-                <td><button (click)="deleteFormation(formation.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="updateFormation(formation.id)" class="btn btn-primary">Modifier</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteFormation(formation.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
                 <td><button (click)="formationDetails(formation.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
             
         </tr>

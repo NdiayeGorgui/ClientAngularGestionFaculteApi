@@ -10,17 +10,17 @@
             <input type="text" class="form-control" id="nbeHeure" placeholder="Nombre d'heure" style="margin-top: 10px"
             [(ngModel)]="cours.nbeHeure" name="nbeHeure" style="margin-bottom: 10px">
         </div>
-        <div class="form-group">
-            <select [(ngModel)]="enseignantId"   name="enseignantId" id="enseignantId">
+        <div class="form-group"> <label for="enseignant">Enseignant : </label>
+            <select [(ngModel)]="cours.enseignant"   name="enseignant.id" id="enseignantid" class="form-control">
                 <option  [ngValue]="null" disabled >-Choisir un enseignant-</option>
-                <option *ngFor="let item of enseignants" value="{{item.id}}">{{item.firstName}}<span>&nbsp;</span>{{item.lastName}}
+                <option  *ngFor="let enseignant of enseignants" [ngValue]="enseignant">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>
             </select>
         </div>
         
-        <div class="form-group">
-            <select [(ngModel)]="typecourId"   name="typecourId" id="typecourId">
+        <div class="form-group"> <label for="typecour">Type cours : </label>
+            <select [(ngModel)]="cours.typecour"   name="typecour.id" id="typecourid" class="form-control" > 
                 <option  [ngValue]="null" disabled>-Choisir un type cours-</option>
-                <option *ngFor="let item of typecours" value="{{item.id}}">{{item.type}}
+                <option *ngFor="let typecour of typecours" [ngValue]="typecour">{{typecour.type}}</option>
             </select>
         </div>
             <button class="btn btn-success" type="submit"style="margin-top: 10px"> Valider</button>

@@ -6,8 +6,9 @@ export class Cours {
     id!: number;
     nbeHeure!: Number;
     libelle!:string;
-    enseignantId!: number;
-    typecourId!: number;
+    enseignantid!: number; 
+    typecourid!: number; 
     enseignant!:Enseignant;
     typecour!:TypeCours;
+  
 }

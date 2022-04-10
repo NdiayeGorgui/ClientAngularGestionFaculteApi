@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Login/auth.service';
 import { Groupe } from '../groupe';
 import { GroupeService } from '../groupe.service';
 
@@ -16,7 +17,8 @@ export class GroupeListComponent implements OnInit {
   totalRecords!:number;
   groupes: Groupe[] = [];
   constructor(private groupeService:GroupeService,
-    private router:Router) { }
+    private router:Router,
+    public authService:AuthService) { }
 
   ngOnInit(): void {
    this.getGroupes();
@@ -37,10 +39,13 @@ updateGroupe(id:number){
 }
 
 deleteGroupe(id:number){
+  let conf=confirm("Etes-vous sure ?")
+  if(conf){
   this.groupeService.deleteGroupe(id).subscribe(data => {
     console.log(data);
     this.getGroupes();
   });
+}
 }
 
 groupeDetails(id:number){

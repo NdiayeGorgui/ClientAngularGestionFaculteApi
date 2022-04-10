@@ -5,7 +5,7 @@ export class Groupe {
     
     id!: number;
     numeroGroupe!: string;
-    formationId!:number;
+    formationid!:number;
     formation!:Formation;
     
 }

@@ -22,6 +22,8 @@ export class CoursService {
     return this.httpClient.get<Cours>(`${this.baseURL}/${id}`);
   }
   createCours(cours:Cours):Observable<Object>{
+    //const headers = { 'content-type': 'application/json'}  
+   // const body=JSON.stringify(cours);
     return this.httpClient.post(`${this.baseURL}`,cours,httOptions);
   }
   updateCours(id:number,cours:Cours):Observable<Object>{

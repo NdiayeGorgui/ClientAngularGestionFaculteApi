@@ -35,27 +35,27 @@ const routes: Routes = [
  { path:'search-enseignant',component:SearchEnseignantComponent},
 
  { path:'',redirectTo :'home',pathMatch:'full'},
- { path:'update-enseignant/:id',component:UpdateEnseignantComponent},
+ { path:'update-enseignant/:id',component:UpdateEnseignantComponent,canActivate:[EnseignementGuard]},
  { path:'enseignant-details/:id',component:EnseignantDeatailsComponent},
 
  { path:'formations',component:FormationListComponent},
- { path:'create-formation',component:CreateFormationComponent},
- { path:'update-formation/:id',component:UpdateFormationComponent},
+ { path:'create-formation',component:CreateFormationComponent,canActivate:[EnseignementGuard]},
+ { path:'update-formation/:id',component:UpdateFormationComponent,canActivate:[EnseignementGuard]},
  { path:'formation-details/:id',component:FormationDetailsComponent},
  
  { path:'type-cours',component:TypeCoursListComponent},
- { path:'create-type-cours',component:CreateTypeCoursComponent},
- { path:'update-type-cours/:id',component:UpdateTypeCoursComponent},
+ { path:'create-type-cours',component:CreateTypeCoursComponent,canActivate:[EnseignementGuard]},
+ { path:'update-type-cours/:id',component:UpdateTypeCoursComponent,canActivate:[EnseignementGuard]},
  { path:'type-cours-details/:id',component:TypeCoursDetailsComponent},
 
  { path:'cours',component:CoursListComponent},
- { path:'create-cours',component:CreateCoursComponent},
- { path:'update-cours/:id',component:UpdateCoursComponent},
+ { path:'create-cours',component:CreateCoursComponent,canActivate:[EnseignementGuard]},
+ { path:'update-cours/:id',component:UpdateCoursComponent,canActivate:[EnseignementGuard]},
  { path:'cours-details/:id',component:CoursDetailsComponent},
 
  { path:'groupes',component:GroupeListComponent},
- { path:'create-groupe',component:CreateGroupeComponent},
- { path:'update-groupe/:id',component:UpdateGroupeComponent},
+ { path:'create-groupe',component:CreateGroupeComponent,canActivate:[EnseignementGuard]},
+ { path:'update-groupe/:id',component:UpdateGroupeComponent,canActivate:[EnseignementGuard]},
  { path:'groupe-details/:id',component:GroupeDetailsComponent},
 
  

@@ -12,7 +12,7 @@ export class UpdateCoursComponent implements OnInit {
 
   id!: number;
   cours:Cours=new Cours();
-
+ // cours!:Cours
 constructor(private coursService:CoursService, 
   private route:ActivatedRoute, private router:Router) { }
 

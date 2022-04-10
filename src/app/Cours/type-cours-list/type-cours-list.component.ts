@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Login/auth.service';
 import { TypeCours } from '../type-cours';
 import { TypeCoursService } from '../type-cours.service';
 
@@ -12,7 +13,8 @@ export class TypeCoursListComponent implements OnInit {
 
   typeCours: TypeCours[] = [];
   constructor(private typeCoursService:TypeCoursService,
-    private router:Router) { }
+    private router:Router,
+    public authService:AuthService) { }
 
   ngOnInit(): void {
     this.getTypeCours();
@@ -31,10 +33,13 @@ export class TypeCoursListComponent implements OnInit {
  }
  
  deleteTypeCours(id:number){
+  let conf=confirm("Etes-vous sure ?")
+  if(conf){
    this.typeCoursService.deleteTypeCours(id).subscribe(data => {
      console.log(data);
      this.getTypeCours();
    });
+  }
  }
  
  typeCoursDetails(id:number){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enseignant } from 'src/app/Enseignant/enseignant';
 import { EnseignantService } from 'src/app/Enseignant/enseignant.service';
@@ -13,26 +14,35 @@ import { TypeCoursService } from '../type-cours.service';
   styleUrls: ['./create-cours.component.css']
 })
 export class CreateCoursComponent implements OnInit {
-  enseignantId!: number;
-  typecourId!: number;
+  id!: number;
+  
+  typecourid!: number;
+  enseignantid!:number;
   enseignants: Enseignant[] = [];
   typecours: TypeCours[] = [];
+  courss: Cours[] = [];
+  libelle!:string;
+  nbeHeure!:Number;
+  enseignant!:Enseignant;
   typecour!:TypeCours;
-  cours:Cours=new Cours();
   
-  enseignant!: Enseignant;
-
+  cours:Cours=new Cours();
+ 
   constructor(private coursService:CoursService,
               private enseignantService:EnseignantService,
               private typeCoursService:TypeCoursService,
               private route:ActivatedRoute,
-              private router:Router) { }
+              private router:Router) {
+
+               }
+  
 
   ngOnInit(): void { 
     
     this.getEnseignants();
     this.getTypeCours();
-  
+    this.getCours();
+   
   }
   private getEnseignants(){
     this.enseignantService.getEnseignantList().subscribe(data => {
@@ -53,8 +63,18 @@ export class CreateCoursComponent implements OnInit {
     }); 
    
   }
+ 
+  private getCours(){
+    this.coursService.getCoursList().subscribe(data => {
+      console.log(data);
+      this.courss=data;
+      console.log('Cours=>'+JSON.stringify(this.cours));
+    
+    }); 
+   
+  }
+  
   saveCours(){
-
     this.coursService.createCours(this.cours).subscribe(data => {
       console.log(data);
       this.goToCoursList();

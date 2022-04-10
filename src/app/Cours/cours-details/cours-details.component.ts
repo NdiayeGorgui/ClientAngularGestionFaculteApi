@@ -16,7 +16,8 @@ constructor(private route:ActivatedRoute, private coursService:CoursService) { }
 
 ngOnInit(): void {
   this.id=this.route.snapshot.params['id'];
-  this.cours=new Cours();
+  //this.cours=new Cours();
+ 
   this.coursService.getCoursById(this.id).subscribe(data =>{
     this.cours=data;
   });

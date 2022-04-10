@@ -24,7 +24,6 @@ export class CreateEnseignantComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
   }
 
   saveEnseignant(){

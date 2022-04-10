@@ -1,6 +1,6 @@
 
 <div class="">
-    <button (click)="createGroupe()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button *ngIf="authService.isAdmin()" (click)="createGroupe()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
@@ -34,8 +34,8 @@
             <td>{{groupe.numeroGroupe}}</td>
             <td>{{groupe.formation.nomFormation}}</td>
            
-                <td><button (click)="updateGroupe(groupe.id)" class="btn btn-primary">Modifier</button></td>
-                <td><button (click)="deleteGroupe(groupe.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="updateGroupe(groupe.id)" class="btn btn-primary">Modifier</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteGroupe(groupe.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
                 <td><button (click)="groupeDetails(groupe.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
             
         </tr>
