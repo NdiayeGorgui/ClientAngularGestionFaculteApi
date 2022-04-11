@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Enseignant } from '../enseignant';
 import { EnseignantService } from '../enseignant.service';
 
@@ -12,7 +12,7 @@ export class EnseignantDeatailsComponent implements OnInit {
 
   id!: number;
   enseignant!: Enseignant;
-constructor(private route:ActivatedRoute, private enseignantService:EnseignantService) { }
+constructor(private route:ActivatedRoute, private enseignantService:EnseignantService, private router:Router) { }
 
 ngOnInit(): void {
   this.id=this.route.snapshot.params['id'];
@@ -20,6 +20,10 @@ ngOnInit(): void {
   this.enseignantService.getEnseignantById(this.id).subscribe(data =>{
     this.enseignant=data;
   });
+}
+
+goToEnseignantList(){
+  this.router.navigate(['/enseignants']);
 }
 
 }

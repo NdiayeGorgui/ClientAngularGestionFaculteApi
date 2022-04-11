@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TypeCours } from '../type-cours';
 import { TypeCoursService } from '../type-cours.service';
 
@@ -12,7 +12,7 @@ export class TypeCoursDetailsComponent implements OnInit {
 
   id!: number;
   typeCours!: TypeCours;
-constructor(private route:ActivatedRoute, private typeCoursService:TypeCoursService) { }
+constructor(private route:ActivatedRoute, private typeCoursService:TypeCoursService, private router:Router) { }
 
 ngOnInit(): void {
   this.id=this.route.snapshot.params['id'];
@@ -21,5 +21,7 @@ ngOnInit(): void {
     this.typeCours=data;
   });
 }
-
+goToTypeCoursList(){
+  this.router.navigate(['/type-cours']);
+}
 }

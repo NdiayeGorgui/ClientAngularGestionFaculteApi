@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Groupe } from '../groupe';
 import { GroupeService } from '../groupe.service';
 
@@ -12,7 +12,7 @@ export class GroupeDetailsComponent implements OnInit {
 
   id!: number;
   groupe!: Groupe;
-constructor(private route:ActivatedRoute, private groupeService:GroupeService) { }
+constructor(private route:ActivatedRoute, private groupeService:GroupeService, private router:Router) { }
 
 ngOnInit(): void {
   this.id=this.route.snapshot.params['id'];
@@ -21,5 +21,9 @@ ngOnInit(): void {
     this.groupe=data;
   });
 
+}
+
+goToGroupeList(){
+  this.router.navigate(['/groupes']);
 }
 }

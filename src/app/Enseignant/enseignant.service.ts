@@ -9,7 +9,7 @@ import { Enseignant } from './enseignant';
 export class EnseignantService {
 
   private baseURL="http://localhost:8090/api/Enseignants"
-
+  private baseURL1="http://localhost:8090/api/Enseignants/Cherche"
   constructor(private httpClient:HttpClient) { }
 
   getEnseignantList():Observable<Enseignant[]>{
@@ -19,8 +19,8 @@ export class EnseignantService {
     return this.httpClient.get<Enseignant>(`${this.baseURL}/${id}`);
   }
 
-  searchEnseignantById(name:string):Observable<Enseignant>{
-    return this.httpClient.get<Enseignant>(`${this.baseURL}/Cherche/${name}`);
+  searchEnseignantsByValue(value:string):Observable<Enseignant[]>{
+    return this.httpClient.get<Enseignant[]>(`${this.baseURL1}/${value}`);
   }
   createEnseignant(enseignant:Enseignant):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,enseignant);

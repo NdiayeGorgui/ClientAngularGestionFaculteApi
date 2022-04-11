@@ -1,1 +1,13 @@
-<p>user-details works!</p>
+<h3> Details Utilisateur</h3>
+<div>
+    <div>
+        <label ><b>Nom d'utilisateur :</b></label>{{user.userName}}
+    </div>
+    <div>
+        <label ><b>Role :</b></label>{{user.roles}}
+    </div>
+    
+    <div>
+        <button (click)="goToUserList()" class="btn btn-warning" type="submit"style="margin-top: 10px; margin-left: 10px" > Retour</button>
+    </div>
+</div>

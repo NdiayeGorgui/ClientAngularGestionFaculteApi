@@ -56,6 +56,21 @@ isAdmin():Boolean{
     
   return admin;
 }
+
+isSuperAdmin():Boolean{
+  let superAdmin:Boolean=false;
+  
+    if(!this.roles)  // if(this.roles==undefined)
+      return false;
+    
+    this.roles.forEach((curRole)=>{
+        if(curRole.roleName == 'superadmin'){
+          superAdmin=true;
+        }
+      });
+    
+  return superAdmin;
+}
 /* isAdmin():Boolean{
   let validUser:Boolean=false;
   
@@ -103,7 +118,7 @@ isAdmin():Boolean{
   getUserList():Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseURL}`);
   }
-  getUserById(id:number):Observable<User>{
+  getUserById(id:string):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   }
   getUserByUserName(userName:string):Observable<User>{

@@ -2,25 +2,32 @@
 <div class="col-md-6 offset-md-3">
     <h4>Modifier cours</h4>
     <form (ngSubmit)="onSubmit()"> 
+        <div class="row">
+            <div class="col">
         <div class="form-group"><label >Libellé </label>
-            <input type="text" class="form-control" id="libelle" placeholder="Libelle du cours" style="margin-top: 10px"
+            <input type="text" class="form-control" id="libelle"  style="margin-top: 10px"
             [(ngModel)]="cours.libelle" name="libelle"style="margin-bottom: 10px">
         </div>
         <div class="form-group"><label >Nombre d'heure </label>
-            <input type="text" class="form-control" id="nbeHeure" placeholder="Nombre d'heure" style="margin-top: 10px"
+            <input type="text" class="form-control" id="nbeHeure"  style="margin-top: 10px"
             [(ngModel)]="cours.nbeHeure" name="nbeHeure" style="margin-bottom: 10px">
         </div>
-        <div class="form-group"><label >Enseignant </label>
-            <input type="text" class="form-control" id="enseignantid" placeholder="Enseignant" style="margin-top: 10px"
-            [(ngModel)]="cours.enseignant.id" name="enseignantid" style="margin-bottom: 10px">
+    </div>
+    <div class="col">
+        <div class="form-group"> <label for="enseignant">Enseignant : </label>
+            <select [(ngModel)]="cours.enseignant.id"   name="enseignantId" id="enseignantId" class="form-control">
+                <option  *ngFor="let enseignant of enseignants"value="{{enseignant.id}}">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>
+            </select>
         </div>
-        
-        <div class="form-group"> <label >Type cours </label>
-            <input type="text" class="form-control" id="typecourId" placeholder="Nombre d'heure" style="margin-top: 10px"
-            [(ngModel)]="cours.typecour.id" name="typecourId" style="margin-bottom: 10px">
+        <div class="form-group"> <label for="typecour">Type Cours : </label>
+            <select [(ngModel)]="cours.typecour.id"   name="typecourId" id="typecourId" class="form-control">
+                <option  *ngFor="let typecour of typecours"value="{{typecour.id}}">{{typecour.type}}</option>
+            </select>
         </div>
+    </div>
+</div>
             <button class="btn btn-success" type="submit"style="margin-top: 10px"> Valider</button>
-            <button class="btn btn-warning" type="submit"style="margin-top: 10px; margin-left: 10px" > Annuler</button>
+            <button (click)="goToCoursList()" class="btn btn-warning" type="submit"style="margin-top: 10px; margin-left: 10px" > Annuler</button>
 
     </form>
     </div>

@@ -34,4 +34,6 @@ export class CreateTypeCoursComponent implements OnInit {
     
   }
 
+ 
+
 }

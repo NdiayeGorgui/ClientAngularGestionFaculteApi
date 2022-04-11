@@ -1,1 +1,58 @@
-<p>user-list works!</p>
+
+
+<div class="">
+    <button  *ngIf="authService.isAdmin()" (click)="createUser()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+</div>
+
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type="search" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
+          class="form-control" placeholder="Rechercher par Nom d'utilisateur" />
+      </div>
+    </div> 
+</div>
+<div>
+    <h4>Liste des Utilisateurs</h4>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom d'utilisateur</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let user of users | paginate:{
+            id: 'foo',
+            itemsPerPage:3,
+            currentPage:page,
+            totalItems:totalRecords
+        }">
+            <td>{{user.userName}}</td>
+           
+                <td *ngIf="authService.isAdmin()"><button  class="btn btn-primary">Modifier</button></td>
+                <td *ngIf="authService.isAdmin()"><button  class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td><button (click)="userDetails(user.userName)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+            
+        </tr>
+    </tbody>
+
+</table>       
+ <pagination-controls
+      id="foo"
+      previousLabel="Precedent"
+      nextLabel="Suivant"
+      [responsive]="true"
+      [autoHide]="true"
+      [directionLinks]="true"
+      [maxSize]="3"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageBoundsCorrection)="handlePageChange($event)"
+      (pageChange)="handlePageChange($event)"
+      screenReaderCurrentLabel="You're on page">
+      
+</pagination-controls> 
+

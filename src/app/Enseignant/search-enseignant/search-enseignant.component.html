@@ -1,9 +1,9 @@
 <p></p>
 <div class="container">
     <div class="panel panel-primary">
-        <div class="panel-heading">Enseignant</div>
+        <!-- <div class="panel-heading">Enseignant</div> -->
         <div class="panel-body">
-            <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+           <!--  <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
                 <div class="form-group">
                     <label for="">Mot Clé:</label>
                     <input type="text" name="motCle" ngModel required  style="margin-right: 10px; margin-left: 10px ;margin-top: 10px">
@@ -11,8 +11,22 @@
 
                 </div>
 
-            </form>
-
+            </form> -->
+            <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline my-2 my-lg-0">
+                <!-- <label for="">Mot Clé:</label> -->
+                <input class="form-control mr-sm-2" name="motCle" ngModel required  type="search" placeholder="Nom, Prénom ou Statut" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+              </form>
+              <div *ngFor="let enseignant of enseignants">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading"> {{enseignant.firstName}}</div>
+                        <div class="panel panel-body">
+                            {{enseignant.statut}}
+                        </div>
+                   
+                </div>
+              </div>
+             
         </div>
     </div>
 </div>

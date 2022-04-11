@@ -25,6 +25,9 @@ import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.comp
 import { EnseignementGuard } from './Guard/enseignement.guard';
 import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
 import { LoginComponent } from './Login/login/login.component';
+import { CreateUserComponent } from './User/create-user/create-user.component';
+import { UpdateUserComponent } from './User/update-user/update-user.component';
+import { UserDetailsComponent } from './User/user-details/user-details.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 
 const routes: Routes = [
@@ -61,6 +64,9 @@ const routes: Routes = [
  
 
  { path:'users',component:UserListComponent},
+ { path:'create-user',component:CreateUserComponent},
+ { path:'update-user/:id',component:UpdateUserComponent},
+ { path:'user-details/:id',component:UserDetailsComponent},
 
  { path:'forbidden',component:ForbiddenComponent},
 

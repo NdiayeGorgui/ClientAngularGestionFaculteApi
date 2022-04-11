@@ -91,9 +91,4 @@ export class CreateCoursComponent implements OnInit {
     
   }
 
-  onCancel(){
-    this.router.navigate(['/cours']);
-    
-  }
-
 }

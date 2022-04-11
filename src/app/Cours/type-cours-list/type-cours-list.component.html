@@ -18,7 +18,7 @@
         
         <tr *ngFor="let typeCour of typeCours ">
             <td>{{typeCour.type}}</td>
-            <td>{{typeCour.prix}}<span>/h</span></td>
+            <td>{{typeCour.prix}}<span>$/h</span></td>
            
            
                 <td *ngIf="authService.isAdmin()"><button (click)="updateTypeCours(typeCour.id)" class="btn btn-primary">Modifier</button></td>
