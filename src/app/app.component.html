@@ -20,6 +20,8 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="search-enseignant">Liste des Enseignants par statut ou par nom</a>
           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="search-enseignant">Liste des Enseignants par groupe de formation</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="#">Affecter un Enseigant à un groupe</a>
         </div>
       </li>
@@ -31,11 +33,26 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="cours">Liste des cours</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#">Rechercher un cours</a>
+          <a class="dropdown-item" routerLink="#">Liste des cours pour un Enseignant</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Liste des cours pour une formation</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="type-cours">Type de cours </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="#">Affecter un cours à une formation</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Groupe
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="groupes">Liste des groupes</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="groupes">Liste des groupes d'une formation</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Liste des groupes pour un Enseignant</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -46,11 +63,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="formations">Liste des formations</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="groupes">Liste des groupes de formation</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#">Rechercher une formation</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Rechercher un groupe</a>
+          <a class="dropdown-item" routerLink="#">Rechercher un cours dans les formations</a>
         </div>
       </li>
       <li *ngIf="authService.isSuperAdmin()" class="nav-item dropdown">
