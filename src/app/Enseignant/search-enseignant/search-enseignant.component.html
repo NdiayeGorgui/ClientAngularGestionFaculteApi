@@ -1,33 +1,56 @@
 <p></p>
 <div class="container">
-    <div class="panel panel-primary">
-        <!-- <div class="panel-heading">Enseignant</div> -->
-        <div class="panel-body">
-           <!--  <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
-                <div class="form-group">
-                    <label for="">Mot Clé:</label>
-                    <input type="text" name="motCle" ngModel required  style="margin-right: 10px; margin-left: 10px ;margin-top: 10px">
-                    <button type="submit" class="btn btn-primary">Chercher</button>
 
-                </div>
-
-            </form> -->
-            <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline my-2 my-lg-0">
-                <!-- <label for="">Mot Clé:</label> -->
-                <input class="form-control mr-sm-2" name="motCle" ngModel required  type="search" placeholder="Nom, Prénom ou Statut" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-              </form>
-              <div *ngFor="let enseignant of enseignants">
-                <div class="panel panel-primary">
-                    <div class="panel panel-heading"> {{enseignant.firstName}}</div>
-                        <div class="panel panel-body">
-                            {{enseignant.statut}}
-                        </div>
-                   
-                </div>
-              </div>
-             
+    <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline my-2 my-lg-0">
+        <!-- <label for="">Mot Clé:</label> -->
+        <!-- <input class="form-control mr-sm-2" name="motCle" [(ngModel)]="statut" required type="search"
+            placeholder="Saisir le Statut" aria-label="Search"> -->
+            <div class="form-group">
+                <select [(ngModel)]="statut" name="statut"  class="form-control" > 
+                     <option [ngValue]="null" >Choisir Statut</option>
+                     <option *ngFor="let stat of statues" value="{{stat.name}}">{{stat.name}}</option>
+                 </select>
+             </div> 
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"style=" margin-left: 10px">Rechercher</button>
+        <span *ngIf="totalRecords>0" style=" margin-left: 10px">Résultats de la recherche:<span style=" margin-left: 10px">{{totalRecords}}<span style=" margin-left: 10px">Enseigant(s)</span><span style=" margin-left: 10px">{{statut}}</span></span></span>
+    </form>
+    <p></p>
+    <div class="row" >
+    <div class="col-md-4"  *ngFor="let enseignant of enseignants | paginate:{
+        id: 'foo',
+        itemsPerPage:6,
+        currentPage:page,
+        totalItems:totalRecords
+    }"  >
+        <div class="card" style="width: 21rem; margin-top: 10px" cadre>
+            <div class="card-body">
+                <h5 class="card-title">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><b> Adresse: </b>{{enseignant.adress}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted"> <b> Mail: </b>{{enseignant.mail}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted"><b>Téléphone: </b>{{enseignant.telephone}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted"> <b> Statut: </b>{{enseignant.statut}}</h6>
+                <a href="#" class="card-link">Détails Enseigant</a>
+            </div>
         </div>
     </div>
 </div>
 
+</div>
+<p  *ngIf="totalRecords>0">
+    <pagination-controls
+    id="foo"
+    previousLabel="Precedent"
+    nextLabel="Suivant"
+    [responsive]="true"
+    [autoHide]="true"
+    [directionLinks]="true"
+    [maxSize]="3"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    (pageBoundsCorrection)="handlePageChange($event)"
+    (pageChange)="handlePageChange($event)"
+    screenReaderCurrentLabel="You're on page">
+    
+    
+</pagination-controls>
+</p>

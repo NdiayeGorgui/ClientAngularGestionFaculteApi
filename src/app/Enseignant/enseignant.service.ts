@@ -7,9 +7,10 @@ import { Enseignant } from './enseignant';
   providedIn: 'root'
 })
 export class EnseignantService {
-
-  private baseURL="http://localhost:8090/api/Enseignants"
-  private baseURL1="http://localhost:8090/api/Enseignants/Cherche"
+  value!:string;
+  private baseURLS=`http://localhost:8090/api/Enseignants/Cherche/${this.value}`;
+  private baseURL="http://localhost:8090/api/Enseignants";
+  private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
   constructor(private httpClient:HttpClient) { }
 
   getEnseignantList():Observable<Enseignant[]>{
@@ -19,8 +20,8 @@ export class EnseignantService {
     return this.httpClient.get<Enseignant>(`${this.baseURL}/${id}`);
   }
 
-  searchEnseignantsByValue(value:string):Observable<Enseignant[]>{
-    return this.httpClient.get<Enseignant[]>(`${this.baseURL1}/${value}`);
+  searchEnseignantsByStatut(statut:string):Observable<Enseignant[]>{
+    return this.httpClient.get<Enseignant[]>(`${this.baseURLStatut}/${statut}`);
   }
   createEnseignant(enseignant:Enseignant):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,enseignant);

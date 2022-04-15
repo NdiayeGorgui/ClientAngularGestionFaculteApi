@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{HttpClientModule} from '@angular/common/http';
+import{HttpClientJsonpModule, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -39,6 +39,7 @@ import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,13 +71,14 @@ import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
     UserDetailsComponent,
     ForbiddenComponent,
    
+   
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,NgxPaginationModule
+    HttpClientModule,NgxPaginationModule,HttpClientJsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

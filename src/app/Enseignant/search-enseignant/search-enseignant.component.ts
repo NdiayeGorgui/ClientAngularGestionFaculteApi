@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Enseignant } from '../enseignant';
+import { Istatus } from '../enseignant-status-interface';
 import { EnseignantService } from '../enseignant.service';
 
 @Component({
@@ -9,32 +10,32 @@ import { EnseignantService } from '../enseignant.service';
   styleUrls: ['./search-enseignant.component.css']
 })
 export class SearchEnseignantComponent implements OnInit {
-  motCle!:string;
-  enseignants: Enseignant[] = [];
+ 
+  statut:string="";
+  enseignants: any;
   enseignant!:Enseignant;
   page:number=1;
   totalRecords!:number;
+  public statId!:number;
   constructor(private enseignantService:EnseignantService,
     private router:Router) { }
 
+    public statues:Array<Istatus>=[{id:1,name:'Permanent'},
+  {id:2,name:'Contractuel'},
+  {id:3,name:'Vacataire'}];
+
   ngOnInit(): void {
-   
+   // this.getEnseignants();
   }
 
-  private getEnseignantsByValue(){
-    
-    this.enseignantService.searchEnseignantsByValue(this.motCle).subscribe(data => {
-      this.enseignants=data;
-      this.totalRecords=this.enseignants.length;
-      console.log(data);
-      console.log(this.totalRecords);
-    });
+  handlePageChange(event: number) {
+    this.page = event;
   }
   
-  onSearch(dataForm:string){
-    this.motCle=dataForm;
-    console.log(this.motCle);
-    this.enseignantService.searchEnseignantsByValue(this.motCle).subscribe(data => {
+  onSearch(dataForm:any){
+   
+    console.log(dataForm);
+    this.enseignantService.searchEnseignantsByStatut(this.statut).subscribe(data => {
       this.enseignants=data;
       this.totalRecords=this.enseignants.length;
       console.log(data);
@@ -44,5 +45,8 @@ export class SearchEnseignantComponent implements OnInit {
     
     
   }
-
+  reset() {
+    this.statut = "";
+  }
+ 
 }
