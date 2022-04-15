@@ -11,7 +11,7 @@ import { EnseignantService } from '../enseignant.service';
 })
 export class SearchEnseignantComponent implements OnInit {
  
-  statut:string="";
+  statut:string="null";
   enseignants: any;
   enseignant!:Enseignant;
   page:number=1;
@@ -25,11 +25,22 @@ export class SearchEnseignantComponent implements OnInit {
   {id:3,name:'Vacataire'}];
 
   ngOnInit(): void {
-   // this.getEnseignants();
+    this.reset(this.statut);
   }
 
   handlePageChange(event: number) {
     this.page = event;
+  }
+
+  statusChange(statut: string) {
+    console.log(statut);
+    this.enseignantService.searchEnseignantsByStatut(this.statut).subscribe(data => {
+      this.enseignants=data;
+      this.totalRecords=this.enseignants.length;
+      console.log(data);
+      console.log(this.totalRecords);
+    
+    });
   }
   
   onSearch(dataForm:any){
@@ -45,8 +56,8 @@ export class SearchEnseignantComponent implements OnInit {
     
     
   }
-  reset() {
-    this.statut = "";
+  reset(statut:string) {
+    this.statut = "null";
   }
  
 }

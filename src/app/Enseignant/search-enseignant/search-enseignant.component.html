@@ -6,12 +6,12 @@
         <!-- <input class="form-control mr-sm-2" name="motCle" [(ngModel)]="statut" required type="search"
             placeholder="Saisir le Statut" aria-label="Search"> -->
             <div class="form-group">
-                <select [(ngModel)]="statut" name="statut"  class="form-control" > 
-                     <option [ngValue]="null" >Choisir Statut</option>
-                     <option *ngFor="let stat of statues" value="{{stat.name}}">{{stat.name}}</option>
+                <select [(ngModel)]="statut" name="statut"  class="form-control" (change)="statusChange(statut)" > 
+                     <option value="null" >Choisir Statut</option>
+                     <option *ngFor="let stat of statues" value="{{stat.name}}">{{stat.name}}</option>>
                  </select>
              </div> 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"style=" margin-left: 10px">Rechercher</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"style=" margin-left: 10px" (click)="reset(statut)">Effacer</button>
         <span *ngIf="totalRecords>0" style=" margin-left: 10px">Résultats de la recherche:<span style=" margin-left: 10px">{{totalRecords}}<span style=" margin-left: 10px">Enseigant(s)</span><span style=" margin-left: 10px">{{statut}}</span></span></span>
     </form>
     <p></p>
