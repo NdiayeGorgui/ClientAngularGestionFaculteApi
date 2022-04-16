@@ -1,0 +1,54 @@
+<p></p>
+<div class="container">
+
+    <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline my-2 my-lg-0">
+        
+            <div class="form-group">
+                <select [(ngModel)]="groupeId" name="groupeId"  class="form-control" (change)="groupeChange(groupeId)" > 
+                     <option value="0"  >Choisir un Groupe</option>
+                     <option *ngFor="let groupe of groupes" value="{{groupe.id}}">{{groupe.numeroGroupe}}</option>>
+                 </select>
+             </div> 
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"style=" margin-left: 10px" (click)="reset()">Effacer</button>
+        <span *ngIf="totalRecords>0" style=" margin-left: 10px">Résultats de la recherche:<span style=" margin-left: 10px">{{totalRecords}}<span style=" margin-left: 10px">Enseignant(s) trouvé(s)  </span></span></span> 
+    </form>
+    <p></p>
+    <div class="row" >
+    <div class="col-md-4"  *ngFor="let enseignant of enseignants | paginate:{
+        id: 'foo',
+        itemsPerPage:6,
+        currentPage:page,
+        totalItems:totalRecords
+    }"  >
+    <div class="card" style="width: 21rem; margin-top: 10px" cadre>
+        <div class="card-body">
+            <h5 class="card-title">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted"><b> Adresse: </b>{{enseignant.adress}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted"> <b> Mail: </b>{{enseignant.mail}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted"><b>Téléphone: </b>{{enseignant.telephone}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted"> <b> Statut: </b>{{enseignant.statut}}</h6>
+            <a href="#" class="card-link">Détails Enseigant</a>
+        </div>
+    </div>
+    </div>
+</div>
+
+</div>
+<p  *ngIf="totalRecords>0">
+    <pagination-controls
+        id="foo"
+        previousLabel="Precedent"
+        nextLabel="Suivant"
+        [responsive]="true"
+        [autoHide]="true"
+        [directionLinks]="true"
+        [maxSize]="3"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        (pageBoundsCorrection)="handlePageChange($event)"
+        (pageChange)="handlePageChange($event)"
+        screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+</p>
+ 
+

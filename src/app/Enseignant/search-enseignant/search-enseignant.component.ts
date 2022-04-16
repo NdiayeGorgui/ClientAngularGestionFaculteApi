@@ -33,14 +33,7 @@ export class SearchEnseignantComponent implements OnInit {
   }
 
   statusChange(statut: string) {
-    console.log(statut);
-    this.enseignantService.searchEnseignantsByStatut(this.statut).subscribe(data => {
-      this.enseignants=data;
-      this.totalRecords=this.enseignants.length;
-      console.log(data);
-      console.log(this.totalRecords);
-    
-    });
+    this.onSearch(statut);
   }
   
   onSearch(dataForm:any){

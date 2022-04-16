@@ -11,7 +11,9 @@ const httOptions={
 export class CoursService {
 
   
-  private baseURL="http://localhost:8090/api/Cours"
+  private baseURL="http://localhost:8090/api/Cours";
+  private baseURLEnseignant="http://localhost:8090/api/Cours/Enseignants";
+  private baseURLFormation="http://localhost:8090/api/Cours/FormationName";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -20,6 +22,13 @@ export class CoursService {
   }
   getCoursById(id:number):Observable<Cours>{
     return this.httpClient.get<Cours>(`${this.baseURL}/${id}`);
+  }
+
+  searchCoursByEnseignantId(id:number):Observable<Cours[]>{
+    return this.httpClient.get<Cours[]>(`${this.baseURLEnseignant}/${id}`);
+  }
+  searchCoursByFormationName(name:string):Observable<Cours[]>{
+    return this.httpClient.get<Cours[]>(`${this.baseURLFormation}/${name}`);
   }
   createCours(cours:Cours):Observable<Object>{
     //const headers = { 'content-type': 'application/json'}  

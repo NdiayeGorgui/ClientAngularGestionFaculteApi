@@ -5,6 +5,8 @@ import { CoursDetailsComponent } from './Cours/cours-details/cours-details.compo
 import { CoursListComponent } from './Cours/cours-list/cours-list.component';
 import { CreateCoursComponent } from './Cours/create-cours/create-cours.component';
 import { CreateTypeCoursComponent } from './Cours/create-type-cours/create-type-cours.component';
+import { SearchCoursEnseignantComponent } from './Cours/search-cours-enseignant/search-cours-enseignant.component';
+import { SearchCoursFormationComponent } from './Cours/search-cours-formation/search-cours-formation.component';
 import { TypeCoursDetailsComponent } from './Cours/type-cours-details/type-cours-details.component';
 import { TypeCoursListComponent } from './Cours/type-cours-list/type-cours-list.component';
 import { UpdateCoursComponent } from './Cours/update-cours/update-cours.component';
@@ -12,6 +14,7 @@ import { UpdateTypeCoursComponent } from './Cours/update-type-cours/update-type-
 import { CreateEnseignantComponent } from './Enseignant/create-enseignant/create-enseignant.component';
 import { EnseignantDeatailsComponent } from './Enseignant/enseignant-deatails/enseignant-deatails.component';
 import { EnseignantListComponent } from './Enseignant/enseignant-list/enseignant-list.component';
+import { SearchEnseignantGroupeComponent } from './Enseignant/search-enseignant-groupe/search-enseignant-groupe.component';
 import { SearchEnseignantComponent } from './Enseignant/search-enseignant/search-enseignant.component';
 import { UpdateEnseignantComponent } from './Enseignant/update-enseignant/update-enseignant.component';
 import { CreateFormationComponent } from './Formation/create-formation/create-formation.component';
@@ -21,6 +24,8 @@ import { UpdateFormationComponent } from './Formation/update-formation/update-fo
 import { CreateGroupeComponent } from './Groupe/create-groupe/create-groupe.component';
 import { GroupeDetailsComponent } from './Groupe/groupe-details/groupe-details.component';
 import { GroupeListComponent } from './Groupe/groupe-list/groupe-list.component';
+import { SearchGroupeEnseignantComponent } from './Groupe/search-groupe-enseignant/search-groupe-enseignant.component';
+import { SearchGroupeFormationComponent } from './Groupe/search-groupe-formation/search-groupe-formation.component';
 import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.component';
 import { EnseignementGuard } from './Guard/enseignement.guard';
 import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
@@ -36,6 +41,7 @@ const routes: Routes = [
  { path:'enseignants',component:EnseignantListComponent},
  { path:'create-enseignant',component:CreateEnseignantComponent,canActivate:[EnseignementGuard]},
  { path:'search-enseignant',component:SearchEnseignantComponent},
+ { path:'search-enseignant-groupe',component:SearchEnseignantGroupeComponent},
 
  { path:'',redirectTo :'home',pathMatch:'full'},
  { path:'update-enseignant/:id',component:UpdateEnseignantComponent,canActivate:[EnseignementGuard]},
@@ -50,6 +56,8 @@ const routes: Routes = [
  { path:'create-type-cours',component:CreateTypeCoursComponent,canActivate:[EnseignementGuard]},
  { path:'update-type-cours/:id',component:UpdateTypeCoursComponent,canActivate:[EnseignementGuard]},
  { path:'type-cours-details/:id',component:TypeCoursDetailsComponent},
+ { path:'search-cours-enseignant',component:SearchCoursEnseignantComponent},
+ { path:'search-cours-formation',component:SearchCoursFormationComponent},
 
  { path:'cours',component:CoursListComponent},
  { path:'create-cours',component:CreateCoursComponent,canActivate:[EnseignementGuard]},
@@ -60,7 +68,8 @@ const routes: Routes = [
  { path:'create-groupe',component:CreateGroupeComponent,canActivate:[EnseignementGuard]},
  { path:'update-groupe/:id',component:UpdateGroupeComponent,canActivate:[EnseignementGuard]},
  { path:'groupe-details/:id',component:GroupeDetailsComponent},
-
+ { path:'search-groupe-formation',component:SearchGroupeFormationComponent},
+ { path:'search-groupe-enseignant',component:SearchGroupeEnseignantComponent},
  
 
  { path:'users',component:UserListComponent},

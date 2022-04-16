@@ -34,6 +34,11 @@ import { CreateUserComponent } from './User/create-user/create-user.component';
 import { UpdateUserComponent } from './User/update-user/update-user.component';
 import { UserDetailsComponent } from './User/user-details/user-details.component';
 import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
+import { SearchCoursEnseignantComponent } from './Cours/search-cours-enseignant/search-cours-enseignant.component';
+import { SearchCoursFormationComponent } from './Cours/search-cours-formation/search-cours-formation.component';
+import { SearchEnseignantGroupeComponent } from './Enseignant/search-enseignant-groupe/search-enseignant-groupe.component';
+import { SearchGroupeFormationComponent } from './Groupe/search-groupe-formation/search-groupe-formation.component';
+import { SearchGroupeEnseignantComponent } from './Groupe/search-groupe-enseignant/search-groupe-enseignant.component';
 
 
 
@@ -70,6 +75,11 @@ import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
     UpdateUserComponent,
     UserDetailsComponent,
     ForbiddenComponent,
+    SearchCoursEnseignantComponent,
+    SearchCoursFormationComponent,
+    SearchEnseignantGroupeComponent,
+    SearchGroupeFormationComponent,
+    SearchGroupeEnseignantComponent,
    
    
 

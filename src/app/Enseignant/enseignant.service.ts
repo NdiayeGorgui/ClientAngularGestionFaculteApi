@@ -11,6 +11,7 @@ export class EnseignantService {
   private baseURLS=`http://localhost:8090/api/Enseignants/Cherche/${this.value}`;
   private baseURL="http://localhost:8090/api/Enseignants";
   private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
+  private baseURLGroupe="http://localhost:8090/api/Enseignants/Groupe";
   constructor(private httpClient:HttpClient) { }
 
   getEnseignantList():Observable<Enseignant[]>{
@@ -22,6 +23,10 @@ export class EnseignantService {
 
   searchEnseignantsByStatut(statut:string):Observable<Enseignant[]>{
     return this.httpClient.get<Enseignant[]>(`${this.baseURLStatut}/${statut}`);
+  }
+
+  searchEnseignantsByGroupeId(id:number):Observable<Enseignant[]>{
+    return this.httpClient.get<Enseignant[]>(`${this.baseURLGroupe}/${id}`);
   }
   createEnseignant(enseignant:Enseignant):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,enseignant);
