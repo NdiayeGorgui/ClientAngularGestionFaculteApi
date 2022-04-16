@@ -10,6 +10,7 @@ import { User } from '../User/user';
 })
 export class AuthService {
   private baseURL="http://localhost:8090/api/Users"
+  private baseURLRole="http://localhost:8090/api/Roles"
   constructor(private httpClient:HttpClient, private router:Router) { }
 
   /* users:User[]=[{'username':"admin",'password':"admin",'roles':['ADMIN']},
@@ -117,6 +118,9 @@ isSuperAdmin():Boolean{
 
   getUserList():Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseURL}`);
+  }
+  getRolesList():Observable<Role[]>{
+    return this.httpClient.get<Role[]>(`${this.baseURLRole}`);
   }
   getUserById(id:string):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL}/${id}`);
