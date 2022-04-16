@@ -20,6 +20,7 @@ import { UpdateEnseignantComponent } from './Enseignant/update-enseignant/update
 import { CreateFormationComponent } from './Formation/create-formation/create-formation.component';
 import { FormationDetailsComponent } from './Formation/formation-details/formation-details.component';
 import { FormationListComponent } from './Formation/formation-list/formation-list.component';
+import { SearchFormationCoursComponent } from './Formation/search-formation-cours/search-formation-cours.component';
 import { UpdateFormationComponent } from './Formation/update-formation/update-formation.component';
 import { CreateGroupeComponent } from './Groupe/create-groupe/create-groupe.component';
 import { GroupeDetailsComponent } from './Groupe/groupe-details/groupe-details.component';
@@ -51,6 +52,7 @@ const routes: Routes = [
  { path:'create-formation',component:CreateFormationComponent,canActivate:[EnseignementGuard]},
  { path:'update-formation/:id',component:UpdateFormationComponent,canActivate:[EnseignementGuard]},
  { path:'formation-details/:id',component:FormationDetailsComponent},
+ { path:'search-formation-cours',component:SearchFormationCoursComponent},
  
  { path:'type-cours',component:TypeCoursListComponent},
  { path:'create-type-cours',component:CreateTypeCoursComponent,canActivate:[EnseignementGuard]},

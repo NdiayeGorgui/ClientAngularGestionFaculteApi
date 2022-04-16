@@ -50,7 +50,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="groupes">Liste des groupes</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="search-groupe-formation">Liste des groupes d'une formation</a>
+          <a class="dropdown-item" routerLink="search-groupe-formation" >Liste des groupes d'une formation</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="search-groupe-enseignant" routerLinkActive="active">Liste des groupes pour un Enseignant</a>
         </div>
@@ -63,7 +63,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="formations">Liste des formations</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#">Rechercher un cours dans les formations</a>
+          <a class="dropdown-item" routerLink="search-formation-cours">Rechercher un cours dans les formations</a>
         </div>
       </li>
       <li *ngIf="authService.isSuperAdmin()" class="nav-item dropdown">

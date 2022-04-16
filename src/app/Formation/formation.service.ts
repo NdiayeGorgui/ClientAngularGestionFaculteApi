@@ -9,6 +9,7 @@ import { Formation } from './formation';
 export class FormationService {
 
   private baseURL="http://localhost:8090/api/Formations"
+  private baseURLCours="http://localhost:8090/api/Formations/Cours"
 
   constructor(private httpClient:HttpClient) { }
 
@@ -19,8 +20,8 @@ export class FormationService {
     return this.httpClient.get<Formation>(`${this.baseURL}/${id}`);
   }
 
-  searchFormationById(name:string):Observable<Formation>{
-    return this.httpClient.get<Formation>(`${this.baseURL}/Cherche/${name}`);
+  searchFormationsByCoursId(name:string):Observable<Formation[]>{
+    return this.httpClient.get<Formation[]>(`${this.baseURLCours}/${name}`);
   }
   createFormation(formation:Formation):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,formation);

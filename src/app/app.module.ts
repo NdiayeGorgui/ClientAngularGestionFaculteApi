@@ -39,6 +39,7 @@ import { SearchCoursFormationComponent } from './Cours/search-cours-formation/se
 import { SearchEnseignantGroupeComponent } from './Enseignant/search-enseignant-groupe/search-enseignant-groupe.component';
 import { SearchGroupeFormationComponent } from './Groupe/search-groupe-formation/search-groupe-formation.component';
 import { SearchGroupeEnseignantComponent } from './Groupe/search-groupe-enseignant/search-groupe-enseignant.component';
+import { SearchFormationCoursComponent } from './Formation/search-formation-cours/search-formation-cours.component';
 
 
 
@@ -80,6 +81,7 @@ import { SearchGroupeEnseignantComponent } from './Groupe/search-groupe-enseigna
     SearchEnseignantGroupeComponent,
     SearchGroupeFormationComponent,
     SearchGroupeEnseignantComponent,
+    SearchFormationCoursComponent,
    
    
 
