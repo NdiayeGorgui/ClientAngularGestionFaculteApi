@@ -6,11 +6,14 @@
             <input type="text" class="form-control" id="userName" placeholder="Nom d'utilisateur" style="margin-top: 10px"
             [(ngModel)]="user.userName" name="userName"style="margin-bottom: 10px">
         </div>
-       
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="Password" style="margin-top: 10px"
+            [(ngModel)]="user.password" name="password"style="margin-bottom: 10px">
+        </div>
         <div class="form-group">
             <select [(ngModel)]="roleId"   name="role.id" id="role.id"  class="form-control">
                 <option  [ngValue]="null" disabled>-Choisir un role-</option>
-                <option *ngFor="let role of roles" [ngValue]="">
+                <option *ngFor="let role of roles" [ngValue]="role.id">{{role.roleName}}</option>
             </select>
         </div>
         

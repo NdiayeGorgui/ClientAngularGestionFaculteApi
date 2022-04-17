@@ -1,3 +1,5 @@
+import { Groupe } from "../Groupe/groupe";
+
 export class Enseignant {
     
   id!: number;
@@ -7,4 +9,5 @@ export class Enseignant {
   mail!: string;
   statut!:string;
   telephone!:string;
+  groupes!:Groupe[];
 }

@@ -19,6 +19,7 @@
     <thead>
         <tr>
             <th>Nom d'utilisateur</th>
+            
             <th>Actions</th>
         </tr>
     </thead>
@@ -32,8 +33,8 @@
         }">
             <td>{{user.userName}}</td>
            
-                <td *ngIf="authService.isAdmin()"><button  class="btn btn-primary">Modifier</button></td>
-                <td *ngIf="authService.isAdmin()"><button  class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="updateUser(user.userId)" class="btn btn-primary">Modifier</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteUser(user.userId)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
                 <td><button (click)="userDetails(user.userName)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
             
         </tr>

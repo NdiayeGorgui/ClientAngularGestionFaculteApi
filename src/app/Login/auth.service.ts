@@ -10,6 +10,7 @@ import { User } from '../User/user';
 })
 export class AuthService {
   private baseURL="http://localhost:8090/api/Users"
+  private baseURLUserbyId="http://localhost:8090/api/Users/User"
   private baseURLRole="http://localhost:8090/api/Roles"
   constructor(private httpClient:HttpClient, private router:Router) { }
 
@@ -123,7 +124,7 @@ isSuperAdmin():Boolean{
     return this.httpClient.get<Role[]>(`${this.baseURLRole}`);
   }
   getUserById(id:string):Observable<User>{
-    return this.httpClient.get<User>(`${this.baseURL}/${id}`);
+    return this.httpClient.get<User>(`${this.baseURLUserbyId}/${id}`);
   }
   getUserByUserName(userName:string):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL}/${userName}`);
@@ -132,10 +133,10 @@ isSuperAdmin():Boolean{
   createUser(user:User):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,user);
   }
-  updateUser(id:number,user:User):Observable<Object>{
+  updateUser(id:string,user:User):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,user);
   }
-  deleteUser(id:number):Observable<Object>{
+  deleteUser(id:string):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 

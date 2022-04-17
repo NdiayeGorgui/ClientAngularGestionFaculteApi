@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enseignant } from 'src/app/Enseignant/enseignant';
 import { EnseignantService } from 'src/app/Enseignant/enseignant.service';
+import { Formation } from 'src/app/Formation/formation';
+import { FormationService } from 'src/app/Formation/formation.service';
 import { Cours } from '../cours';
 import { CoursService } from '../cours.service';
 import { TypeCours } from '../type-cours';
@@ -18,7 +20,10 @@ export class CreateCoursComponent implements OnInit {
   
   typecourid!: number;
   enseignantid!:number;
+  formationId!:number;
+  formation!:Formation;
   enseignants: Enseignant[] = [];
+  formations: Formation[] = [];
   typecours: TypeCours[] = [];
   courss: Cours[] = [];
   libelle!:string;
@@ -31,7 +36,7 @@ export class CreateCoursComponent implements OnInit {
   constructor(private coursService:CoursService,
               private enseignantService:EnseignantService,
               private typeCoursService:TypeCoursService,
-              private route:ActivatedRoute,
+              private route:ActivatedRoute,private formationService:FormationService,
               private router:Router) {
 
                }
@@ -41,7 +46,7 @@ export class CreateCoursComponent implements OnInit {
     
     this.getEnseignants();
     this.getTypeCours();
-    this.getCours();
+    this.getFormations();
    
   }
   private getEnseignants(){
@@ -64,15 +69,7 @@ export class CreateCoursComponent implements OnInit {
    
   }
  
-  private getCours(){
-    this.coursService.getCoursList().subscribe(data => {
-      console.log(data);
-      this.courss=data;
-      console.log('Cours=>'+JSON.stringify(this.cours));
-    
-    }); 
-   
-  }
+  
   
   saveCours(){
     this.coursService.createCours(this.cours).subscribe(data => {
@@ -89,6 +86,13 @@ export class CreateCoursComponent implements OnInit {
   
     this.saveCours();
     
+  }
+
+  private getFormations(){
+    this.formationService.getFormationList().subscribe(data => {
+      this.formations=data;
+     
+    });
   }
 
 }

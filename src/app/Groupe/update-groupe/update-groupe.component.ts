@@ -13,6 +13,8 @@ import { GroupeService } from '../groupe.service';
 export class UpdateGroupeComponent implements OnInit {
 
   id!: number;
+  userName!:string;
+  password!:string;
   groupe:Groupe=new Groupe();
   formations: Formation[] = [];
 

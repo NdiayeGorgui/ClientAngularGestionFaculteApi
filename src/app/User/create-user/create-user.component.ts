@@ -13,6 +13,7 @@ export class CreateUserComponent implements OnInit {
 
   roles: Role[] = [];
   roleId!: number;
+  role!:Role;
   user:User=new User();
   constructor(private userService:AuthService,
               private roleService:AuthService,

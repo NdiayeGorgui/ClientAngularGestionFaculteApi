@@ -1,4 +1,5 @@
 import { Enseignant } from "../Enseignant/enseignant";
+import { Formation } from "../Formation/formation";
 import { TypeCours } from "./type-cours";
 
 export class Cours {
@@ -10,5 +11,5 @@ export class Cours {
     typecourid!: number; 
     enseignant!:Enseignant;
     typecour!:TypeCours;
-  
+    cours!:Formation[];
 }
