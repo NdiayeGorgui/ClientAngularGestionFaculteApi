@@ -62,4 +62,9 @@ export class SearchCoursEnseignantComponent implements OnInit {
     
   }
 
+  retirer() {
+  
+    
+  }
+
 }

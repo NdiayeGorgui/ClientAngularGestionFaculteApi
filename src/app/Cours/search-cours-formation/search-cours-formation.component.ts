@@ -61,6 +61,9 @@ export class SearchCoursFormationComponent implements OnInit {
      // this.cours=null;
     
   }
-
+  retirer() {
+    
+    
+  }
 
 }

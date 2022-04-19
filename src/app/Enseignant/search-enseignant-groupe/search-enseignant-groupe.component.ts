@@ -56,4 +56,8 @@ export class SearchEnseignantGroupeComponent implements OnInit {
     this.groupeId = 0;
   }
 
+  retirer() {
+    
+  }
+
 }
