@@ -11,7 +11,7 @@ import { User } from '../user';
 })
 export class UpdateUserComponent implements OnInit {
   roleId!: number;
-  id!: string;
+  id!: number;
   user:User=new User();
   roles: Role[] = [];
   role!:Role;

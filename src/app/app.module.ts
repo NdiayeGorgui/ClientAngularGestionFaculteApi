@@ -43,6 +43,11 @@ import { SearchFormationCoursComponent } from './Formation/search-formation-cour
 import { CreateEnseignantGroupeComponent } from './Enseignant/create-enseignant-groupe/create-enseignant-groupe.component';
 import { CreateCoursFormationComponent } from './Cours/create-cours-formation/create-cours-formation.component';
 import { CreateUserRoleComponent } from './User/create-user-role/create-user-role.component';
+import { CreateRoleComponent } from './Role/create-role/create-role.component';
+import { UpdateRoleComponent } from './Role/update-role/update-role.component';
+import { RoleDetailsComponent } from './Role/role-details/role-details.component';
+import { AddRoleToUserComponent } from './Role/add-role-to-user/add-role-to-user.component';
+import { RemoveRoleToUserComponent } from './Role/remove-role-to-user/remove-role-to-user.component';
 
 
 
@@ -88,6 +93,11 @@ import { CreateUserRoleComponent } from './User/create-user-role/create-user-rol
     CreateEnseignantGroupeComponent,
     CreateCoursFormationComponent,
     CreateUserRoleComponent,
+    CreateRoleComponent,
+    UpdateRoleComponent,
+    RoleDetailsComponent,
+    AddRoleToUserComponent,
+    RemoveRoleToUserComponent,
    
    
 

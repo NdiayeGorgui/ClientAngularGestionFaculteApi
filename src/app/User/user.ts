@@ -1,7 +1,7 @@
 import { Role } from "../Role/role";
 
 export class User {
-    userId!:string;
+    userId!:number;
     userName!:string;
     password!:string;
     roles!:Role[];

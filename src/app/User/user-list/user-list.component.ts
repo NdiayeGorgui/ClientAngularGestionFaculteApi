@@ -9,7 +9,7 @@ import { User } from '../user';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  userId!:string;
+  userId!:number;
   nom!:string;
   userName!:string;
   page:number=1;
@@ -32,12 +32,12 @@ handlePageChange(event: number) {
   this.page = event;
 }
 
-updateUser(id:string){
+updateUser(id:number){
   this.router.navigate(['update-user',id]);
 
 }
 
-deleteUser(userId:string){
+deleteUser(userId:number){
   let conf=confirm("Etes-vous sure ?")
   if(conf){
   this.userService.deleteUser(userId).subscribe(data => {

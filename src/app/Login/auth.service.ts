@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Role } from '../Role/role';
 import { User } from '../User/user';
-
+const httOptions={
+  headers:new HttpHeaders({'Content-Type':'application/json'})
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +14,10 @@ export class AuthService {
   private baseURL="http://localhost:8090/api/Users"
   private baseURLUserbyId="http://localhost:8090/api/Users/User"
   private baseURLRole="http://localhost:8090/api/Roles"
+  private baseURLAddOrDeleteRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
+  private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
+
+
   constructor(private httpClient:HttpClient, private router:Router) { }
 
   /* users:User[]=[{'username':"admin",'password':"admin",'roles':['ADMIN']},
@@ -66,7 +72,7 @@ isSuperAdmin():Boolean{
       return false;
     
     this.roles.forEach((curRole)=>{
-        if(curRole.roleName == 'superadmin'){
+        if(curRole.roleName == 'SUPERADMIN'){
           superAdmin=true;
         }
       });
@@ -123,21 +129,49 @@ isSuperAdmin():Boolean{
   getRolesList():Observable<Role[]>{
     return this.httpClient.get<Role[]>(`${this.baseURLRole}`);
   }
-  getUserById(id:string):Observable<User>{
+  getUserById(id:number):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURLUserbyId}/${id}`);
   }
   getUserByUserName(userName:string):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL}/${userName}`);
   }
+
+  getRoleByRoleName(roleName:string):Observable<User>{
+    return this.httpClient.get<User>(`${this.baseURLRole}/${roleName}`);
+  }
  
   createUser(user:User):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,user);
   }
-  updateUser(id:string,user:User):Observable<Object>{
+
+  createRole(role:Role):Observable<Object>{
+    return this.httpClient.post(`${this.baseURLRole}`,role);
+  }
+  updateUser(id:number,user:User):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,user);
   }
-  deleteUser(id:string):Observable<Object>{
+
+  updateRole(id:number,role:Role):Observable<Object>{
+    return this.httpClient.put(`${this.baseURLRole}/${id}`,role);
+  }
+ 
+  deleteUser(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+  deleteRole(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURLRole}/${id}`);
+  }
+
+  addRoleToUser(userName:string,roleName:string):Observable<Object>{
+    return this.httpClient.get(`${this.baseURLAddOrDeleteRoleToUser}/${userName}/${roleName}`);
+  }
+
+  deleteRoleToUser(userName:string,roleName:string):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURLAddOrDeleteRoleToUser}/${userName}/${roleName}`);
+  }
+
+  saveUserWihtRole(user:User,roleName:string):Observable<Object>{
+    return this.httpClient.post(`${this.baseURLAddOrDeleteRoleToUser}/${roleName}`,user);
   }
 
 }
