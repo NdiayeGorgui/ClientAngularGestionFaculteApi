@@ -48,6 +48,10 @@ import { UpdateRoleComponent } from './Role/update-role/update-role.component';
 import { RoleDetailsComponent } from './Role/role-details/role-details.component';
 import { AddRoleToUserComponent } from './Role/add-role-to-user/add-role-to-user.component';
 import { RemoveRoleToUserComponent } from './Role/remove-role-to-user/remove-role-to-user.component';
+import { AddEnseignantToGroupeComponent } from './Enseignant/add-enseignant-to-groupe/add-enseignant-to-groupe.component';
+import { RemoveEnseignantToGroupeComponent } from './Enseignant/remove-enseignant-to-groupe/remove-enseignant-to-groupe.component';
+import { AddCoursToFormationComponent } from './Cours/add-cours-to-formation/add-cours-to-formation.component';
+import { RemoveCoursToFormationComponent } from './Cours/remove-cours-to-formation/remove-cours-to-formation.component';
 
 
 
@@ -98,6 +102,10 @@ import { RemoveRoleToUserComponent } from './Role/remove-role-to-user/remove-rol
     RoleDetailsComponent,
     AddRoleToUserComponent,
     RemoveRoleToUserComponent,
+    AddEnseignantToGroupeComponent,
+    RemoveEnseignantToGroupeComponent,
+    AddCoursToFormationComponent,
+    RemoveCoursToFormationComponent,
    
    
 
