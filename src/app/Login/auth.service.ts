@@ -14,7 +14,9 @@ export class AuthService {
   private baseURL="http://localhost:8090/api/Users"
   private baseURLUserbyId="http://localhost:8090/api/Users/User"
   private baseURLRole="http://localhost:8090/api/Roles"
-  private baseURLAddOrDeleteRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
+  private baseURLRoleById="http://localhost:8090/api/Roles/Role"
+  private baseURLAddRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
+  private baseURLDeleteRoleToUser="http://localhost:8090/api/Users/deleteRoleToUser"
   private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
 
 
@@ -132,12 +134,15 @@ isSuperAdmin():Boolean{
   getUserById(id:number):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURLUserbyId}/${id}`);
   }
+  getRoleById(id:number):Observable<Role>{
+    return this.httpClient.get<Role>(`${this.baseURLRoleById}/${id}`);
+  }
   getUserByUserName(userName:string):Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL}/${userName}`);
   }
 
-  getRoleByRoleName(roleName:string):Observable<User>{
-    return this.httpClient.get<User>(`${this.baseURLRole}/${roleName}`);
+  getRoleByRoleName(roleName:string):Observable<Role>{
+    return this.httpClient.get<Role>(`${this.baseURLRole}/${roleName}`);
   }
  
   createUser(user:User):Observable<Object>{
@@ -163,15 +168,15 @@ isSuperAdmin():Boolean{
   }
 
   addRoleToUser(userName:string,roleName:string):Observable<Object>{
-    return this.httpClient.get(`${this.baseURLAddOrDeleteRoleToUser}/${userName}/${roleName}`);
+    return this.httpClient.post(`${this.baseURLAddRoleToUser}/${userName}/${roleName}`,httOptions);
   }
 
   deleteRoleToUser(userName:string,roleName:string):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURLAddOrDeleteRoleToUser}/${userName}/${roleName}`);
+    return this.httpClient.delete(`${this.baseURLDeleteRoleToUser}/${userName}/${roleName}`);
   }
 
   saveUserWihtRole(user:User,roleName:string):Observable<Object>{
-    return this.httpClient.post(`${this.baseURLAddOrDeleteRoleToUser}/${roleName}`,user);
+    return this.httpClient.post(`${this.baseURLaddUserWithRole}/${roleName}`,user);
   }
 
 }

@@ -16,6 +16,7 @@ export class CreateEnseignantComponent implements OnInit {
   enseignant:Enseignant=new Enseignant();
   groupes: Groupe[] = [];
   groupe!:Groupe;
+  numeroGroupe!:string;
   groupeId!:number;
   public statues:Array<Istatus>=[{id:1,name:'Permanent'},
   {id:2,name:'Contractuel'},
@@ -31,7 +32,7 @@ export class CreateEnseignantComponent implements OnInit {
   }
 
   saveEnseignant(){
-    this.enseignantService.createEnseignant(this.enseignant).subscribe(data => {
+    this.enseignantService.createEnseignantWhithGroupe(this.enseignant,this.numeroGroupe).subscribe(data => {
       console.log(data);
       this.goToEnseignantList();
     },

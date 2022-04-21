@@ -13,6 +13,7 @@ export class CreateUserComponent implements OnInit {
 
   roles: Role[] = [];
   roleId!: number;
+  roleName!:string;
   role!:Role;
   user:User=new User();
   constructor(private userService:AuthService,
@@ -31,7 +32,7 @@ export class CreateUserComponent implements OnInit {
     });
   }
   saveUser(){
-    this.userService.createUser(this.user).subscribe(data => {
+    this.userService.saveUserWihtRole(this.user,this.roleName).subscribe(data => {
       console.log(data);
       this.goToUserList();
     },

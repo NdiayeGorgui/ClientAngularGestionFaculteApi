@@ -52,6 +52,7 @@ import { AddEnseignantToGroupeComponent } from './Enseignant/add-enseignant-to-g
 import { RemoveEnseignantToGroupeComponent } from './Enseignant/remove-enseignant-to-groupe/remove-enseignant-to-groupe.component';
 import { AddCoursToFormationComponent } from './Cours/add-cours-to-formation/add-cours-to-formation.component';
 import { RemoveCoursToFormationComponent } from './Cours/remove-cours-to-formation/remove-cours-to-formation.component';
+import { RoleListComponent } from './Role/role-list/role-list.component';
 
 
 
@@ -106,6 +107,7 @@ import { RemoveCoursToFormationComponent } from './Cours/remove-cours-to-formati
     RemoveEnseignantToGroupeComponent,
     AddCoursToFormationComponent,
     RemoveCoursToFormationComponent,
+    RoleListComponent,
    
    
 

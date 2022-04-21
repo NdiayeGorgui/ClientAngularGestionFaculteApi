@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AcueilComponent } from './acueil/acueil.component';
+import { AddCoursToFormationComponent } from './Cours/add-cours-to-formation/add-cours-to-formation.component';
 import { CoursDetailsComponent } from './Cours/cours-details/cours-details.component';
 import { CoursListComponent } from './Cours/cours-list/cours-list.component';
 import { CreateCoursFormationComponent } from './Cours/create-cours-formation/create-cours-formation.component';
@@ -12,6 +13,7 @@ import { TypeCoursDetailsComponent } from './Cours/type-cours-details/type-cours
 import { TypeCoursListComponent } from './Cours/type-cours-list/type-cours-list.component';
 import { UpdateCoursComponent } from './Cours/update-cours/update-cours.component';
 import { UpdateTypeCoursComponent } from './Cours/update-type-cours/update-type-cours.component';
+import { AddEnseignantToGroupeComponent } from './Enseignant/add-enseignant-to-groupe/add-enseignant-to-groupe.component';
 import { CreateEnseignantGroupeComponent } from './Enseignant/create-enseignant-groupe/create-enseignant-groupe.component';
 import { CreateEnseignantComponent } from './Enseignant/create-enseignant/create-enseignant.component';
 import { EnseignantDeatailsComponent } from './Enseignant/enseignant-deatails/enseignant-deatails.component';
@@ -33,6 +35,11 @@ import { UpdateGroupeComponent } from './Groupe/update-groupe/update-groupe.comp
 import { EnseignementGuard } from './Guard/enseignement.guard';
 import { ForbiddenComponent } from './Guard/forbidden/forbidden.component';
 import { LoginComponent } from './Login/login/login.component';
+import { AddRoleToUserComponent } from './Role/add-role-to-user/add-role-to-user.component';
+import { CreateRoleComponent } from './Role/create-role/create-role.component';
+import { RoleDetailsComponent } from './Role/role-details/role-details.component';
+import { RoleListComponent } from './Role/role-list/role-list.component';
+import { UpdateRoleComponent } from './Role/update-role/update-role.component';
 import { CreateUserRoleComponent } from './User/create-user-role/create-user-role.component';
 import { CreateUserComponent } from './User/create-user/create-user.component';
 import { UpdateUserComponent } from './User/update-user/update-user.component';
@@ -44,7 +51,7 @@ const routes: Routes = [
  { path:'home',component:AcueilComponent},
  { path:'enseignants',component:EnseignantListComponent},
  { path:'create-enseignant',component:CreateEnseignantComponent,canActivate:[EnseignementGuard]},
- { path:'create-enseignant-groupe',component:CreateEnseignantGroupeComponent,canActivate:[EnseignementGuard]},
+ { path:'add-enseignant-to-groupe',component:AddEnseignantToGroupeComponent,canActivate:[EnseignementGuard]},
  { path:'search-enseignant',component:SearchEnseignantComponent},
  { path:'search-enseignant-groupe',component:SearchEnseignantGroupeComponent},
 
@@ -67,7 +74,7 @@ const routes: Routes = [
 
  { path:'cours',component:CoursListComponent},
  { path:'create-cours',component:CreateCoursComponent,canActivate:[EnseignementGuard]},
- { path:'create-cours-formation',component:CreateCoursFormationComponent,canActivate:[EnseignementGuard]},
+ { path:'add-cours-formation',component:AddCoursToFormationComponent,canActivate:[EnseignementGuard]},
  { path:'update-cours/:id',component:UpdateCoursComponent,canActivate:[EnseignementGuard]},
  { path:'cours-details/:id',component:CoursDetailsComponent},
 
@@ -81,9 +88,14 @@ const routes: Routes = [
 
  { path:'users',component:UserListComponent},
  { path:'create-user',component:CreateUserComponent,canActivate:[EnseignementGuard]},
- { path:'create-user-role',component:CreateUserRoleComponent,canActivate:[EnseignementGuard]},
+ { path:'add-role-to-user',component:AddRoleToUserComponent,canActivate:[EnseignementGuard]},
  { path:'update-user/:id',component:UpdateUserComponent,canActivate:[EnseignementGuard]},
  { path:'user-details/:id',component:UserDetailsComponent},
+
+ { path:'roles',component:RoleListComponent},
+ { path:'create-role',component:CreateRoleComponent,canActivate:[EnseignementGuard]},
+ { path:'update-role/:id',component:UpdateRoleComponent,canActivate:[EnseignementGuard]},
+ { path:'role-details/:id',component:RoleDetailsComponent},
 
  { path:'forbidden',component:ForbiddenComponent},
 

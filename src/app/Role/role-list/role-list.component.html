@@ -1,0 +1,60 @@
+
+
+<div class="">
+    <button  *ngIf="authService.isAdmin()" (click)="createRole()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+</div>
+
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type="search" #myInput  [(ngModel)]="nom" (input)="searchTitle()"
+          class="form-control" placeholder="Rechercher par Role" />
+      </div>
+    </div> 
+</div>
+<div>
+    <h4>Liste des Roles</h4>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom du role</th>
+            
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let role of roles | paginate:{
+            id: 'foo',
+            itemsPerPage:4,
+            currentPage:page,
+            totalItems:totalRecords
+        }">
+            <td>{{role.roleName}}</td>
+           
+                <td *ngIf="authService.isAdmin()"><button (click)="updateRole(role.id)" class="btn btn-primary">Modifier</button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteRole(role.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
+                <td><button (click)="roleDetails(role.roleName)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+            
+        </tr>
+    </tbody>
+
+</table>       
+ <pagination-controls
+      id="foo"
+      previousLabel="Precedent"
+      nextLabel="Suivant"
+      [responsive]="true"
+      [autoHide]="true"
+      [directionLinks]="true"
+      [maxSize]="3"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      (pageBoundsCorrection)="handlePageChange($event)"
+      (pageChange)="handlePageChange($event)"
+      screenReaderCurrentLabel="You're on page">
+      
+</pagination-controls> 
+
+

@@ -1,15 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Enseignant } from './enseignant';
-
+const httOptions={
+  headers:new HttpHeaders({'Content-Type':'application/json'})
+};
 @Injectable({
   providedIn: 'root'
 })
 export class EnseignantService {
   value!:string;
-  private baseURLS=`http://localhost:8090/api/Enseignants/Cherche/${this.value}`;
+  private baseURLCreateEnseignantWhithGroupe="http://localhost:8090/api/Enseignants/saveEnseignantWihtGroupe";
   private baseURL="http://localhost:8090/api/Enseignants";
+  private baseURLAddEnseignantToGroupe="http://localhost:8090/api/Enseignants/addEnseignantToGroupe";
   private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
   private baseURLGroupe="http://localhost:8090/api/Enseignants/Groupe";
   constructor(private httpClient:HttpClient) { }
@@ -31,11 +34,19 @@ export class EnseignantService {
   createEnseignant(enseignant:Enseignant):Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,enseignant);
   }
+
+  createEnseignantWhithGroupe(enseignant:Enseignant,groupe:string):Observable<Object>{
+    return this.httpClient.post(`${this.baseURLCreateEnseignantWhithGroupe}/${groupe}`,enseignant);
+  }
   updateEnseignant(id:number,enseignant:Enseignant):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,enseignant);
   }
   deleteEnseignant(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
+
+  addEnseignantToGroupe(mail:string,groupe:string):Observable<Object>{
+    return this.httpClient.post(`${this.baseURLAddEnseignantToGroupe}/${mail}/${groupe}`,httOptions);
   }
  
 }

@@ -21,6 +21,7 @@ export class CreateCoursComponent implements OnInit {
   typecourid!: number;
   enseignantid!:number;
   formationId!:number;
+  nomFormation!:string;
   formation!:Formation;
   enseignants: Enseignant[] = [];
   formations: Formation[] = [];
@@ -72,7 +73,7 @@ export class CreateCoursComponent implements OnInit {
   
   
   saveCours(){
-    this.coursService.createCours(this.cours).subscribe(data => {
+    this.coursService.createCoursWithFormation(this.cours,this.nomFormation).subscribe(data => {
       console.log(data);
       this.goToCoursList();
     },
