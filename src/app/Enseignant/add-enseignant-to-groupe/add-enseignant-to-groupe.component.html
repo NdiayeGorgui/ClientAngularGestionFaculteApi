@@ -1,5 +1,7 @@
 <div class="container">
-
+    <div>
+        <h4>Affecter ou Retirer un Enseignant à un Groupe</h4>
+    </div>
     <form  (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
         <div class="row">
             <div class="col">
@@ -14,7 +16,10 @@
                 <p></p>
                 <div class="form-group">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style=" margin-left: 10px"
-                        (click)="onSubmit()">Valider</button>
+                        (click)="onSubmit()">Ajouter</button>
+               
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style=" margin-left: 10px"
+                        (click)="onRemove()">Supprimer</button>
                 </div>
             </div>
 
@@ -27,10 +32,7 @@
                     </select>
                 </div>
                 <p></p>
-                <div class="form-group">
-                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" style=" margin-left: 10px"
-                        (click)="reset()">Effacer</button>
-                </div>
+               
             </div>
         </div>
 

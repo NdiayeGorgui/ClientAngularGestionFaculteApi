@@ -13,6 +13,7 @@ export class EnseignantService {
   private baseURLCreateEnseignantWhithGroupe="http://localhost:8090/api/Enseignants/saveEnseignantWihtGroupe";
   private baseURL="http://localhost:8090/api/Enseignants";
   private baseURLAddEnseignantToGroupe="http://localhost:8090/api/Enseignants/addEnseignantToGroupe";
+  private baseURLDeleteEnseignantToGroupe="http://localhost:8090/api/Enseignants/deleteEnseignantToGroupe";
   private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
   private baseURLGroupe="http://localhost:8090/api/Enseignants/Groupe";
   constructor(private httpClient:HttpClient) { }
@@ -47,6 +48,9 @@ export class EnseignantService {
 
   addEnseignantToGroupe(mail:string,groupe:string):Observable<Object>{
     return this.httpClient.post(`${this.baseURLAddEnseignantToGroupe}/${mail}/${groupe}`,httOptions);
+  }
+  deleteEnseignantToGroupe(mail:string,groupe:string):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURLDeleteEnseignantToGroupe}/${mail}/${groupe}`);
   }
  
 }

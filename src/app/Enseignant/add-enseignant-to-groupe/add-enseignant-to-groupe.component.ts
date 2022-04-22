@@ -30,12 +30,21 @@ export class AddEnseignantToGroupeComponent implements OnInit {
    
     this.enseignantService.addEnseignantToGroupe(this.mail,this.numeroGroupe).subscribe(data => {
       console.log(data);
-      this.goToEnseignantList();
+     
     });
     
     
   }
-
+  onRemove(){
+    let conf=confirm("Etes-vous sure ?")
+    if(conf){
+    this.enseignantService.deleteEnseignantToGroupe(this.mail,this.numeroGroupe).subscribe(data => {
+      console.log(data);
+     
+    });
+    
+  }
+  }
   goToEnseignantList(){
     this.router.navigate(['/enseignants']);
   }

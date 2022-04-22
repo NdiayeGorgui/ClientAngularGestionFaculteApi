@@ -10,8 +10,10 @@ import { EnseignantService } from '../enseignant.service';
   styleUrls: ['./search-enseignant-groupe.component.css']
 })
 export class SearchEnseignantGroupeComponent implements OnInit {
-
+id!:number;
   groupeId:any=0;
+  numeroGroupe!:string;
+  mail!:string;
   enseignants: any;
   groupes: Groupe[] = [];
   enseignant!:Enseignant;
@@ -56,8 +58,11 @@ export class SearchEnseignantGroupeComponent implements OnInit {
     this.groupeId = 0;
   }
 
-  retirer() {
-    
+  retirer(mail:string,numeroGroupe:string) {
+    this.enseignantService.deleteEnseignantToGroupe(this.mail,this.numeroGroupe).subscribe(data => {
+      console.log(data);
+     
+    });
   }
 
 }

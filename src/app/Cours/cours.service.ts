@@ -14,6 +14,7 @@ export class CoursService {
   private baseURL="http://localhost:8090/api/Cours";
   private baseURLCreateCoursWithFormation="http://localhost:8090/api/Cours/saveCoursWithFormation";
   private baseURLAddCoursToFormation="http://localhost:8090/api/Cours/addCoursToFormation";
+  private baseURLDeleteCoursToFormation="http://localhost:8090/api/Cours/deleteCoursToFormation";
   private baseURLEnseignant="http://localhost:8090/api/Cours/Enseignants";
   private baseURLFormation="http://localhost:8090/api/Cours/FormationName";
 
@@ -46,5 +47,9 @@ export class CoursService {
   }
   addCoursToFormation(libelle:string,formation:string):Observable<Object>{
     return this.httpClient.post(`${this.baseURLAddCoursToFormation}/${libelle}/${formation}`,httOptions);
+  }
+
+  deleteCoursToFormation(libelle:string,formation:string):Observable<Object>{
+    return this.httpClient.post(`${this.baseURLDeleteCoursToFormation}/${libelle}/${formation}`,httOptions);
   }
 }

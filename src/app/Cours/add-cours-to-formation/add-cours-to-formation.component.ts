@@ -31,9 +31,18 @@ export class AddCoursToFormationComponent implements OnInit {
    
     this.coursService.addCoursToFormation(this.libelle,this.nomFormation).subscribe(data => {
       console.log(data);
-      this.goToCoursList();
+     
     });
     
+  }
+  onRemove(){
+    let conf=confirm("Etes-vous sure ?")
+  if(conf){
+    this.coursService.deleteCoursToFormation(this.libelle,this.nomFormation).subscribe(data => {
+      console.log(data);
+   
+    });
+  }
     
   }
 

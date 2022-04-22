@@ -40,19 +40,15 @@ import { SearchEnseignantGroupeComponent } from './Enseignant/search-enseignant-
 import { SearchGroupeFormationComponent } from './Groupe/search-groupe-formation/search-groupe-formation.component';
 import { SearchGroupeEnseignantComponent } from './Groupe/search-groupe-enseignant/search-groupe-enseignant.component';
 import { SearchFormationCoursComponent } from './Formation/search-formation-cours/search-formation-cours.component';
-import { CreateEnseignantGroupeComponent } from './Enseignant/create-enseignant-groupe/create-enseignant-groupe.component';
-import { CreateCoursFormationComponent } from './Cours/create-cours-formation/create-cours-formation.component';
 import { CreateUserRoleComponent } from './User/create-user-role/create-user-role.component';
 import { CreateRoleComponent } from './Role/create-role/create-role.component';
 import { UpdateRoleComponent } from './Role/update-role/update-role.component';
 import { RoleDetailsComponent } from './Role/role-details/role-details.component';
 import { AddRoleToUserComponent } from './Role/add-role-to-user/add-role-to-user.component';
-import { RemoveRoleToUserComponent } from './Role/remove-role-to-user/remove-role-to-user.component';
 import { AddEnseignantToGroupeComponent } from './Enseignant/add-enseignant-to-groupe/add-enseignant-to-groupe.component';
-import { RemoveEnseignantToGroupeComponent } from './Enseignant/remove-enseignant-to-groupe/remove-enseignant-to-groupe.component';
 import { AddCoursToFormationComponent } from './Cours/add-cours-to-formation/add-cours-to-formation.component';
-import { RemoveCoursToFormationComponent } from './Cours/remove-cours-to-formation/remove-cours-to-formation.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
+import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-users.component';
 
 
 
@@ -95,19 +91,15 @@ import { RoleListComponent } from './Role/role-list/role-list.component';
     SearchGroupeFormationComponent,
     SearchGroupeEnseignantComponent,
     SearchFormationCoursComponent,
-    CreateEnseignantGroupeComponent,
-    CreateCoursFormationComponent,
     CreateUserRoleComponent,
     CreateRoleComponent,
     UpdateRoleComponent,
     RoleDetailsComponent,
     AddRoleToUserComponent,
-    RemoveRoleToUserComponent,
     AddEnseignantToGroupeComponent,
-    RemoveEnseignantToGroupeComponent,
     AddCoursToFormationComponent,
-    RemoveCoursToFormationComponent,
     RoleListComponent,
+    SearchRoleUsersComponent,
    
    
 
