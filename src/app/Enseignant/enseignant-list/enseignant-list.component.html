@@ -18,12 +18,12 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Prénom</th>
             <th>Nom</th>
-            <th>Adresse</th>
+            <th>Prénom</th>
+            <!-- <th>Adresse</th> -->
             <th>Email</th>
             <th>Statut</th>
-            <th>Téléphone</th>
+            <!-- <th>Téléphone</th> -->
             <th>Actions</th>
         </tr>
     </thead>
@@ -31,16 +31,16 @@
         
         <tr *ngFor="let enseignant of enseignants | paginate:{
             id: 'foo',
-            itemsPerPage:3,
+            itemsPerPage:4,
             currentPage:page,
             totalItems:totalRecords
         }">
-            <td>{{enseignant.firstName}}</td>
             <td>{{enseignant.lastName}}</td>
-            <td>{{enseignant.adress}}</td>
+            <td>{{enseignant.firstName}}</td>
+          <!--   <td>{{enseignant.adress}}</td> -->
             <td>{{enseignant.mail}}</td>
             <td>{{enseignant.statut}}</td>
-            <td>{{enseignant.telephone}}</td>
+           <!--  <td>{{enseignant.telephone}}</td> -->
            
                 <td *ngIf="authService.isAdmin()"><button (click)="updateEnseignant(enseignant.id)" class="btn btn-primary">Modifier</button></td>
                 <td *ngIf="authService.isAdmin()"><button (click)="deleteEnseignant(enseignant.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>

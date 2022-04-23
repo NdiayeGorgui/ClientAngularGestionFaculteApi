@@ -41,8 +41,6 @@
           <a class="dropdown-item" routerLink="type-cours">Types de cours </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="add-cours-formation">Affecter ou Retirer un cours à une Formation</a>
-         
-          
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -82,6 +80,20 @@
           <a class="dropdown-item" routerLink="#">Liste des utilisateurs par Role</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="add-role-to-user">Affecter ou Retirer un role à un utilisateur</a>
+        </div>
+      </li>
+
+      <li *ngIf="authService.isSuperAdmin()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a  class="dropdown-item" routerLink="#">Heures régulières </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Heures supplémentaires</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="#">Statistiques</a>
         </div>
       </li>
       <!-- <li class="nav-item">

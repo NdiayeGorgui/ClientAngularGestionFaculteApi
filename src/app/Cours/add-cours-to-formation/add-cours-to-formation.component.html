@@ -3,13 +3,13 @@
         <h4>Affecter ou Retirer un cours à une Formation</h4>
     </div>
     <p></p>
-    <form  (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
+    <form   class="form-inline my-2 my-lg-0">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <select [(ngModel)]="libelle" name="libelle" class="form-control"
                         (change)="onChangeCours()">
-                        <option value="0">Choisir un Cours</option>
+                        <option value="0">- Choisir un Cours -</option>
                         <option *ngFor="let cours of courss" value="{{cours.libelle}}">
                             {{cours.libelle}}</option>>
                     </select>
@@ -17,10 +17,10 @@
                 <p></p>
                 <div class="form-group">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style=" margin-left: 10px"
-                        (click)="onSubmit()">Ajouter</button>
+                        (click)="onSubmit()">Affecter</button>
                
                     <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style=" margin-left: 10px"
-                        (click)="onRemove()">Supprimer</button>
+                        (click)="onRemove()">Retirer</button>
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
             <div class="col">
                 <div class="form-group">
                     <select [(ngModel)]="nomFormation" name="nomFormation" class="form-control" (change)="onChangeFormation()">
-                        <option value="0">Choisir une Formation</option>
+                        <option value="0">- Choisir une Formation -</option>
                         <option *ngFor="let formation of formations" value="{{formation.nomFormation}}">{{formation.nomFormation}}</option>>
                     </select>
                 </div>

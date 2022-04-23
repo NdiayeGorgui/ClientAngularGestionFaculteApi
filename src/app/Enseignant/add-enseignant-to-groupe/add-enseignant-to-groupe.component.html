@@ -5,13 +5,13 @@
         <h4>Affecter ou Retirer un Enseignant à un Groupe</h4>
     </div>
     <p></p>
-    <form  (ngSubmit)="onSubmit()" class="form-inline my-2 my-lg-0">
+    <form   class="form-inline my-2 my-lg-0">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <select [(ngModel)]="mail" name="mail" class="form-control"
                         (change)="onChangeEnseignant()">
-                        <option value="0">Choisir un Enseignant</option>
+                        <option value="0">- Choisir un Enseignant - </option>
                         <option *ngFor="let enseignant of enseignants" value="{{enseignant.mail}}">
                             {{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>>
                     </select>
@@ -19,10 +19,10 @@
                 <p></p>
                 <div class="form-group">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style=" margin-left: 10px"
-                        (click)="onSubmit()">Ajouter</button>
+                        (click)="onSubmit()">Affecter</button>
                
                     <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style=" margin-left: 10px"
-                        (click)="onRemove()">Suppr.</button>
+                        (click)="onRemove()">Retirer</button>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="col">
                 <div class="form-group">
                     <select [(ngModel)]="numeroGroupe" name="numeroGroupe" class="form-control" (change)="onChangeGroupe()">
-                        <option value="0">Choisir un Groupe</option>
+                        <option value="0">- Choisir un Groupe -</option>
                         <option *ngFor="let groupe of groupes" value="{{groupe.numeroGroupe}}">{{groupe.numeroGroupe}}</option>>
                     </select>
                 </div>
