@@ -1,20 +1,28 @@
 
 <div class="col-md-6 offset-md-3">
     <h4>Créer Enseignant</h4>
-    <form (ngSubmit)="onSubmit()"> 
+    <form (ngSubmit)="onSubmit()" [formGroup]="enseignantFormgroup"> 
         <div class="row">
             <div class="col">
         <div class="form-group">
             <input type="text" class="form-control" id="firstName" placeholder="Prénom" style="margin-top: 10px"
-            [(ngModel)]="enseignant.firstName" name="firstName"style="margin-bottom: 10px">
+            [(ngModel)]="enseignant.firstName" name="firstName"style="margin-bottom: 10px" formControlName="eFirstName"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eFirstName.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eFirstName.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eFirstName.errors">Le prénom est requis</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="lastName" placeholder="Nom" style="margin-top: 10px"
-            [(ngModel)]="enseignant.lastName" name="lastName" style="margin-bottom: 10px">
+            [(ngModel)]="enseignant.lastName" name="lastName" style="margin-bottom: 10px" formControlName="eLastName"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eLastName.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eLastName.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eLastName.errors">Le nom est requis</div>
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="adress" placeholder="Adresse" style="margin-top: 10px"
-            [(ngModel)]="enseignant.adress" name="adress" style="margin-bottom: 10px">
+            [(ngModel)]="enseignant.adress" name="adress" style="margin-bottom: 10px" formControlName="eAddress">
         </div>
         <div class="form-group">
             <button class="btn btn-success" type="submit"> Valider</button>
@@ -24,20 +32,32 @@
     <div class="col">
         <div class="form-group">
             <input type="text" class="form-control" id="mail" placeholder="Email" style="margin-top: 10px"
-            [(ngModel)]="enseignant.mail" name="mail" style="margin-bottom: 10px">
+            [(ngModel)]="enseignant.mail" name="mail" style="margin-bottom: 10px" formControlName="eMail"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eMail.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eMail.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eMail.errors">Le mail est requis</div>
+            </div>
         </div>
         <div class="form-group">
-           <select [(ngModel)]="enseignant.statut" name="statut"  class="form-control" > 
+           <select [(ngModel)]="enseignant.statut" name="statut"  class="form-control" formControlName="eStatut"
+           [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eStatut.errors}">
+           <div *ngIf="submitted && enseignantFormgroup.controls.eStatut.errors" class="invalid-feedback">
+               <div *ngIf="enseignantFormgroup.controls.eStatut.errors">Veuillez Choisir Statut</div>
+           </div>
                 <option [ngValue]="null" disabled>Choisir Statut</option>
                 <option *ngFor="let stat of statues" value="{{stat.name}}">{{stat.name}}</option>
             </select>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="telephone" placeholder="Téléphone" style="margin-top: 10px"
-            [(ngModel)]="enseignant.telephone" name="telephone">
+            [(ngModel)]="enseignant.telephone" name="telephone" formControlName="eTelephone"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eTelephone.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eTelephone.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eTelephone.errors">Le Téléphone est requis</div>
+            </div>
         </div>
         <div class="form-group">
-            <select  [(ngModel)]="numeroGroupe" name="groupe.numeroGroupe"  class="form-control" > 
+            <select  [(ngModel)]="numeroGroupe" name="groupe.numeroGroupe"  class="form-control" formControlName="eGroupe" > 
                 <option [ngValue]="null" disabled>Choisir un Groupe</option>
                 <option *ngFor="let groupe of groupes" [ngValue]="groupe.numeroGroupe">{{groupe.numeroGroupe}}</option>
             </select>

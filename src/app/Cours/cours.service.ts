@@ -50,6 +50,6 @@ export class CoursService {
   }
 
   deleteCoursToFormation(libelle:string,formation:string):Observable<Object>{
-    return this.httpClient.post(`${this.baseURLDeleteCoursToFormation}/${libelle}/${formation}`,httOptions);
+    return this.httpClient.delete(`${this.baseURLDeleteCoursToFormation}/${libelle}/${formation}`,httOptions);
   }
 }

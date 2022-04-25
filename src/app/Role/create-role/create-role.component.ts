@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Login/auth.service';
 import { User } from 'src/app/User/user';
@@ -10,7 +11,8 @@ import { Role } from '../role';
   styleUrls: ['./create-role.component.css']
 })
 export class CreateRoleComponent implements OnInit {
-
+  roleFormgroup!:FormGroup;
+  submitted:boolean=false;
   users: User[] = [];
   userId!: number;
   userName!:string;
@@ -18,9 +20,13 @@ export class CreateRoleComponent implements OnInit {
   role:Role=new Role();
   constructor(private userService:AuthService,
               private roleService:AuthService,
-              private router:Router) { }
+              private router:Router, private fb:FormBuilder) { }
 
   ngOnInit(): void { 
+    this.roleFormgroup=this.fb.group({
+      rName:["",Validators.required],
+     
+    });
     this.getUsers();
    
   }
@@ -32,6 +38,8 @@ export class CreateRoleComponent implements OnInit {
     });
   }
   saveRole(){
+    this.submitted=true;
+    if(this.roleFormgroup.invalid) return;
     this.roleService.createRole(this.role).subscribe(data => {
       console.log(data);
       this.goToRoleList();

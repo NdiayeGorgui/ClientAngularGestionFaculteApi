@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enseignant } from 'src/app/Enseignant/enseignant';
 import { EnseignantService } from 'src/app/Enseignant/enseignant.service';
@@ -16,8 +16,9 @@ import { TypeCoursService } from '../type-cours.service';
   styleUrls: ['./create-cours.component.css']
 })
 export class CreateCoursComponent implements OnInit {
+  coursFormgroup!:FormGroup;
+  submitted:boolean=false;
   id!: number;
-  
   typecourid!: number;
   enseignantid!:number;
   formationId!:number;
@@ -38,12 +39,19 @@ export class CreateCoursComponent implements OnInit {
               private enseignantService:EnseignantService,
               private typeCoursService:TypeCoursService,
               private route:ActivatedRoute,private formationService:FormationService,
-              private router:Router) {
+              private router:Router,private fb:FormBuilder) {
 
                }
   
 
   ngOnInit(): void { 
+    this.coursFormgroup=this.fb.group({
+      cLibelle:["",Validators.required],
+      cNbrHeure:["",Validators.required],
+      cEnseignant:[null,Validators.required],
+      cTypeCours:[null,Validators.required],
+      cFormation:[null,Validators.required]
+    });
     
     this.getEnseignants();
     this.getTypeCours();
@@ -73,6 +81,8 @@ export class CreateCoursComponent implements OnInit {
   
   
   saveCours(){
+    this.submitted=true;
+    if(this.coursFormgroup.invalid) return;
     this.coursService.createCoursWithFormation(this.cours,this.nomFormation).subscribe(data => {
       console.log(data);
       this.goToCoursList();

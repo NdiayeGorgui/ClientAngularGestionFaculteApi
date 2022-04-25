@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Formation } from 'src/app/Formation/formation';
 import { FormationService } from 'src/app/Formation/formation.service';
@@ -11,14 +12,20 @@ import { GroupeService } from '../groupe.service';
   styleUrls: ['./create-groupe.component.css']
 })
 export class CreateGroupeComponent implements OnInit {
+  groupeFormgroup!:FormGroup;
+  submitted:boolean=false;
   formations: Formation[] = [];
   formationid!: number;
   groupe:Groupe=new Groupe();
   constructor(private groupeService:GroupeService,
               private formationService:FormationService,
-              private router:Router) { }
+              private router:Router,private fb:FormBuilder) { }
 
   ngOnInit(): void { 
+    this.groupeFormgroup=this.fb.group({
+      nGroupe:["",Validators.required],
+      nFormation:[null,Validators.required],
+    });
     this.getFormations();
    
   }
@@ -30,6 +37,8 @@ export class CreateGroupeComponent implements OnInit {
     });
   }
   saveGroupe(){
+    this.submitted=true;
+    if(this.groupeFormgroup.invalid) return;
     this.groupeService.createGroupe(this.groupe).subscribe(data => {
       console.log(data);
       this.goToGroupeList();

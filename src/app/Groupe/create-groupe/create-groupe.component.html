@@ -1,14 +1,22 @@
 
 <div class="col-md-6 offset-md-3">
     <h4>Créer Groupe</h4>
-    <form (ngSubmit)="onSubmit()"> 
+    <form (ngSubmit)="onSubmit()"  [formGroup]="groupeFormgroup"> 
         <div class="form-group">
             <input type="text" class="form-control" id="numeroGroupe" placeholder="Numero du groupe" style="margin-top: 10px"
-            [(ngModel)]="groupe.numeroGroupe" name="libelle"style="margin-bottom: 10px">
+            [(ngModel)]="groupe.numeroGroupe" name="numeroGroupe"style="margin-bottom: 10px" formControlName="nGroupe"
+            [ngClass]="{'is-invalid':submitted && groupeFormgroup.controls.nGroupe.errors}">
+            <div *ngIf="submitted && groupeFormgroup.controls.nGroupe.errors" class="invalid-feedback">
+                <div *ngIf="groupeFormgroup.controls.nGroupe.errors">Le numéro du groupe est requis</div>
+            </div>
         </div>
        
         <div class="form-group">
-            <select [(ngModel)]="groupe.formation"   name="formation.id" id="formation.id"  class="form-control">
+            <select [(ngModel)]="groupe.formation"   name="formation.id" id="formation.id"  class="form-control" formControlName="nFormation" 
+            [ngClass]="{'is-invalid':submitted && groupeFormgroup.controls.nFormation.errors}">
+                <div *ngIf="submitted && groupeFormgroup.controls.nFormation.errors" class="invalid-feedback">
+                    <div *ngIf="groupeFormgroup.controls.nFormation.errors">Veuillez Choisir une formation</div>
+                </div>
                 <option  [ngValue]="null" disabled>-Choisir une formation-</option>
                 <option *ngFor="let formation of formations" [ngValue]="formation">{{formation.nomFormation}}
             </select>

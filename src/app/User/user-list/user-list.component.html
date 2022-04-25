@@ -1,7 +1,7 @@
 
 
 <div class="">
-    <button  *ngIf="authService.isAdmin()" (click)="createUser()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button  *ngIf="authService.isAdmin()" (click)="createUser()"  class="btn btn-sm btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
@@ -33,9 +33,9 @@
         }">
             <td>{{user.userName}}</td>
            
-                <td *ngIf="authService.isAdmin()"><button (click)="updateUser(user.userId)" class="btn btn-primary">Modifier</button></td>
-                <td *ngIf="authService.isAdmin()"><button (click)="deleteUser(user.userId)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
-                <td><button (click)="userDetails(user.userName)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+                <td *ngIf="authService.isAdmin()"><button (click)="updateUser(user.userId)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteUser(user.userId)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>
+                <td><button (click)="userDetails(user.userName)" class="btn btn-sm btn-info" style="margin-left: 10px"><span title="Détails" class="fa fa-info"></span></button> </td>
             
         </tr>
     </tbody>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnseignantListComponent } from './Enseignant/enseignant-list/enseignant-list.component';
 import { CreateEnseignantComponent } from './Enseignant/create-enseignant/create-enseignant.component';
 import { UpdateEnseignantComponent } from './Enseignant/update-enseignant/update-enseignant.component';
@@ -106,7 +106,7 @@ import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-u
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,ReactiveFormsModule,
     FormsModule,
     HttpClientModule,NgxPaginationModule,HttpClientJsonpModule
   ],

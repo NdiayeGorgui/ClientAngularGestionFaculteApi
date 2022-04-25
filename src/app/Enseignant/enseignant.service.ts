@@ -50,7 +50,7 @@ export class EnseignantService {
     return this.httpClient.post(`${this.baseURLAddEnseignantToGroupe}/${mail}/${groupe}`,httOptions);
   }
   deleteEnseignantToGroupe(mail:string,groupe:string):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURLDeleteEnseignantToGroupe}/${mail}/${groupe}`);
+    return this.httpClient.delete(`${this.baseURLDeleteEnseignantToGroupe}/${mail}/${groupe}`,httOptions);
   }
  
 }

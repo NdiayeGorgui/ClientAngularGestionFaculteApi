@@ -37,6 +37,7 @@ import { AddRoleToUserComponent } from './Role/add-role-to-user/add-role-to-user
 import { CreateRoleComponent } from './Role/create-role/create-role.component';
 import { RoleDetailsComponent } from './Role/role-details/role-details.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
+import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-users.component';
 import { UpdateRoleComponent } from './Role/update-role/update-role.component';
 import { CreateUserComponent } from './User/create-user/create-user.component';
 import { UpdateUserComponent } from './User/update-user/update-user.component';
@@ -93,6 +94,7 @@ const routes: Routes = [
  { path:'create-role',component:CreateRoleComponent,canActivate:[EnseignementGuard]},
  { path:'update-role/:id',component:UpdateRoleComponent,canActivate:[EnseignementGuard]},
  { path:'role-details/:id',component:RoleDetailsComponent},
+ { path:'search-role-to-user',component:SearchRoleUsersComponent},
 
  { path:'forbidden',component:ForbiddenComponent},
 

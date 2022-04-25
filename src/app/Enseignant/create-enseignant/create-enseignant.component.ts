@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Groupe } from 'src/app/Groupe/groupe';
 import { GroupeService } from 'src/app/Groupe/groupe.service';
@@ -12,7 +13,9 @@ import { EnseignantService } from '../enseignant.service';
   styleUrls: ['./create-enseignant.component.css']
 })
 export class CreateEnseignantComponent implements OnInit {
-
+  
+  enseignantFormgroup!:FormGroup;
+  submitted:boolean=false;
   enseignant:Enseignant=new Enseignant();
   groupes: Groupe[] = [];
   groupe!:Groupe;
@@ -25,13 +28,24 @@ export class CreateEnseignantComponent implements OnInit {
   public statId!:number;
 
   constructor(private enseignantService:EnseignantService,
-    private router:Router,private groupeService:GroupeService) { }
+    private router:Router,private groupeService:GroupeService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.enseignantFormgroup=this.fb.group({
+      eAddress:["",Validators.required],
+      eFirstName:["",Validators.required],
+      eLastName:["",Validators.required],
+      eMail:["",Validators.required],
+      eStatut:["",Validators.required],
+      eTelephone:["",Validators.required],
+      eGroupe:["",Validators.required],
+    });
     this.getGroupes();
   }
 
   saveEnseignant(){
+    this.submitted=true;
+    if(this.enseignantFormgroup.invalid) return;
     this.enseignantService.createEnseignantWhithGroupe(this.enseignant,this.numeroGroupe).subscribe(data => {
       console.log(data);
       this.goToEnseignantList();

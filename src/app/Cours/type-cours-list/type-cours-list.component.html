@@ -1,7 +1,7 @@
 
 
 <div class="">
-    <button *ngIf="authService.isAdmin()" (click)="createTypeCours()"  class="btn btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button *ngIf="authService.isAdmin()" (click)="createTypeCours()"  class="btn btn-sm btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 <div>
     <h4>Liste des Types de Cours</h4>
@@ -21,9 +21,9 @@
             <td>{{typeCour.prix}}<span>$/h</span></td>
            
            
-                <td *ngIf="authService.isAdmin()"><button (click)="updateTypeCours(typeCour.id)" class="btn btn-primary">Modifier</button></td>
-                <td *ngIf="authService.isAdmin()"><button (click)="deleteTypeCours(typeCour.id)" class="btn btn-danger" style="margin-left: 10px">Supprimer</button></td>
-                <td><button (click)="typeCoursDetails(typeCour.id)" class="btn btn-info" style="margin-left: 10px">Détails</button> </td>
+                <td *ngIf="authService.isAdmin()"><button (click)="updateTypeCours(typeCour.id)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
+                <td *ngIf="authService.isAdmin()"><button (click)="deleteTypeCours(typeCour.id)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>
+                <td><button (click)="typeCoursDetails(typeCour.id)" class="btn btn-sm btn-info" style="margin-left: 10px"><span title="Détails" class="fa fa-info"></span></button> </td>
             
         </tr>
     </tbody>

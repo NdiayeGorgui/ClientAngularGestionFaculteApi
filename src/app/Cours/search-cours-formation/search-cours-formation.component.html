@@ -12,7 +12,7 @@
                      <option *ngFor="let formation of formations" value="{{formation.nomFormation}}">{{formation.nomFormation}}</option>>
                  </select>
              </div> 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"style=" margin-left: 10px" (click)="reset()">Effacer</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style=" margin-left: 10px" (click)="reset()">Effacer</button>
         <span *ngIf="totalRecords>0" style=" margin-left: 10px">Résultats de la recherche:<span style=" margin-left: 10px">{{totalRecords}}<span style=" margin-left: 10px">Cours trouvé(s)  </span></span></span> 
     </form>
     <p></p>
