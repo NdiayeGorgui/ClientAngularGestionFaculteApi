@@ -18,7 +18,7 @@ export class AuthService {
   private baseURLAddRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
   private baseURLDeleteRoleToUser="http://localhost:8090/api/Users/deleteRoleToUser"
   private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
-
+  private baseURLUsersListByRole="http://localhost:8090/api"
 
   constructor(private httpClient:HttpClient, private router:Router) { }
 
@@ -178,5 +178,7 @@ isSuperAdmin():Boolean{
   saveUserWihtRole(user:User,roleName:string):Observable<Object>{
     return this.httpClient.post(`${this.baseURLaddUserWithRole}/${roleName}`,user);
   }
-
+  getUserListByRole(role:string):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURLUsersListByRole}`+"/Users?roleName=role");
+  }
 }

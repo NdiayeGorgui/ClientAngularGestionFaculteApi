@@ -7,7 +7,7 @@
             [(ngModel)]="user.userName" name="userName"style="margin-bottom: 10px" formControlName="uName"
             [ngClass]="{'is-invalid':submitted && userFormgroup.controls.uName.errors}">
             <div *ngIf="submitted && userFormgroup.controls.uName.errors" class="invalid-feedback">
-                <div *ngIf="userFormgroup.controls.uName.errors">Le nom d'utilisateur est requis</div>
+                <div *ngIf="userFormgroup.controls.uName.errors"><sup>* </sup> Le nom d'utilisateur est requis</div>
             </div>
         </div>
         <div class="form-group">
@@ -15,14 +15,18 @@
             [(ngModel)]="user.password" name="password"style="margin-bottom: 10px" formControlName="upassword" 
             [ngClass]="{'is-invalid':submitted && userFormgroup.controls.upassword.errors}">
             <div *ngIf="submitted && userFormgroup.controls.upassword.errors" class="invalid-feedback">
-                <div *ngIf="userFormgroup.controls.upassword.errors">Le mot de passe est requis</div>
+                <div *ngIf="userFormgroup.controls.upassword.errors"><sup>* </sup> Le mot de passe est requis</div>
             </div>
         </div>
         <div class="form-group">
-            <select [(ngModel)]="roleName"   name="role.roleName" id="role.roleName" formControlName="rName"  class="form-control" >
+            <select [(ngModel)]="roleName"   name="role.roleName" id="role.roleName" formControlName="rName"  class="form-control" 
+            [ngClass]="{'is-invalid':submitted && userFormgroup.controls.rName.errors}">
                 <option  [ngValue]="null" disabled>-Choisir un role-</option>
                 <option *ngFor="let role of roles" [ngValue]="role.roleName">{{role.roleName}}</option>
             </select>
+            <div *ngIf="submitted && userFormgroup.controls.rName.errors" class="invalid-feedback">
+                <div *ngIf="userFormgroup.controls.rName.errors"><sup>* </sup> Veuillez choisir un role</div>
+            </div>
         </div>
         
             <button class="btn btn-success" type="submit"style="margin-top: 10px"> Valider</button>

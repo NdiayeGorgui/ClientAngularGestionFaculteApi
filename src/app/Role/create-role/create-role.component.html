@@ -7,7 +7,7 @@
             [(ngModel)]="role.roleName" name="roleName"style="margin-bottom: 10px" formControlName="rName"
             [ngClass]="{'is-invalid':submitted && roleFormgroup.controls.rName.errors}">
             <div *ngIf="submitted && roleFormgroup.controls.rName.errors" class="invalid-feedback">
-                <div *ngIf="roleFormgroup.controls.rName.errors">Le nom du role est requis</div>
+                <div *ngIf="roleFormgroup.controls.rName.errors"><sup>* </sup> Le nom du role est requis</div>
             </div>
         </div>
         
