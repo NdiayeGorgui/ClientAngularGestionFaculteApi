@@ -30,7 +30,7 @@ export class AddEnseignantToGroupeComponent implements OnInit {
    
     this.enseignantService.addEnseignantToGroupe(this.mail,this.numeroGroupe).subscribe(data => {
       console.log(data);
-     
+      alert("Enseignant ajouté au groupe avec succés !");
     });
     
     

@@ -31,7 +31,7 @@ export class AddCoursToFormationComponent implements OnInit {
    
     this.coursService.addCoursToFormation(this.libelle,this.nomFormation).subscribe(data => {
       console.log(data);
-     
+      alert("Cours ajouté  à la formation avec succés !");
     });
     
   }

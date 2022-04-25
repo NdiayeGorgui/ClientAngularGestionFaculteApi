@@ -30,7 +30,7 @@ export class AddRoleToUserComponent implements OnInit {
    
     this.authService.addRoleToUser(this.userName,this.roleName).subscribe(data => {
       console.log(data);
-     
+      alert("User ajouté avec succés !");
     });
     
     
