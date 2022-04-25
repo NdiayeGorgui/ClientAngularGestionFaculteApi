@@ -5,16 +5,20 @@
         <h4>Affecter ou Retirer un Enseignant à un Groupe</h4>
     </div>
     <p></p>
-    <form   class="form-inline my-2 my-lg-0">
+    <form   class="form-inline my-2 my-lg-0" [formGroup]="enseignantGroupeFormgroup">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <select [(ngModel)]="mail" name="mail" class="form-control"
-                        (change)="onChangeEnseignant()">
+                        (change)="onChangeEnseignant()" formControlName="egEnseignant"
+                        [ngClass]="{'is-invalid':submitted && enseignantGroupeFormgroup.controls.egEnseignant.errors}">
                         <option value="0">- Choisir un Enseignant - </option>
                         <option *ngFor="let enseignant of enseignants" value="{{enseignant.mail}}">
                             {{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>>
                     </select>
+                    <div *ngIf="submitted && enseignantGroupeFormgroup.controls.egEnseignant.errors" class="invalid-feedback">
+                        <div *ngIf="enseignantGroupeFormgroup.controls.egEnseignant.errors"><sup>* </sup> Veuillez choisir un Enseignant</div>
+                    </div>
                 </div>
                 <p></p>
                 <div class="form-group">
@@ -29,10 +33,15 @@
 
             <div class="col">
                 <div class="form-group">
-                    <select [(ngModel)]="numeroGroupe" name="numeroGroupe" class="form-control" (change)="onChangeGroupe()">
+                    <select [(ngModel)]="numeroGroupe" name="numeroGroupe" class="form-control" 
+                    (change)="onChangeGroupe()" formControlName="egGroupe"
+                    [ngClass]="{'is-invalid':submitted && enseignantGroupeFormgroup.controls.egGroupe.errors}">
                         <option value="0">- Choisir un Groupe -</option>
                         <option *ngFor="let groupe of groupes" value="{{groupe.numeroGroupe}}">{{groupe.numeroGroupe}}</option>>
                     </select>
+                    <div *ngIf="submitted && enseignantGroupeFormgroup.controls.egGroupe.errors" class="invalid-feedback">
+                        <div *ngIf="enseignantGroupeFormgroup.controls.egGroupe.errors"><sup>* </sup> Veuillez choisir un groupe</div>
+                    </div>
                 </div>
                 <p></p>
                

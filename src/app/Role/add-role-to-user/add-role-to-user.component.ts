@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Login/auth.service';
 import { User } from 'src/app/User/user';
@@ -10,7 +11,8 @@ import { Role } from '../role';
   styleUrls: ['./add-role-to-user.component.css']
 })
 export class AddRoleToUserComponent implements OnInit {
-
+  roleUserFormgroup!:FormGroup;
+  submitted:boolean=false;
   
   userName!:string;
   roleName!:string;
@@ -19,29 +21,36 @@ export class AddRoleToUserComponent implements OnInit {
   roles: Role[] = [];
   users: User[] = [];
   constructor(private authService:AuthService,
-    private router:Router) { }
+    private router:Router,private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.roleUserFormgroup=this.fb.group({
+      ruUser:["",Validators.required],
+      ruRole:["",Validators.required]
+    });
     this.getRoles();
     this.getUsers();
   }
 
   onSubmit(){
-   
+    this.submitted=true;
+    if(this.roleUserFormgroup.invalid) return;
     this.authService.addRoleToUser(this.userName,this.roleName).subscribe(data => {
       console.log(data);
-      alert("User ajouté avec succés !");
+      alert("Rôle ajouté à l'utilisateur avec succés !");
     });
     
     
   }
 
   onRemove(){
+    this.submitted=true;
+    if(this.roleUserFormgroup.invalid) return;
     let conf=confirm("Etes-vous sure ?")
     if(conf){
     this.authService.deleteRoleToUser(this.userName,this.roleName).subscribe(data => {
       console.log(data);
-      
+      alert("Rôle retiré de l'utilisateur avec succés !");
     });
   }
     

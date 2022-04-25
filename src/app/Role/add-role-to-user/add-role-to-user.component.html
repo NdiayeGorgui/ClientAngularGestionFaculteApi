@@ -5,16 +5,20 @@
         <h4>Affecter ou Retirer un role à un Utilisateurs</h4>
     </div>
     <p></p>
-    <form   class="form-inline my-2 my-lg-0">
+    <form   class="form-inline my-2 my-lg-0"  [formGroup]="roleUserFormgroup">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <select [(ngModel)]="userName" name="libelle" class="form-control"
-                        (change)="onChangeUser()">
+                        (change)="onChangeUser()" formControlName="ruUser"
+                        [ngClass]="{'is-invalid':submitted && roleUserFormgroup.controls.ruUser.errors}">
                         <option value="0">- Choisir un Utilisateur - </option>
                         <option *ngFor="let user of users" value="{{user.userName}}">
                             {{user.userName}}</option>>
                     </select>
+                    <div *ngIf="submitted && roleUserFormgroup.controls.ruUser.errors" class="invalid-feedback">
+                        <div *ngIf="roleUserFormgroup.controls.ruUser.errors"><sup>* </sup> Veuillez choisir un Utilisateur</div>
+                    </div>
                 </div>
                 <p></p>
                 <div class="form-group">
@@ -25,14 +29,17 @@
                         (click)="onRemove()">Retirer</button>
                 </div>
             </div>
-
-
             <div class="col">
                 <div class="form-group">
-                    <select [(ngModel)]="roleName" name="roleName" class="form-control" (change)="onChangeRole()">
+                    <select [(ngModel)]="roleName" name="roleName" class="form-control" 
+                    (change)="onChangeRole()" formControlName="ruRole"
+                    [ngClass]="{'is-invalid':submitted && roleUserFormgroup.controls.ruRole.errors}">
                         <option value="0">- Choisir un Role - </option>
                         <option *ngFor="let role of roles" value="{{role.roleName}}">{{role.roleName}}</option>>
                     </select>
+                    <div *ngIf="submitted && roleUserFormgroup.controls.ruRole.errors" class="invalid-feedback">
+                        <div *ngIf="roleUserFormgroup.controls.ruRole.errors"><sup>* </sup> Veuillez choisir un Rôle</div>
+                    </div>
                 </div>
                 <p></p>
                
