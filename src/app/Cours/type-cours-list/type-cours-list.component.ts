@@ -36,6 +36,7 @@ export class TypeCoursListComponent implements OnInit {
   let conf=confirm("Etes-vous sure ?")
   if(conf){
    this.typeCoursService.deleteTypeCours(id).subscribe(data => {
+    alert("Suppression effectuée avec succés !");
      console.log(data);
      this.getTypeCours();
    });

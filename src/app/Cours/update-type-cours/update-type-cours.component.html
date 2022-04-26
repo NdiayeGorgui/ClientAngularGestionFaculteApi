@@ -1,14 +1,22 @@
 
 <div class="col-md-6 offset-md-3">
     <h4>Modifier Type cours</h4>
-    <form (ngSubmit)="onSubmit()"> 
+    <form (ngSubmit)="onSubmit()" [formGroup]="typeCoursFormgroup"> 
         <div class="form-group"><label for="type">Type Cours : </label>
             <input type="text" class="form-control" id="type"  style="margin-top: 10px"
-            [(ngModel)]="typeCours.type" name="type"style="margin-bottom: 10px">
+            [(ngModel)]="typeCours.type" name="type"style="margin-bottom: 10px"formControlName="tType"
+            [ngClass]="{'is-invalid':submitted && typeCoursFormgroup.controls.tType.errors}">
+            <div *ngIf="submitted && typeCoursFormgroup.controls.tType.errors" class="invalid-feedback">
+                <div *ngIf="typeCoursFormgroup.controls.tType.errors"><sup>* </sup> Le type de cours est requis</div>
+            </div>
         </div>
         <div class="form-group"><label for="prix">Prix : </label>
             <input type="text" class="form-control" id="prix"  style="margin-top: 10px"
-            [(ngModel)]="typeCours.prix" name="prix" style="margin-bottom: 10px">
+            [(ngModel)]="typeCours.prix" name="prix" style="margin-bottom: 10px"formControlName="tPrix"
+            [ngClass]="{'is-invalid':submitted && typeCoursFormgroup.controls.tPrix.errors}">
+            <div *ngIf="submitted && typeCoursFormgroup.controls.tPrix.errors" class="invalid-feedback">
+                <div *ngIf="typeCoursFormgroup.controls.tPrix.errors"><sup>* </sup> Le prix est requis</div>
+            </div>
         </div>
        
         

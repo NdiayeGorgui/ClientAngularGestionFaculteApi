@@ -1,14 +1,24 @@
 
 <div class="col-md-6 offset-md-3">
     <h4>Modifier Utilisateur</h4>
-    <form (ngSubmit)="onSubmit()"> 
+    <form (ngSubmit)="onSubmit()"  [formGroup]="userFormgroup"> 
+
+        
         <div class="form-group">
             <input type="text" class="form-control" id="userName" placeholder="Nom d'utilisateur" style="margin-top: 10px"
-            [(ngModel)]="user.userName" name="userName"style="margin-bottom: 10px">
+            [(ngModel)]="user.userName" name="userName" style="margin-bottom: 10px" formControlName="uName"
+            [ngClass]="{'is-invalid':submitted && userFormgroup.controls.uName.errors}">
+            <div *ngIf="submitted && userFormgroup.controls.uName.errors" class="invalid-feedback">
+                <div *ngIf="userFormgroup.controls.uName.errors"><sup>* </sup> Le nom d'utilisateur est requis</div>
+            </div>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="password" placeholder="Password" style="margin-top: 10px"
-            [(ngModel)]="user.password" name="password"style="margin-bottom: 10px">
+            <input type="text" class="form-control" id="password"  style="margin-top: 10px"
+            [(ngModel)]="user.password" name="password" style="margin-bottom: 10px" formControlName="uPass"
+            [ngClass]="{'is-invalid':submitted && userFormgroup.controls.uPass.errors}">
+            <div *ngIf="submitted && userFormgroup.controls.uPass.errors" class="invalid-feedback">
+                <div *ngIf="userFormgroup.controls.uPass.errors"><sup>* </sup> Le mot de passe est requis</div>
+            </div>
         </div>
        <!--  <div class="form-group">
             <select [(ngModel)]="roleId"   name="role.id" id="role.id"  class="form-control">

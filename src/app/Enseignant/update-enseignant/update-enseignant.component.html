@@ -1,34 +1,49 @@
 
 <div class="col-md-6 offset-md-3">
     <h4>Modifier Enseignant</h4>
-    <form (ngSubmit)="onSubmit()"> 
+    <form (ngSubmit)="onSubmit()" [formGroup]="enseignantFormgroup"> 
         <div class="row">
             <div class="col">
         <div class="form-group">
             <label>Prénom: </label>
             <input type="text" class="form-control" id="firstName" 
-            [(ngModel)]="enseignant.firstName" name="firstName">
+            [(ngModel)]="enseignant.firstName" name="firstName"formControlName="eFirstName"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eFirstName.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eFirstName.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eFirstName.errors"><sup>* </sup> Le prénom est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eFirstName.errors.minlength"><sup>* </sup> Le nombre min de caractere requis est 2  </div>
+                </div>
         </div>
         <div class="form-group">
             <label> Nom: </label>
             <input type="text" class="form-control" id="lastName" 
-            [(ngModel)]="enseignant.lastName" name="lastName">
+            [(ngModel)]="enseignant.lastName" name="lastName"formControlName="eLastName"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eLastName.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eLastName.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eLastName.errors"><sup>* </sup> Le nom est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eLastName.errors.minlength"><sup>* </sup> Le nombre min de caractere requis est 2</div>
+            </div>
         </div>
         <div class="form-group">
             <label> Adresse: </label>
             <input type="text" class="form-control" id="adress" 
-            [(ngModel)]="enseignant.adress" name="adress">
+            [(ngModel)]="enseignant.adress" name="adress" formControlName="eAddress">
         </div>
     </div>
     <div class="col">
         <div class="form-group">
             <label> Email: </label>
             <input type="text" class="form-control" id="mail" 
-            [(ngModel)]="enseignant.mail" name="mail" style="margin-bottom: 10px">
+            [(ngModel)]="enseignant.mail" name="mail" style="margin-bottom: 10px"formControlName="eMail"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eMail.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eMail.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eMail.errors"><sup>* </sup> Le mail est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eMail.errors.email"><sup>* </sup> L'adresse Email est invalid</div>
+            </div>
         </div>
         <div class="form-group">
             <label> Statut: </label><br>
-            <select [(ngModel)]="enseignant.statut" name="statut"  class="form-control" > 
+            <select [(ngModel)]="enseignant.statut" name="statut"  class="form-control" formControlName="eStatut"> 
                 <option [ngValue]="null" disabled>Choisir Statut</option>
                 <option *ngFor="let stat of statues" value="{{stat.name}}">{{stat.name}}</option>
             </select>
@@ -36,7 +51,11 @@
         <div class="form-group">
             <label> Téléphone: </label>
             <input type="text" class="form-control" id="telephone" 
-            [(ngModel)]="enseignant.telephone" name="telephone">
+            [(ngModel)]="enseignant.telephone" name="telephone"formControlName="eTelephone"
+            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eTelephone.errors}">
+            <div *ngIf="submitted && enseignantFormgroup.controls.eTelephone.errors" class="invalid-feedback">
+                <div *ngIf="enseignantFormgroup.controls.eTelephone.errors"><sup>* </sup> Le Téléphone est requis</div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Enseignant } from 'src/app/Enseignant/enseignant';
 import { EnseignantService } from 'src/app/Enseignant/enseignant.service';
@@ -13,7 +14,8 @@ import { TypeCoursService } from '../type-cours.service';
   styleUrls: ['./update-cours.component.css']
 })
 export class UpdateCoursComponent implements OnInit {
-
+  coursFormgroup!:FormGroup;
+  submitted:boolean=false;
   id!: number;
   cours:Cours=new Cours();
   enseignants: Enseignant[] = [];
@@ -23,7 +25,7 @@ export class UpdateCoursComponent implements OnInit {
 constructor(private coursService:CoursService, 
   private route:ActivatedRoute, private router:Router,
   private enseignantService:EnseignantService,
-  private typeCoursService:TypeCoursService,) { }
+  private typeCoursService:TypeCoursService,private fb:FormBuilder) { }
 
 ngOnInit(): void {
   this.getEnseignants();
@@ -31,6 +33,15 @@ ngOnInit(): void {
   this.getCours();
   this.id=this.route.snapshot.params['id'];
   this.coursService.getCoursById(this.id).subscribe(data => {
+    this.coursFormgroup = this.fb.group({
+    
+      cLibelle:[data.libelle,Validators.required],
+      cNbrHeure:[data.nbeHeure,Validators.required],
+      cEnseignant:[data.enseignant.id,Validators.required],
+      cTypeCours:[data.typecour.id,Validators.required],
+      
+
+    });
     this.cours=data;
   },error =>console.log(error)
   );
@@ -70,7 +81,10 @@ goToCoursList(){
   this.router.navigate(['/cours']);
 }
 onSubmit(){
+  this.submitted=true;
+  if(this.coursFormgroup.invalid) return;
   this.coursService.updateCours(this.id,this.cours).subscribe(data =>{
+    alert("Modification effectuée avec succés !");
   this.goToCoursList();
   },error =>console.log(error)
   

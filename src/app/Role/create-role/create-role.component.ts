@@ -41,6 +41,7 @@ export class CreateRoleComponent implements OnInit {
     this.submitted=true;
     if(this.roleFormgroup.invalid) return;
     this.roleService.createRole(this.role).subscribe(data => {
+      alert("Ajout effectué avec succés !");
       console.log(data);
       this.goToRoleList();
     },

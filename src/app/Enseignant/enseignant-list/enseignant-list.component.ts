@@ -40,6 +40,7 @@ deleteEnseignant(id:number){
   let conf=confirm("Etes-vous sure ?")
   if(conf){
     this.enseignantService.deleteEnseignant(id).subscribe(data => {
+      alert("Suppression effectuée avec succés !");
       console.log(data);
       this.getEnseignants();
     });

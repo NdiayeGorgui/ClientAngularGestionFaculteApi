@@ -42,6 +42,7 @@ deleteGroupe(id:number){
   let conf=confirm("Etes-vous sure ?")
   if(conf){
   this.groupeService.deleteGroupe(id).subscribe(data => {
+    alert("Suppression effectuée avec succés !");
     console.log(data);
     this.getGroupes();
   });

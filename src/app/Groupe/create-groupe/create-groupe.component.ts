@@ -40,6 +40,7 @@ export class CreateGroupeComponent implements OnInit {
     this.submitted=true;
     if(this.groupeFormgroup.invalid) return;
     this.groupeService.createGroupe(this.groupe).subscribe(data => {
+      alert("Ajout effectué avec succés !");
       console.log(data);
       this.goToGroupeList();
     },

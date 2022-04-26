@@ -43,6 +43,7 @@ export class CreateUserComponent implements OnInit {
     this.submitted=true;
     if(this.userFormgroup.invalid) return;
     this.userService.saveUserWihtRole(this.user,this.roleName).subscribe(data => {
+      alert("Ajout effectué avec succés !");
       console.log(data);
       this.goToUserList();
     },

@@ -1,26 +1,34 @@
 
 <div class="col-md-6 offset-md-3">
     <h4>Modifier cours</h4>
-    <form (ngSubmit)="onSubmit()"> 
+    <form (ngSubmit)="onSubmit()" [formGroup]="coursFormgroup"> 
         <div class="row">
             <div class="col">
         <div class="form-group"><label >Libellé </label>
             <input type="text" class="form-control" id="libelle"  style="margin-top: 10px"
-            [(ngModel)]="cours.libelle" name="libelle"style="margin-bottom: 10px">
+            [(ngModel)]="cours.libelle" name="libelle"style="margin-bottom: 10px"formControlName="cLibelle"
+            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cLibelle.errors}">
+            <div *ngIf="submitted && coursFormgroup.controls.cLibelle.errors" class="invalid-feedback">
+                <div *ngIf="coursFormgroup.controls.cLibelle.errors"><sup>* </sup> Le libelle est requis</div>
+            </div>
         </div>
         <div class="form-group"><label >Nombre d'heure </label>
             <input type="text" class="form-control" id="nbeHeure"  style="margin-top: 10px"
-            [(ngModel)]="cours.nbeHeure" name="nbeHeure" style="margin-bottom: 10px">
+            [(ngModel)]="cours.nbeHeure" name="nbeHeure" style="margin-bottom: 10px"formControlName="cNbrHeure"
+            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cNbrHeure.errors}">
+            <div *ngIf="submitted && coursFormgroup.controls.cNbrHeure.errors" class="invalid-feedback">
+                <div *ngIf="coursFormgroup.controls.cNbrHeure.errors"><sup>* </sup> Le nombre d'heure est requis</div>
+            </div>
         </div>
     </div>
     <div class="col">
         <div class="form-group"> <label for="enseignant">Enseignant : </label>
-            <select [(ngModel)]="cours.enseignant.id"   name="enseignantId" id="enseignantId" class="form-control">
+            <select [(ngModel)]="cours.enseignant.id"   name="enseignantId" id="enseignantId" class="form-control" formControlName="cEnseignant">
                 <option  *ngFor="let enseignant of enseignants"value="{{enseignant.id}}">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>
             </select>
         </div>
         <div class="form-group"> <label for="typecour">Type Cours : </label>
-            <select [(ngModel)]="cours.typecour.id"   name="typecourId" id="typecourId" class="form-control">
+            <select [(ngModel)]="cours.typecour.id"   name="typecourId" id="typecourId" class="form-control" formControlName="cTypeCours">
                 <option  *ngFor="let typecour of typecours"value="{{typecour.id}}">{{typecour.type}}</option>
             </select>
         </div>

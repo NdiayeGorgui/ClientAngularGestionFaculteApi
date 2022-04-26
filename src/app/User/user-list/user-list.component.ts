@@ -41,6 +41,7 @@ deleteUser(userId:number){
   let conf=confirm("Etes-vous sure ?")
   if(conf){
   this.userService.deleteUser(userId).subscribe(data => {
+    alert("Suppression effectuée avec succés !");
     console.log(data);
     this.getUsers();
   });

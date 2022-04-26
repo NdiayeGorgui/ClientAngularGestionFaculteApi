@@ -41,6 +41,7 @@ deleteRole(roleId:number){
   let conf=confirm("Etes-vous sure ?")
   if(conf){
   this.roleService.deleteRole(roleId).subscribe(data => {
+    alert("Suppression effectuée avec succés !");
     console.log(data);
     this.getRoles();
   });

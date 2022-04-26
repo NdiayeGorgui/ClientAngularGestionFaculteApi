@@ -28,6 +28,7 @@ export class CreateFormationComponent implements OnInit {
     this.submitted=true;
     if(this.formationFormgroup.invalid) return;
     this.formationService.createFormation(this.formation).subscribe(data => {
+      alert("Ajout effectué avec succés !");
       console.log(data);
       this.goToFormationList();
     },

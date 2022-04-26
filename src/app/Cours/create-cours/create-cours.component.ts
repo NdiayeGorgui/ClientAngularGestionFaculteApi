@@ -84,6 +84,7 @@ export class CreateCoursComponent implements OnInit {
     this.submitted=true;
     if(this.coursFormgroup.invalid) return;
     this.coursService.createCoursWithFormation(this.cours,this.nomFormation).subscribe(data => {
+      alert("Ajout effectué avec succés !");
       console.log(data);
       this.goToCoursList();
     },

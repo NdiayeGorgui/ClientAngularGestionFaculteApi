@@ -41,6 +41,7 @@ deleteCours(id:number){
   let conf=confirm("Etes-vous sure ?")
   if(conf){
   this.coursService.deleteCours(id).subscribe(data => {
+    alert("Suppression effectuée avec succés !");
     console.log(data);
     this.getCours();
   });

@@ -32,13 +32,13 @@ export class CreateEnseignantComponent implements OnInit {
 
   ngOnInit(): void {
     this.enseignantFormgroup=this.fb.group({
-      eAddress:["",Validators.required],
-      eFirstName:["",Validators.required],
-      eLastName:["",Validators.required],
-      eMail:["",Validators.required],
+      eAddress:[""],
+      eFirstName:["",[Validators.required, Validators.minLength(2)]],
+      eLastName:["",[Validators.required, Validators.minLength(2)]],
+      eMail:["",[Validators.required, Validators.email]],
       eStatut:["",Validators.required],
       eTelephone:["",Validators.required],
-      eGroupe:["",Validators.required],
+      eGroupe:["",Validators.required]
     });
     this.getGroupes();
   }
@@ -47,6 +47,7 @@ export class CreateEnseignantComponent implements OnInit {
     this.submitted=true;
     if(this.enseignantFormgroup.invalid) return;
     this.enseignantService.createEnseignantWhithGroupe(this.enseignant,this.numeroGroupe).subscribe(data => {
+      alert("Ajout effectué avec succés !");
       console.log(data);
       this.goToEnseignantList();
     },

@@ -10,6 +10,7 @@
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eFirstName.errors}">
             <div *ngIf="submitted && enseignantFormgroup.controls.eFirstName.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eFirstName.errors"><sup>* </sup> Le prénom est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eFirstName.errors.minlength"><sup>* </sup> Le nombre min de caractere requis est 2</div>
             </div>
         </div>
         <div class="form-group">
@@ -18,6 +19,7 @@
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eLastName.errors}">
             <div *ngIf="submitted && enseignantFormgroup.controls.eLastName.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eLastName.errors"><sup>* </sup> Le nom est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eLastName.errors.minlength"><sup>* </sup> Le nombre min de caractere requis est 2</div>
             </div>
         </div>
         <div class="form-group">
@@ -36,6 +38,7 @@
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eMail.errors}">
             <div *ngIf="submitted && enseignantFormgroup.controls.eMail.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eMail.errors"><sup>* </sup> Le mail est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eMail.errors.email"><sup>* </sup> L'adresse Email est invalid</div>
             </div>
         </div>
         <div class="form-group">

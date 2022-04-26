@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Login/auth.service';
 import { User } from 'src/app/User/user';
@@ -10,7 +11,8 @@ import { Role } from '../role';
   styleUrls: ['./update-role.component.css']
 })
 export class UpdateRoleComponent implements OnInit {
-
+  roleFormgroup!:FormGroup;
+  submitted:boolean=false;
   userId!: number;
   roleName!:string;
   id!: number;
@@ -18,12 +20,19 @@ export class UpdateRoleComponent implements OnInit {
   users: User[] = [];
   user!:User;
 constructor(private authService:AuthService, 
-  private route:ActivatedRoute, private router:Router) { }
+  private route:ActivatedRoute, private router:Router,private fb:FormBuilder) { }
 
 ngOnInit(): void {
+  
 this.getRoles();
   this.id=this.route.snapshot.params['id'];
   this.authService.getRoleById(this.id).subscribe(data => {
+
+    this.roleFormgroup=this.fb.group({
+     
+      rName:[data.roleName,Validators.required]
+     
+    });
     this.role=data;
   },error =>console.log(error)
   );
@@ -40,7 +49,10 @@ goToRoleList(){
   this.router.navigate(['/roles']);
 }
 onSubmit(){
+  this.submitted=true;
+  if(this.roleFormgroup.invalid) return;
   this.authService.updateRole(this.id,this.role).subscribe(data =>{
+    alert("Modification effectuée avec succés !");
   this.goToRoleList();
   },error =>console.log(error)
   
