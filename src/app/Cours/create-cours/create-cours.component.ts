@@ -47,7 +47,7 @@ export class CreateCoursComponent implements OnInit {
   ngOnInit(): void { 
     this.coursFormgroup=this.fb.group({
       cLibelle:["",Validators.required],
-      cNbrHeure:["",Validators.required],
+      cNbrHeure:[0.0,Validators.required],
       cEnseignant:[null,Validators.required],
       cTypeCours:[null,Validators.required],
       cFormation:[null,Validators.required]
