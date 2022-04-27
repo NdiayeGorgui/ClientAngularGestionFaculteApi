@@ -18,7 +18,7 @@
     <thead>
         <tr>
             <th>Libelle</th>
-            <th>Nombre d'heure</th>
+            <th>Type de cours</th>
             
             <th>Actions</th>
         </tr>
@@ -32,7 +32,7 @@
             totalItems:totalRecords
         }">
             <td>{{cour.libelle}}</td>
-            <td>{{cour.nbeHeure}}</td>
+            <td>{{cour.typecour.type}}</td>
            
                 <td *ngIf="authService.isAdmin()"><button (click)="updateCours(cour.id)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
                 <td *ngIf="authService.isAdmin()"><button (click)="deleteCours(cour.id)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>

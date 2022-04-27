@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Login/auth.service';
 import { User } from 'src/app/User/user';
 import { Role } from '../role';
-import { IsRole } from '../role-interface';
+
 
 @Component({
   selector: 'app-search-role-users',
@@ -12,49 +11,56 @@ import { IsRole } from '../role-interface';
 })
 export class SearchRoleUsersComponent implements OnInit {
 
-  roleName:string="null";
-  users: any;
-  //roles: any;
-  user!:User;
+  id!:number;
+  roleId:any=0;
+  userName!:string;
+  roleName!:string;
+  roles: any;
+  users: User[] = [];
   role!:Role;
   page:number=1;
   totalRecords!:number;
-  public statId!:number;
-  constructor(private authService:AuthService,
-    private router:Router) { }
+  
+  constructor(private authService:AuthService) { }
 
-    public roles:Array<IsRole>=[{id:1,roleName:'ADMIN'},
-  {id:2,roleName:'SUPERADMIN'},
-  {id:3,roleName:'RESPONSABLE'},
-  {id:4,roleName:'ENSEIGNANT'}];
+   
 
   ngOnInit(): void {
-   // this.reset(this.statut);
+    this.getRoles();
+   // this.reset();
+  }
+
+  private getRoles(){
+    this.authService.getRolesList().subscribe(data => {
+      this.roles=data;
+    });
   }
 
   handlePageChange(event: number) {
     this.page = event;
   }
 
-  statusChange(statut: string) {
-    this.onSearch(statut);
+  roleChange(rId: number) {
+    this.onSearch(rId);
   }
   
   onSearch(dataForm:any){
    
-    /* console.log(dataForm);
-    this.enseignantService.searchEnseignantsByStatut(this.statut).subscribe(data => {
-      this.enseignants=data;
-      this.totalRecords=this.enseignants.length;
+    console.log(dataForm);
+    this.authService.searchUserbyRolesId(this.roleId).subscribe(data => {
+      this.users=data;
+      this.totalRecords=this.users.length;
       console.log(data);
       console.log(this.totalRecords);
-    
-    }); */
-    
-    
+    });
   }
-  reset(statut:string) {
-   // this.statut = "null";
+
+  reset() {
+    this.roleId = 0;
+  }
+
+  retirer(data:string) {
+    
   }
 
 }

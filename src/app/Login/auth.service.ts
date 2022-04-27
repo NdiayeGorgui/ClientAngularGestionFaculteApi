@@ -19,7 +19,8 @@ export class AuthService {
   private baseURLDeleteRoleToUser="http://localhost:8090/api/Users/deleteRoleToUser"
   private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
   private baseURLUsersListByRole="http://localhost:8090/api"
-
+  private baseURLSearchUserbyRolesId="http://localhost:8090/api/Users/Role"
+  private baseURLSearcRolebyUsersId="http://localhost:8090/api/Roles/User"
   constructor(private httpClient:HttpClient, private router:Router) { }
 
   /* users:User[]=[{'username':"admin",'password':"admin",'roles':['ADMIN']},
@@ -178,7 +179,14 @@ isSuperAdmin():Boolean{
   saveUserWihtRole(user:User,roleName:string):Observable<Object>{
     return this.httpClient.post(`${this.baseURLaddUserWithRole}/${roleName}`,user);
   }
-  getUserListByRole(role:string):Observable<User[]>{
+ /*  getUserListByRole(role:string):Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseURLUsersListByRole}`+"/Users?roleName=role");
+  } */
+
+  searchUserbyRolesId(id:number):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURLSearchUserbyRolesId}/${id}`);
+  }
+  searcRolebyUsersId(id:number):Observable<Role[]>{
+    return this.httpClient.get<Role[]>(`${this.baseURLSearcRolebyUsersId}/${id}`);
   }
 }
