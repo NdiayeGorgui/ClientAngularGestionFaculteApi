@@ -37,7 +37,7 @@ export class CreateEnseignantComponent implements OnInit {
       eLastName:["",[Validators.required, Validators.minLength(2)]],
       eMail:["",[Validators.required, Validators.email]],
       eStatut:["",Validators.required],
-      eTelephone:["",Validators.required],
+      eTelephone:["",[Validators.required, Validators.minLength(10)]],
       eGroupe:["",Validators.required]
     });
     this.getGroupes();

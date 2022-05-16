@@ -9,10 +9,10 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <select [(ngModel)]="userName" name="libelle" class="form-control"
+                    <select [(ngModel)]="userName" name="userName" class="form-control"
                         (change)="onChangeUser()" formControlName="ruUser"
                         [ngClass]="{'is-invalid':submitted && roleUserFormgroup.controls.ruUser.errors}">
-                        <option value="0">- Choisir un Utilisateur - </option>
+                        <option value="0" disabled>- Choisir un Utilisateur - </option>
                         <option *ngFor="let user of users" value="{{user.userName}}">
                             {{user.userName}}</option>>
                     </select>
@@ -34,7 +34,7 @@
                     <select [(ngModel)]="roleName" name="roleName" class="form-control" 
                     (change)="onChangeRole()" formControlName="ruRole"
                     [ngClass]="{'is-invalid':submitted && roleUserFormgroup.controls.ruRole.errors}">
-                        <option value="0">- Choisir un Role - </option>
+                        <option value="0" disabled>- Choisir un Role - </option>
                         <option *ngFor="let role of roles" value="{{role.roleName}}">{{role.roleName}}</option>>
                     </select>
                     <div *ngIf="submitted && roleUserFormgroup.controls.ruRole.errors" class="invalid-feedback">

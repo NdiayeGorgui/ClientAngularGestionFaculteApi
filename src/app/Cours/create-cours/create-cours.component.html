@@ -1,69 +1,72 @@
-
 <div class="col-md-6 offset-md-3">
     <h4>Créer cours</h4>
-    <form (ngSubmit)="onSubmit()" [formGroup]="coursFormgroup"> 
+    <form (ngSubmit)="onSubmit()" [formGroup]="coursFormgroup">
         <div class="row">
             <div class="col">
-        <div class="form-group">
-            <input type="text" class="form-control" id="libelle" placeholder="Libelle du cours" style="margin-top: 10px"
-            [(ngModel)]="cours.libelle" name="libelle"style="margin-bottom: 10px" formControlName="cLibelle"
-            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cLibelle.errors}">
-            <div *ngIf="submitted && coursFormgroup.controls.cLibelle.errors" class="invalid-feedback">
-                <div *ngIf="coursFormgroup.controls.cLibelle.errors"><sup>* </sup> Le libelle est requis</div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="libelle" placeholder="Libelle du cours"
+                        style="margin-top: 10px" [(ngModel)]="cours.libelle" name="libelle" style="margin-bottom: 10px"
+                        formControlName="cLibelle"
+                        [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cLibelle.errors}">
+                    <div *ngIf="submitted && coursFormgroup.controls.cLibelle.errors" class="invalid-feedback">
+                        <div *ngIf="coursFormgroup.controls.cLibelle.errors"><sup>* </sup> Le libelle est requis</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="nbeHeure" placeholder="Nombre d'heure"
+                        style="margin-top: 10px" [(ngModel)]="cours.nbeHeure" name="nbeHeure"
+                        style="margin-bottom: 10px" formControlName="cNbrHeure"
+                        [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cNbrHeure.errors}">
+                    <div *ngIf="submitted && coursFormgroup.controls.cNbrHeure.errors" class="invalid-feedback">
+                        <div *ngIf="coursFormgroup.controls.cNbrHeure.errors"><sup>* </sup> Le nombre d'heure est requis
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" type="submit"> Valider</button>
+                    <button (click)="goToCoursList()" class="btn btn-primary" type="submit" style=" margin-left: 10px"> Annuler</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <select [(ngModel)]="cours.enseignant" name="enseignant.id" id="enseignantid" class="form-control"
+                        formControlName="cEnseignant"
+                        [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cEnseignant.errors}">
+
+                        <option [ngValue]="null" disabled>-Choisir un Enseignant-</option>
+                        <option *ngFor="let enseignant of enseignants" [ngValue]="enseignant">
+                            {{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>
+                    </select>
+                    <div *ngIf="submitted && coursFormgroup.controls.cEnseignant.errors" class="invalid-feedback">
+                        <div *ngIf="coursFormgroup.controls.cEnseignant.errors"><sup>* </sup> Veuillez choisir un enseignant</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select [(ngModel)]="cours.typecour" name="typecour.id" id="typecourid" class="form-control"
+                        formControlName="cTypeCours"
+                        [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cTypeCours.errors}">
+
+                        <option [ngValue]="null" disabled>-Choisir un type cours-</option>
+                        <option *ngFor="let typecour of typecours" [ngValue]="typecour">{{typecour.type}}</option>
+                    </select>
+                    <div *ngIf="submitted && coursFormgroup.controls.cTypeCours.errors" class="invalid-feedback">
+                        <div *ngIf="coursFormgroup.controls.cTypeCours.errors"><sup>* </sup> Veuillez choisir un type de cours</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select [(ngModel)]="nomFormation" name="formation.id" id="formation.nomFormation"
+                        class="form-control" formControlName="cFormation"
+                        [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cFormation.errors}">
+                        <option [ngValue]="null" disabled>-Choisir une formation-</option>
+                        <option *ngFor="let formation of formations" [ngValue]="formation.nomFormation">
+                            {{formation.nomFormation}}</option>
+                    </select>
+                    <div *ngIf="submitted && coursFormgroup.controls.cFormation.errors" class="invalid-feedback">
+                        <div *ngIf="coursFormgroup.controls.cFormation.errors"><sup>* </sup> Veuillez choisir une formation</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="nbeHeure" placeholder="Nombre d'heure" style="margin-top: 10px"
-            [(ngModel)]="cours.nbeHeure" name="nbeHeure" style="margin-bottom: 10px" formControlName="cNbrHeure"
-            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cNbrHeure.errors}">
-            <div *ngIf="submitted && coursFormgroup.controls.cNbrHeure.errors" class="invalid-feedback">
-                <div *ngIf="coursFormgroup.controls.cNbrHeure.errors"><sup>* </sup> Le nombre d'heure est requis</div>
-            </div>
-        </div>
-        <div class="form-group"> 
-            <button class="btn btn-success" type="submit"> Valider</button>
-            <button (click)="goToCoursList()" class="btn btn-primary" type="submit"style=" margin-left: 10px" > Annuler</button>
-        </div>
-    </div>
-    <div class="col">
-        <div class="form-group">
-            <select [(ngModel)]="cours.enseignant"   name="enseignant.id" id="enseignantid" class="form-control" formControlName="cEnseignant"
-            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cEnseignant.errors}">
-            
-                <option  [ngValue]="null" disabled >-Choisir un enseignant-</option>
-                <option  *ngFor="let enseignant of enseignants" [ngValue]="enseignant">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>
-            </select>
-            <div *ngIf="submitted && coursFormgroup.controls.cEnseignant.errors" class="invalid-feedback">
-                <div *ngIf="coursFormgroup.controls.cEnseignant.errors"><sup>* </sup> Veuillez choisir un enseignant</div>
-            </div>
-        </div>
-        
-        <div class="form-group"> 
-            <select [(ngModel)]="cours.typecour"   name="typecour.id" id="typecourid" class="form-control" formControlName="cTypeCours"
-            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cTypeCours.errors}">
-           
-                <option  [ngValue]="null" disabled>-Choisir un type cours-</option>
-                <option *ngFor="let typecour of typecours" [ngValue]="typecour">{{typecour.type}}</option>
-            </select> 
-            <div *ngIf="submitted && coursFormgroup.controls.cTypeCours.errors" class="invalid-feedback">
-                <div *ngIf="coursFormgroup.controls.cTypeCours.errors"><sup>* </sup> Veuillez choisir un type de cours</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <select  [(ngModel)]="nomFormation" name="formation.id" id="formation.nomFormation"  class="form-control" formControlName="cFormation"
-            [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cFormation.errors}"> 
-                <option [ngValue]="null" disabled>Choisir une formation</option>
-                <option *ngFor="let formation of formations" [ngValue]="formation.nomFormation">{{formation.nomFormation}}</option>
-            </select>
-            <div *ngIf="submitted && coursFormgroup.controls.cFormation.errors" class="invalid-feedback">
-                <div *ngIf="coursFormgroup.controls.cFormation.errors"><sup>* </sup> Veuillez choisir une formation</div>
-            </div>
-        </div>
-    </div>
-</div>
-       
+
     </form>
-    </div>
-
-
-
+</div>

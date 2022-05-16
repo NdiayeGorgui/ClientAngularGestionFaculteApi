@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Role } from '../Role/role';
+
+
 import { User } from '../User/user';
 const httOptions={
   headers:new HttpHeaders({'Content-Type':'application/json'})
@@ -18,9 +20,10 @@ export class AuthService {
   private baseURLAddRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
   private baseURLDeleteRoleToUser="http://localhost:8090/api/Users/deleteRoleToUser"
   private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
-  private baseURLUsersListByRole="http://localhost:8090/api"
+  private baseURLRolesListByUserName="http://localhost:8090/api/Users/Role/UserName"
   private baseURLSearchUserbyRolesId="http://localhost:8090/api/Users/Role"
   private baseURLSearcRolebyUsersId="http://localhost:8090/api/Roles/User"
+  private baseURLAddRolesToUser="http://localhost:8090/api/Users/addRoleToUser"
   constructor(private httpClient:HttpClient, private router:Router) { }
 
   /* users:User[]=[{'username':"admin",'password':"admin",'roles':['ADMIN']},
@@ -171,6 +174,9 @@ isSuperAdmin():Boolean{
   addRoleToUser(userName:string,roleName:string):Observable<Object>{
     return this.httpClient.post(`${this.baseURLAddRoleToUser}/${userName}/${roleName}`,httOptions);
   }
+  /* addRolesToUser(roleUser:RoleUser):Observable<Object>{
+    return this.httpClient.post(`${this.baseURLAddRolesToUser}`,roleUser);
+  } */
 
   deleteRoleToUser(userName:string,roleName:string):Observable<Object>{
     return this.httpClient.delete(`${this.baseURLDeleteRoleToUser}/${userName}/${roleName}`);
@@ -188,5 +194,8 @@ isSuperAdmin():Boolean{
   }
   searcRolebyUsersId(id:number):Observable<Role[]>{
     return this.httpClient.get<Role[]>(`${this.baseURLSearcRolebyUsersId}/${id}`);
+  }
+  searcRolesbyUserName(userName:string):Observable<Role[]>{
+    return this.httpClient.get<Role[]>(`${this.baseURLRolesListByUserName}/${userName}`);
   }
 }

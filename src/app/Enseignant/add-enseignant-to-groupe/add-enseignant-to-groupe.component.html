@@ -12,7 +12,7 @@
                     <select [(ngModel)]="mail" name="mail" class="form-control"
                         (change)="onChangeEnseignant()" formControlName="egEnseignant"
                         [ngClass]="{'is-invalid':submitted && enseignantGroupeFormgroup.controls.egEnseignant.errors}">
-                        <option value="0">- Choisir un Enseignant - </option>
+                        <option value="0" disabled>- Choisir un Enseignant - </option>
                         <option *ngFor="let enseignant of enseignants" value="{{enseignant.mail}}">
                             {{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>>
                     </select>
@@ -36,7 +36,7 @@
                     <select [(ngModel)]="numeroGroupe" name="numeroGroupe" class="form-control" 
                     (change)="onChangeGroupe()" formControlName="egGroupe"
                     [ngClass]="{'is-invalid':submitted && enseignantGroupeFormgroup.controls.egGroupe.errors}">
-                        <option value="0">- Choisir un Groupe -</option>
+                        <option value="0" disabled>- Choisir un Groupe -</option>
                         <option *ngFor="let groupe of groupes" value="{{groupe.numeroGroupe}}">{{groupe.numeroGroupe}}</option>>
                     </select>
                     <div *ngIf="submitted && enseignantGroupeFormgroup.controls.egGroupe.errors" class="invalid-feedback">

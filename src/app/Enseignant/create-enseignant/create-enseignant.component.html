@@ -10,7 +10,7 @@
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eFirstName.errors}">
             <div *ngIf="submitted && enseignantFormgroup.controls.eFirstName.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eFirstName.errors"><sup>* </sup> Le prénom est requis</div>
-                <div *ngIf="enseignantFormgroup.controls.eFirstName.errors.minlength"><sup>* </sup> Le nombre min de caractere requis est 2</div>
+                <div *ngIf="enseignantFormgroup.controls.eFirstName.errors.minlength"><sup>* </sup> Le nombre min de caracteres est 2</div>
             </div>
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eLastName.errors}">
             <div *ngIf="submitted && enseignantFormgroup.controls.eLastName.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eLastName.errors"><sup>* </sup> Le nom est requis</div>
-                <div *ngIf="enseignantFormgroup.controls.eLastName.errors.minlength"><sup>* </sup> Le nombre min de caractere requis est 2</div>
+                <div *ngIf="enseignantFormgroup.controls.eLastName.errors.minlength"><sup>* </sup> Le nombre min de caracteres est 2</div>
             </div>
         </div>
         <div class="form-group">
@@ -47,13 +47,14 @@
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eTelephone.errors}">
             <div *ngIf="submitted && enseignantFormgroup.controls.eTelephone.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eTelephone.errors"><sup>* </sup> Le Téléphone est requis</div>
+                <div *ngIf="enseignantFormgroup.controls.eTelephone.errors.minlength"><sup>* </sup> Le nombre min de caracteres est 10</div>
             </div>
         </div>
         <div class="form-group">
            <select [(ngModel)]="enseignant.statut" name="statut"  class="form-control" formControlName="eStatut"
            [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eStatut.errors}">
           
-                <option [ngValue]="null" disabled>Choisir Statut</option>
+                <option [ngValue]="null" disabled>-Choisir un Statut-</option>
                 <option *ngFor="let stat of statues" value="{{stat.name}}">{{stat.name}}</option>
             </select>
              <div *ngIf="submitted && enseignantFormgroup.controls.eStatut.errors" class="invalid-feedback">
@@ -64,7 +65,7 @@
         <div class="form-group">
             <select  [(ngModel)]="numeroGroupe" name="groupe.numeroGroupe"  class="form-control" formControlName="eGroupe"
             [ngClass]="{'is-invalid':submitted && enseignantFormgroup.controls.eGroupe.errors}" > 
-                <option [ngValue]="null" disabled>Choisir un Groupe</option>
+                <option [ngValue]="null" disabled>-Choisir un Groupe-</option>
                 <option *ngFor="let groupe of groupes" [ngValue]="groupe.numeroGroupe">{{groupe.numeroGroupe}}</option>
             </select>
             <div *ngIf="submitted && enseignantFormgroup.controls.eGroupe.errors" class="invalid-feedback">

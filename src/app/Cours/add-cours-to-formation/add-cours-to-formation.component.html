@@ -10,7 +10,7 @@
                     <select [(ngModel)]="libelle" name="libelle" class="form-control"
                         (change)="onChangeCours()" formControlName="cgCours"
                         [ngClass]="{'is-invalid':submitted && coursFormationFormgroup.controls.cgCours.errors}">
-                        <option value="0">- Choisir un Cours -</option>
+                        <option value="0" disabled>- Choisir un Cours -</option>
                         <option *ngFor="let cours of courss" value="{{cours.libelle}}">
                             {{cours.libelle}}</option>>
                     </select>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <select [(ngModel)]="nomFormation" name="nomFormation" class="form-control" (change)="onChangeFormation()" formControlName="cgFormation"
                     [ngClass]="{'is-invalid':submitted && coursFormationFormgroup.controls.cgFormation.errors}">
-                        <option value="0">- Choisir une Formation -</option>
+                        <option value="0" disabled>- Choisir une Formation -</option>
                         <option *ngFor="let formation of formations" value="{{formation.nomFormation}}">{{formation.nomFormation}}</option>>
                     </select>
                     <div *ngIf="submitted && coursFormationFormgroup.controls.cgFormation.errors" class="invalid-feedback">
