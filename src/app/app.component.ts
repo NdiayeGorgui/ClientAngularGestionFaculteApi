@@ -13,16 +13,11 @@ export class AppComponent implements OnInit{
 
   
 ngOnInit() {
-  let isloggedin:any;
-  let loggedUser:any;
-
-  isloggedin=localStorage.getItem('isloggedIn');
-  loggedUser=localStorage.getItem('loggedUser');
-
-  if(isloggedin!='true' || !loggedUser)
-  this.router.navigate(['/login']);
-  else
-  this.authService.setLoggedUserFromLocalStorage(loggedUser);
+ 
+//Afficher la page login seulement lorsque l’utilisateur n’est pas connecté
+  this.authService.loadToken();
+if (this.authService.getToken()==null || this.authService.isTokenExpired())
+this.router.navigate(['/login']);
 }
 
 

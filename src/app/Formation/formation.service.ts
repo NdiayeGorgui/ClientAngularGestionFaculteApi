@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../Login/auth.service';
 import { Formation } from './formation';
 
 @Injectable({
@@ -11,25 +12,43 @@ export class FormationService {
   private baseURL="http://localhost:8090/api/Formations"
   private baseURLCours="http://localhost:8090/api/Formations/Cours"
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private authService:AuthService) { }
 
   getFormationList():Observable<Formation[]>{
-    return this.httpClient.get<Formation[]>(`${this.baseURL}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<Formation[]>(`${this.baseURL}`,{headers:httpHeaders});
   }
   getFormationById(id:number):Observable<Formation>{
-    return this.httpClient.get<Formation>(`${this.baseURL}/${id}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<Formation>(`${this.baseURL}/${id}`,{headers:httpHeaders});
   }
 
   searchFormationsByCoursId(name:string):Observable<Formation[]>{
-    return this.httpClient.get<Formation[]>(`${this.baseURLCours}/${name}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<Formation[]>(`${this.baseURLCours}/${name}`,{headers:httpHeaders});
   }
   createFormation(formation:Formation):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,formation);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.post(`${this.baseURL}`,formation,{headers:httpHeaders});
   }
   updateFormation(id:number,formation:Formation):Observable<Object>{
-    return this.httpClient.put(`${this.baseURL}/${id}`,formation);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.put(`${this.baseURL}/${id}`,formation,{headers:httpHeaders});
   }
   deleteFormation(id:number):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.delete(`${this.baseURL}/${id}`,{headers:httpHeaders});
   }
 }

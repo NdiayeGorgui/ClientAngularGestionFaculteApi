@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../Login/auth.service';
 import { TypeCours } from './type-cours';
 
 @Injectable({
@@ -10,23 +11,38 @@ export class TypeCoursService {
 
   private baseURL="http://localhost:8090/api/TypeCours"
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private authService:AuthService) { }
 
   getTypeCoursList():Observable<TypeCours[]>{
-    return this.httpClient.get<TypeCours[]>(`${this.baseURL}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<TypeCours[]>(`${this.baseURL}`,{headers:httpHeaders});
   }
   getTypeCoursById(id:number):Observable<TypeCours>{
-    return this.httpClient.get<TypeCours>(`${this.baseURL}/${id}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<TypeCours>(`${this.baseURL}/${id}`,{headers:httpHeaders});
   }
 
  
   createTypeCours(typeCours:TypeCours):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`,typeCours);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.post(`${this.baseURL}`,typeCours,{headers:httpHeaders});
   }
   updateTypeCours(id:number,typeCours:TypeCours):Observable<Object>{
-    return this.httpClient.put(`${this.baseURL}/${id}`,typeCours);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.put(`${this.baseURL}/${id}`,typeCours,{headers:httpHeaders});
   }
   deleteTypeCours(id:number):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL}/${id}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.delete(`${this.baseURL}/${id}`,{headers:httpHeaders});
   }
 }
