@@ -1,7 +1,7 @@
 
 
 <div class="">
-    <button  *ngIf="authService.isAdmin()" (click)="createFormation()"  class="btn btn-sm btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button   *ngIf="authService.isAdmin() || authService.isResponsable()" (click)="createFormation()"  class="btn btn-sm btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
@@ -36,8 +36,8 @@
             <td>{{formation.annee}}</td>
             <td>{{formation.duree}}<span>h</span></td>
            
-                <td *ngIf="authService.isAdmin()"><button (click)="updateFormation(formation.id)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
-                <td *ngIf="authService.isAdmin()"><button (click)="deleteFormation(formation.id)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>
+                <td  *ngIf="authService.isAdmin() || authService.isResponsable()"><button (click)="updateFormation(formation.id)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
+                <td  *ngIf="authService.isAdmin() || authService.isResponsable()"><button (click)="deleteFormation(formation.id)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>
                 <td><button (click)="formationDetails(formation.id)" class="btn btn-sm btn-info" style="margin-left: 10px"><span title="Détails" class="fa fa-info"></span></button> </td>
             
         </tr>

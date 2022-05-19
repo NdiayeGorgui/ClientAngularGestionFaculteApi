@@ -11,7 +11,7 @@ export class EnseignementGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      if(this.authService.isAdmin()){
+      if(this.authService.isAdmin()||this.authService.isResponsable()){
         return true;
       }else{
         this.router.navigate(['forbidden']);

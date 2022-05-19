@@ -1,6 +1,6 @@
 
 <div class="">
-    <button *ngIf="authService.isAdmin()"  (click)="createCours()"  class="btn btn-sm btn-success" style="margin-bottom: 10px">Ajouter</button>
+    <button  *ngIf="authService.isAdmin() || authService.isResponsable()"  (click)="createCours()"  class="btn btn-sm btn-success" style="margin-bottom: 10px">Ajouter</button>
 </div>
 
 <div class="list row">
@@ -34,8 +34,8 @@
             <td>{{cour.libelle}}</td>
             <td>{{cour.typecour.type}}</td>
            
-                <td *ngIf="authService.isAdmin()"><button (click)="updateCours(cour.id)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
-                <td *ngIf="authService.isAdmin()"><button (click)="deleteCours(cour.id)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>
+                <td  *ngIf="authService.isAdmin() || authService.isResponsable()"><button (click)="updateCours(cour.id)" class="btn btn-sm btn-warning"><span title="Modifier" class="fa fa-pencil-square-o"></span></button></td>
+                <td  *ngIf="authService.isAdmin() || authService.isResponsable()"><button (click)="deleteCours(cour.id)" class="btn btn-sm btn-danger" style="margin-left: 10px"><span title="Supprimer" class="fa fa-trash-o"></span></button></td>
                 <td><button (click)="coursDetails(cour.id)" class="btn btn-sm btn-info" style="margin-left: 10px"><span title="Détails" class="fa fa-info"></span></button> </td>
             
         </tr>

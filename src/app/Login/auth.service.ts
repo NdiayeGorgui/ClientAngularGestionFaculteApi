@@ -29,9 +29,6 @@ export class AuthService {
 
   constructor(private httpClient:HttpClient, private router:Router) { }
 
- 
-
-
 public loggedUser!:string;
 public isloggedIn!:boolean;
 public roles!:String[];
@@ -40,7 +37,8 @@ private helper = new JwtHelperService();
 
 
 login(user : User){
-return this.httpClient.post<User>(this.baseApiURL+'/login', user , {observe:'response'});
+  this.isloggedIn = true;
+  return this.httpClient.post<User>(this.baseApiURL+'/login', user , {observe:'response'});
 }
 
 saveToken(jwt:string){
@@ -52,26 +50,32 @@ saveToken(jwt:string){
 
   decodeJWT(){ 
     if (this.token == undefined)
-  return;
-const decodedToken = this.helper.decodeToken(this.token);
-this.roles = decodedToken.roles;
-this.loggedUser = decodedToken.sub;
-}
+    return;
+    const decodedToken = this.helper.decodeToken(this.token);
+    this.roles = decodedToken.roles;
+    this.loggedUser = decodedToken.sub;
+  }
 
 
    loadToken() {
     this.token = localStorage.getItem('jwt')!;
-     this.decodeJWT();
+    this.decodeJWT();
   } 
   getToken():string {
-  return this.token;
+    return this.token;
   }
 
 
 isAdmin():Boolean{
   if (!this.roles)
   return false;
- return this.roles.indexOf('ADMIN') >=0;
+  return this.roles.indexOf('ADMIN') >=0;
+}
+
+isResponsable():Boolean{
+  if (!this.roles)
+  return false;
+  return this.roles.indexOf('RESPONSABLE') >=0;
 }
 
   logout(){
@@ -84,7 +88,8 @@ isAdmin():Boolean{
   }
 
   isTokenExpired(): Boolean{
-return this.helper.isTokenExpired(this.token); }
+    return this.helper.isTokenExpired(this.token); 
+  }
 
   setLoggedUserFromLocalStorage(login :string){
     this.loggedUser=login;

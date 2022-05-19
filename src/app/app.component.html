@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Gestion des Enseigments</a>
+  <a class="navbar-brand" href="#">Gestion des Enseignements</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="search-enseignant-groupe">Liste des Enseignants par groupe de formation</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="add-enseignant-to-groupe">Affecter ou Retirer un Enseignant à un groupe</a>
+          <a  *ngIf="authService.isAdmin() || authService.isResponsable()" class="dropdown-item" routerLink="add-enseignant-to-groupe">Affecter ou Retirer un Enseignant à un groupe</a>
          
         </div>
       </li>
@@ -38,7 +38,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="type-cours">Types de cours </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="add-cours-formation">Affecter ou Retirer un cours à une Formation</a>
+          <a  *ngIf="authService.isAdmin() || authService.isResponsable()" class="dropdown-item" routerLink="add-cours-formation">Affecter ou Retirer un cours à une Formation</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -77,11 +77,11 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="search-role-to-user">Liste des utilisateurs par Role</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="add-role-to-user">Affecter ou Retirer un role à un utilisateur</a>
+          <a  *ngIf="authService.isAdmin() || authService.isResponsable()" class="dropdown-item" routerLink="add-role-to-user">Affecter ou Retirer un role à un utilisateur</a>
         </div>
       </li>
 
-      <li *ngIf="authService.isAdmin()" class="nav-item dropdown">
+      <li *ngIf="authService.isAdmin() || authService.isResponsable()" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Services
