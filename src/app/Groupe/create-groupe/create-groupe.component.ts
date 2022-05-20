@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Formation } from 'src/app/Formation/formation';
 import { FormationService } from 'src/app/Formation/formation.service';
+import { ComponentValidatorService } from 'src/app/Validator/component-validator.service';
 import { Groupe } from '../groupe';
 import { GroupeService } from '../groupe.service';
 
@@ -19,11 +20,12 @@ export class CreateGroupeComponent implements OnInit {
   groupe:Groupe=new Groupe();
   constructor(private groupeService:GroupeService,
               private formationService:FormationService,
+              private componentvalidatorService:ComponentValidatorService,
               private router:Router,private fb:FormBuilder) { }
 
   ngOnInit(): void { 
     this.groupeFormgroup=this.fb.group({
-      nGroupe:["",Validators.required],
+      nGroupe:["",[Validators.required],this.componentvalidatorService.validateUniqueNumeroGroupe.bind(this.componentvalidatorService)],
       nFormation:[null,Validators.required],
     });
     this.getFormations();

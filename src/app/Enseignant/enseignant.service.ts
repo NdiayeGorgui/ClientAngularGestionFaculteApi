@@ -17,6 +17,8 @@ export class EnseignantService {
   private baseURLDeleteEnseignantToGroupe="http://localhost:8090/api/Enseignants/deleteEnseignantToGroupe";
   private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
   private baseURLGroupe="http://localhost:8090/api/Enseignants/Groupe";
+  private baseURLMail="http://localhost:8090/api/Enseignants/Mail";
+
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
     
   getEnseignantList():Observable<Enseignant[]>{
@@ -31,6 +33,13 @@ export class EnseignantService {
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
     
     return this.httpClient.get<Enseignant>(`${this.baseURL}/${id}`,{headers:httpHeaders});
+  }
+
+  getEnseignantsByMail(mail:string):Observable<Enseignant[]>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<Enseignant[]>(`${this.baseURLMail}?mail=${mail}`,{headers:httpHeaders});
   }
 
   searchEnseignantsByStatut(statut:string):Observable<Enseignant[]>{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../Login/auth.service';
 
 @Component({
   selector: 'app-acueil',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcueilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
+    
+    if(!this.authService.isTokenExpired())
+    this.authService.isloggedIn = true;
   }
 
 }

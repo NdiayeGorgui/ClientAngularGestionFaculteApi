@@ -8,6 +8,7 @@
             [ngClass]="{'is-invalid':submitted && userFormgroup.controls.uName.errors}">
             <div *ngIf="submitted && userFormgroup.controls.uName.errors" class="invalid-feedback">
                 <div *ngIf="userFormgroup.controls.uName.errors"><sup>* </sup> Le nom d'utilisateur est requis</div>
+                <div *ngIf="userFormgroup.controls.uName.errors.userNameUnique"><sup>* </sup> Le nom d'utilisateur existe déja</div>
             </div>
         </div>
         <div class="form-group">

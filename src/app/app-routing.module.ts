@@ -45,8 +45,9 @@ import { UserDetailsComponent } from './User/user-details/user-details.component
 import { UserListComponent } from './User/user-list/user-list.component';
 
 const routes: Routes = [
-  { path:'login',component:LoginComponent},
+ 
  { path:'home',component:AcueilComponent},
+ { path:'login',component:LoginComponent},
  { path:'enseignants',component:EnseignantListComponent},
  { path:'create-enseignant',component:CreateEnseignantComponent,canActivate:[EnseignementGuard]},
  { path:'add-enseignant-to-groupe',component:AddEnseignantToGroupeComponent,canActivate:[EnseignementGuard]},

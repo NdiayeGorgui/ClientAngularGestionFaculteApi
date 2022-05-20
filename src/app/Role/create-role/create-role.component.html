@@ -8,6 +8,7 @@
             [ngClass]="{'is-invalid':submitted && roleFormgroup.controls.rName.errors}">
             <div *ngIf="submitted && roleFormgroup.controls.rName.errors" class="invalid-feedback">
                 <div *ngIf="roleFormgroup.controls.rName.errors"><sup>* </sup> Le nom du rôle est requis</div>
+                <div *ngIf="roleFormgroup.controls.rName.errors.roleNameUnique"><sup>* </sup> Le nom du rôle existe déja</div>
             </div>
         </div>
         

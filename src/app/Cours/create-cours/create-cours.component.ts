@@ -5,6 +5,7 @@ import { Enseignant } from 'src/app/Enseignant/enseignant';
 import { EnseignantService } from 'src/app/Enseignant/enseignant.service';
 import { Formation } from 'src/app/Formation/formation';
 import { FormationService } from 'src/app/Formation/formation.service';
+import { ComponentValidatorService } from 'src/app/Validator/component-validator.service';
 import { Cours } from '../cours';
 import { CoursService } from '../cours.service';
 import { TypeCours } from '../type-cours';
@@ -37,7 +38,7 @@ export class CreateCoursComponent implements OnInit {
  
   constructor(private coursService:CoursService,
               private enseignantService:EnseignantService,
-              private typeCoursService:TypeCoursService,
+              private typeCoursService:TypeCoursService,private componentvalidatorService:ComponentValidatorService,
               private route:ActivatedRoute,private formationService:FormationService,
               private router:Router,private fb:FormBuilder) {
 
@@ -46,7 +47,7 @@ export class CreateCoursComponent implements OnInit {
 
   ngOnInit(): void { 
     this.coursFormgroup=this.fb.group({
-      cLibelle:["",Validators.required],
+      cLibelle:["",[Validators.required],this.componentvalidatorService.validateUniqueLibelle.bind(this.componentvalidatorService)],
       cNbrHeure:[0.0,Validators.required],
       cEnseignant:[null,Validators.required],
       cTypeCours:[null,Validators.required],

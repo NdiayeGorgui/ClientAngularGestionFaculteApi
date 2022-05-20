@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Groupe } from 'src/app/Groupe/groupe';
 import { GroupeService } from 'src/app/Groupe/groupe.service';
+import { ComponentValidatorService } from 'src/app/Validator/component-validator.service';
 import { Enseignant } from '../enseignant';
 import { Istatus } from '../enseignant-status-interface';
 import { EnseignantService } from '../enseignant.service';
@@ -26,16 +27,18 @@ export class CreateEnseignantComponent implements OnInit {
   {id:3,name:'Vacataire'}];
 
   public statId!:number;
-
-  constructor(private enseignantService:EnseignantService,
+  emailIds = ["gogo2002@hotmail.fr","samhogn@gmail.com","abc@gmail.com"];
+  constructor(private enseignantService:EnseignantService,private componentvalidatorService:ComponentValidatorService,
     private router:Router,private groupeService:GroupeService,private fb:FormBuilder) { }
+
+   
 
   ngOnInit(): void {
     this.enseignantFormgroup=this.fb.group({
       eAddress:[""],
       eFirstName:["",[Validators.required, Validators.minLength(2)]],
       eLastName:["",[Validators.required, Validators.minLength(2)]],
-      eMail:["",[Validators.required, Validators.email]],
+      eMail:["",[Validators.required, Validators.email],this.componentvalidatorService.validateUniqueEmail.bind(this.componentvalidatorService)],
       eStatut:["",Validators.required],
       eTelephone:["",[Validators.required, Validators.minLength(10)]],
       eGroupe:["",Validators.required]
@@ -72,6 +75,18 @@ private getGroupes(){
     this.groupes=data;
    
   });
+}
+
+duplicateEmailValidator(control: FormControl){
+  let email = control.value;
+  if (email && this.emailIds.includes(email)) {
+    return {
+      duplicateEmailId: {
+        email: email
+      }
+    }
+  }
+  return null;
 }
 
 }

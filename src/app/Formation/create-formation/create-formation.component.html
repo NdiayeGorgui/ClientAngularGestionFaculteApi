@@ -9,6 +9,7 @@
             [ngClass]="{'is-invalid':submitted && formationFormgroup.controls.nFormation.errors}">
             <div *ngIf="submitted && formationFormgroup.controls.nFormation.errors" class="invalid-feedback">
                 <div *ngIf="formationFormgroup.controls.nFormation.errors"><sup>* </sup> Le nom de la Formation est requis</div>
+                <div *ngIf="formationFormgroup.controls.nFormation.errors.formationUnique"><sup>* </sup> Le nom de la Formation existe déja</div>
             </div>
         </div>
         <div class="form-group">

@@ -55,6 +55,7 @@ import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-u
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,6 +101,7 @@ import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-u
     AddCoursToFormationComponent,
     RoleListComponent,
     SearchRoleUsersComponent,
+    
    
    
 

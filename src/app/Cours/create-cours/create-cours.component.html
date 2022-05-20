@@ -10,6 +10,7 @@
                         [ngClass]="{'is-invalid':submitted && coursFormgroup.controls.cLibelle.errors}">
                     <div *ngIf="submitted && coursFormgroup.controls.cLibelle.errors" class="invalid-feedback">
                         <div *ngIf="coursFormgroup.controls.cLibelle.errors"><sup>* </sup> Le libelle est requis</div>
+                        <div *ngIf="coursFormgroup.controls.cLibelle.errors.libelleUnique"><sup>* </sup> Le libelle existe déja</div>
                     </div>
                 </div>
                 <div class="form-group">

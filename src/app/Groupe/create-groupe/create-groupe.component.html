@@ -8,6 +8,7 @@
             [ngClass]="{'is-invalid':submitted && groupeFormgroup.controls.nGroupe.errors}">
             <div *ngIf="submitted && groupeFormgroup.controls.nGroupe.errors" class="invalid-feedback">
                 <div *ngIf="groupeFormgroup.controls.nGroupe.errors"><sup>* </sup> Le numéro du groupe est requis</div>
+                <div *ngIf="groupeFormgroup.controls.nGroupe.errors.groupeUnique"><sup>* </sup> Le numéro du groupe existe déja</div>
             </div>
         </div>
        

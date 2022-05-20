@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Login/auth.service';
 import { Role } from 'src/app/Role/role';
+import { ComponentValidatorService } from 'src/app/Validator/component-validator.service';
 import { User } from '../user';
 
 @Component({
@@ -21,11 +22,12 @@ export class CreateUserComponent implements OnInit {
   user:User=new User();
   constructor(private userService:AuthService,
               private roleService:AuthService,
+              private componentvalidatorService:ComponentValidatorService,
               private router:Router, private fb:FormBuilder) { }
 
   ngOnInit(): void { 
     this.userFormgroup=this.fb.group({
-      uName:["",Validators.required],
+      uName:["",[Validators.required],this.componentvalidatorService.validateUniqueUserName.bind(this.componentvalidatorService)],
       upassword:["",Validators.required],
       rName:["",Validators.required]
     });

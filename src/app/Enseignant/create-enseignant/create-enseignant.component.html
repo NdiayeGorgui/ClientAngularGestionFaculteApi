@@ -39,6 +39,7 @@
             <div *ngIf="submitted && enseignantFormgroup.controls.eMail.errors" class="invalid-feedback">
                 <div *ngIf="enseignantFormgroup.controls.eMail.errors"><sup>* </sup> Le mail est requis</div>
                 <div *ngIf="enseignantFormgroup.controls.eMail.errors.email"><sup>* </sup> L'adresse Email est invalid</div>
+                <div *ngIf="enseignantFormgroup.controls.eMail.errors.emailUnique"><sup>* </sup> L'adresse Email existe déja</div>
             </div>
         </div>
         <div class="form-group">

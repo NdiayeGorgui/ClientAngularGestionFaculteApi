@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ComponentValidatorService } from 'src/app/Validator/component-validator.service';
 import { Formation } from '../formation';
 import { FormationService } from '../formation.service';
 
@@ -13,12 +14,12 @@ export class CreateFormationComponent implements OnInit {
   formationFormgroup!:FormGroup;
   submitted:boolean=false;
   formation:Formation=new Formation();
-  constructor(private formationService:FormationService,
+  constructor(private formationService:FormationService,private componentvalidatorService:ComponentValidatorService,
     private router:Router,private fb:FormBuilder) { }
 
   ngOnInit(): void { 
     this.formationFormgroup=this.fb.group({
-      nFormation:["",Validators.required],
+      nFormation:["",[Validators.required],this.componentvalidatorService.validateUniqueNomFormation.bind(this.componentvalidatorService)],
       nDuree:["",Validators.required],
       nAnnee:["",Validators.required]
     });
