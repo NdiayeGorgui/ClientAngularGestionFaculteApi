@@ -5,9 +5,7 @@
 </div>
 <p></p>
     <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline my-2 my-lg-0">
-        <!-- <label for="">Mot Clé:</label> -->
-        <!-- <input class="form-control mr-sm-2" name="motCle" [(ngModel)]="statut" required type="search"
-            placeholder="Saisir le Statut" aria-label="Search"> -->
+       
             <div class="form-group">
                 <select [(ngModel)]="statut" name="statut"  class="form-control" (change)="statusChange(statut)" > 
                      <option value="null" >Choisir Statut</option>

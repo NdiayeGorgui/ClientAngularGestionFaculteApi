@@ -17,6 +17,12 @@ export class CoursService {
   private baseURLAddCoursToFormation="http://localhost:8090/api/Cours/addCoursToFormation";
   private baseURLDeleteCoursToFormation="http://localhost:8090/api/Cours/deleteCoursToFormation";
   private baseURLEnseignant="http://localhost:8090/api/Cours/Enseignants";
+  private baseURLEnseignantHeure="http://localhost:8090/api/Cours/Enseignants/SumHours";
+  private baseURLTypeCoursHeure="http://localhost:8090/api/Cours/TypeCours/SumHours";
+  private baseURLEnseignantHeureSup="http://localhost:8090/api/Cours/Enseignants/HeureSup/SumHours";
+  private baseURLEnseignantHeureSousService="http://localhost:8090/api/Cours/Enseignants/HeureSousService/SumHours";
+  private baseURLHeureGlobal="http://localhost:8090/api/Cours/Enseignants/Global/SumHours";
+  private baseURLStatutHeure="http://localhost:8090/api/Cours/Enseignants/Statut/SumHours";
   private baseURLFormation="http://localhost:8090/api/Cours/FormationName";
 
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
@@ -34,6 +40,42 @@ export class CoursService {
     return this.httpClient.get<Cours>(`${this.baseURL}/${id}`,{headers:httpHeaders});
   }
 
+  getNbreHeureEnseignantById(id:number):Observable<number>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<number>(`${this.baseURLEnseignantHeure}/${id}`,{headers:httpHeaders});
+  }
+  getNbreHeureSupEnseignantById(id:number):Observable<number>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<number>(`${this.baseURLEnseignantHeureSup}/${id}`,{headers:httpHeaders});
+  }
+  getNbreHeureSousServiceEnseignantById(id:number):Observable<number>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<number>(`${this.baseURLEnseignantHeureSousService}/${id}`,{headers:httpHeaders});
+  }
+  getNbreHeureGlobal():Observable<number>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<number>(`${this.baseURLHeureGlobal}`,{headers:httpHeaders});
+  }
+  getNbreHeureStatut(statut:string):Observable<number>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<number>(`${this.baseURLStatutHeure}/${statut}`,{headers:httpHeaders});
+  }
+  getNbreHeureTypeCoursById(id:number):Observable<number>{
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.httpClient.get<number>(`${this.baseURLTypeCoursHeure}/${id}`,{headers:httpHeaders});
+  }
   searchCoursByEnseignantId(id:number):Observable<Cours[]>{
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;

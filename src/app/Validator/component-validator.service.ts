@@ -17,13 +17,7 @@ export class ComponentValidatorService {
     private coursService:CoursService, private formationService:FormationService,
     private groupeService:GroupeService, private authService:AuthService) { }
 
-  validateUniqueEmail(controle:AbstractControl){
-    return this.checkUniqueEmail(controle.value).pipe(
-      map(res => {
-        return res ? null:{emailUnique:true};
-      })
-    ); 
-  }
+  
 
   checkUniqueEmail(email:string):Observable<boolean>{
     return this.enseignantService.getEnseignantList().pipe(
@@ -33,6 +27,14 @@ export class ComponentValidatorService {
       map(enseignants=>!enseignants.length)
       );
     
+  }
+
+  validateUniqueEmail(controle:AbstractControl){
+    return this.checkUniqueEmail(controle.value).pipe(
+      map(res => {
+        return res ? null:{emailUnique:true};
+      })
+    ); 
   }
 
   checkUniqueLibelle(libelle:string):Observable<boolean>{

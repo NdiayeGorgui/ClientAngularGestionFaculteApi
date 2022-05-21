@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { Role } from '../Role/role';
-
-
 import { User } from '../User/user';
+
 const httOptions={
   headers:new HttpHeaders({'Content-Type':'application/json'})
 };

@@ -49,6 +49,10 @@ import { AddEnseignantToGroupeComponent } from './Enseignant/add-enseignant-to-g
 import { AddCoursToFormationComponent } from './Cours/add-cours-to-formation/add-cours-to-formation.component';
 import { RoleListComponent } from './Role/role-list/role-list.component';
 import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-users.component';
+import { TotalHeureParStatutComponent } from './Statistique/total-heure-par-statut/total-heure-par-statut.component';
+import { TotalHeureParEnseignantComponent } from './Statistique/total-heure-par-enseignant/total-heure-par-enseignant.component';
+import { TotalHeureParTypecoursComponent } from './Statistique/total-heure-par-typecours/total-heure-par-typecours.component';
+import { InfoComponent } from './Statistique/info/info.component';
 
 
 
@@ -101,10 +105,12 @@ import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-u
     AddCoursToFormationComponent,
     RoleListComponent,
     SearchRoleUsersComponent,
+    TotalHeureParStatutComponent,
+    TotalHeureParEnseignantComponent,
+    TotalHeureParTypecoursComponent,
+    InfoComponent,
     
    
-   
-
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,6 @@ ngOnInit() {
 if (this.authService.getToken()==null || this.authService.isTokenExpired())
 this.router.navigate(['/login']);
 }
-
-
   onLogout(){
    this.authService.logout();
   }

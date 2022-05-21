@@ -1,0 +1,33 @@
+<p></p>
+<div class="container">
+    <div>
+        <h4>Afficher le nombre total d'heures de Cours pour un Enseignant</h4>
+    </div>
+    <p></p>
+    <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline my-2 my-lg-0">
+        
+            <div class="form-group">
+                <select [(ngModel)]="enseignantId" name="enseignantId"  class="form-control" (change)="enseignantChange(enseignantId)" > 
+                     <option value="0"  >Choisir Enseignant</option>
+                     <option *ngFor="let enseignant of enseignants" value="{{enseignant.id}}">{{enseignant.firstName}}<span>&nbsp;</span>{{enseignant.lastName}}</option>>
+                 </select>
+             </div> 
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"style=" margin-left: 10px" (click)="reset()">Effacer</button>
+        
+    </form>
+    <p></p>
+
+    <div *ngIf="enseignantId>0" class="card" style="width: 21rem; margin-top: 10px" cadre>
+        <div class="card-body">
+            <h5 class="card-title">Nombre total d'heures :</h5>
+            <h6 class="card-subtitle mb-2 text-muted"><b> Heure de travail : </b><b> {{nbrHeure}} <span>h</span></b></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><b> Heure suplémentaire : </b><b> {{heureSup}} <span>h</span></b></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><b> Heure sous service : </b><b> {{heureSousService}} <span>h</span></b></h6>
+           
+        </div>
+    </div>
+
+</div>
+
+ 
+

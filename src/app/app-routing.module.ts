@@ -39,22 +39,26 @@ import { RoleDetailsComponent } from './Role/role-details/role-details.component
 import { RoleListComponent } from './Role/role-list/role-list.component';
 import { SearchRoleUsersComponent } from './Role/search-role-users/search-role-users.component';
 import { UpdateRoleComponent } from './Role/update-role/update-role.component';
+import { InfoComponent } from './Statistique/info/info.component';
+import { TotalHeureParEnseignantComponent } from './Statistique/total-heure-par-enseignant/total-heure-par-enseignant.component';
+import { TotalHeureParStatutComponent } from './Statistique/total-heure-par-statut/total-heure-par-statut.component';
+import { TotalHeureParTypecoursComponent } from './Statistique/total-heure-par-typecours/total-heure-par-typecours.component';
 import { CreateUserComponent } from './User/create-user/create-user.component';
 import { UpdateUserComponent } from './User/update-user/update-user.component';
 import { UserDetailsComponent } from './User/user-details/user-details.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 
 const routes: Routes = [
- 
+ { path:'',redirectTo :'home',pathMatch:'full'},
+
  { path:'home',component:AcueilComponent},
  { path:'login',component:LoginComponent},
+
  { path:'enseignants',component:EnseignantListComponent},
  { path:'create-enseignant',component:CreateEnseignantComponent,canActivate:[EnseignementGuard]},
  { path:'add-enseignant-to-groupe',component:AddEnseignantToGroupeComponent,canActivate:[EnseignementGuard]},
  { path:'search-enseignant',component:SearchEnseignantComponent},
  { path:'search-enseignant-groupe',component:SearchEnseignantGroupeComponent},
-
- { path:'',redirectTo :'home',pathMatch:'full'},
  { path:'update-enseignant/:id',component:UpdateEnseignantComponent,canActivate:[EnseignementGuard]},
  { path:'enseignant-details/:id',component:EnseignantDeatailsComponent},
 
@@ -97,10 +101,16 @@ const routes: Routes = [
  { path:'role-details/:id',component:RoleDetailsComponent},
  { path:'search-role-to-user',component:SearchRoleUsersComponent},
 
+ { path:'total-heure-par-enseignant',component:TotalHeureParEnseignantComponent,canActivate:[EnseignementGuard]},
+ { path:'total-heure-par-type-cours',component:TotalHeureParTypecoursComponent,canActivate:[EnseignementGuard]},
+ { path:'total-heure-par-statut',component:TotalHeureParStatutComponent,canActivate:[EnseignementGuard]},
+ { path:'info',component:InfoComponent,canActivate:[EnseignementGuard]},
+
  { path:'forbidden',component:ForbiddenComponent},
+ 
 
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
