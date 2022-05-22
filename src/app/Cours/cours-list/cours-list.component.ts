@@ -15,6 +15,8 @@ export class CoursListComponent implements OnInit {
   page:number=1;
   totalRecords!:number;
   cours: Cours[] = [];
+   deleted:boolean=false;
+ 
   constructor(private coursService:CoursService,
     private router:Router,
     public authService:AuthService) { }
@@ -39,13 +41,19 @@ updateCours(id:number){
 
 deleteCours(id:number){
   let conf=confirm("Etes-vous sure ?")
+  
   if(conf){
+    
   this.coursService.deleteCours(id).subscribe(data => {
     alert("Suppression effectuée avec succés !");
-    console.log(data);
     this.getCours();
+    this.deleted=true;
+   
   });
-}
+  if(!this.deleted){
+    alert("Ce cours est lié à une ou plusieurs formations, veuillez le retirer d'abord !");
+  }
+} 
 }
 
 coursDetails(id:number){

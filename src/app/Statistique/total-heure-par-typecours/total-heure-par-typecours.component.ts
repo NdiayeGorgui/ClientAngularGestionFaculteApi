@@ -43,16 +43,20 @@ export class TotalHeureParTypecoursComponent implements OnInit {
      console.log(dataForm);
      this.coursService.getNbreHeureTypeCoursById(this.typeCoursId).subscribe(data => {
        this.nbrHeure=data;
+
+       this.coursService.getNbreHeureGlobal().subscribe(data1 => {
+        this.nbrHeureGlobal=data1;
+        console.log(data1);
+
+        let res=(data/data1)*100;
+       this.taux=Math.round(res);
+      });
      
      });
 
-     this.coursService.getNbreHeureGlobal().subscribe(data => {
-      this.nbrHeureGlobal=data;
-      console.log(data);
-    });
+    
 
-     let res=(this.nbrHeure/this.nbrHeureGlobal)*100;
-     this.taux=Math.round(res);
+     
     }
    reset() {
      this.typeCoursId=0;

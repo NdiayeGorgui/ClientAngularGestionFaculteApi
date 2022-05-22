@@ -9,9 +9,9 @@ import { Istatus } from 'src/app/Enseignant/enseignant-status-interface';
   styleUrls: ['./total-heure-par-statut.component.css']
 })
 export class TotalHeureParStatutComponent implements OnInit {
-  nbrHeureGlobal:number=1;
-  nbrHeure:number=0;
-  taux:number=0;
+  nbrHeureGlobal!:number;
+  nbrHeure!:number;
+  taux!:number;
   statut:string="";
   
   public statues:Array<Istatus>=[{id:1,name:'Permanent'},
@@ -22,6 +22,7 @@ export class TotalHeureParStatutComponent implements OnInit {
 
   ngOnInit(): void {
     this.reset(this.statut);
+    this.taux
    
    }
 
@@ -30,19 +31,26 @@ export class TotalHeureParStatutComponent implements OnInit {
   }
   
   onSearch(dataForm:any){
- 
+   
+    
     this.coursService.getNbreHeureStatut(this.statut).subscribe(data => {
+      
       this.nbrHeure=data;
-      console.log(data);    
+      console.log(data);   
+      
+      this.coursService.getNbreHeureGlobal().subscribe(data1 => {
+      
+        this.nbrHeureGlobal=data1;
+        console.log(data1);  
+        
+        let res=(data/data1)*100;
+        this.taux=Math.round(res);
+      });
     });
     
-    this.coursService.getNbreHeureGlobal().subscribe(data => {
-      this.nbrHeureGlobal=data;
-      console.log(data);    
-    });
-    let res=(this.nbrHeure/this.nbrHeureGlobal)*100;
-    this.taux=Math.round(res);
-   
+  
+  
+    
   }
 
   reset(statut:string) {
