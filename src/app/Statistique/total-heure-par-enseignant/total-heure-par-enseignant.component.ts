@@ -23,8 +23,6 @@ export class TotalHeureParEnseignantComponent implements OnInit {
    
    }
  
-  
- 
    enseignantChange(id: any) {
      this.onSearch(id);
      console.log(id);

@@ -44,7 +44,10 @@ deleteUser(userId:number){
     alert("Suppression effectuée avec succés !");
     console.log(data);
     this.getUsers();
-  });
+  }, () => {
+    alert("Cet utilisateur est lié à un ou plusieurs roles, veuillez le retirer d'abord !");
+  }
+); 
 }
 }
 

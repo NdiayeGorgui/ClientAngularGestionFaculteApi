@@ -43,7 +43,10 @@ deleteEnseignant(id:number){
       alert("Suppression effectuée avec succés !");
       console.log(data);
       this.getEnseignants();
-    });
+    }, () => {
+      alert("Cet Enseignant est lié à un ou plusieurs groupes, veuillez le retirer d'abord !");
+    }
+  ); 
   }
   
 }
