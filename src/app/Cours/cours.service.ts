@@ -12,18 +12,32 @@ const httOptions={
 export class CoursService {
 
   
-  private baseURL="http://localhost:8090/api/Cours";
-  private baseURLCreateCoursWithFormation="http://localhost:8090/api/Cours/saveCoursWithFormation";
-  private baseURLAddCoursToFormation="http://localhost:8090/api/Cours/addCoursToFormation";
-  private baseURLDeleteCoursToFormation="http://localhost:8090/api/Cours/deleteCoursToFormation";
-  private baseURLEnseignant="http://localhost:8090/api/Cours/Enseignants";
-  private baseURLEnseignantHeure="http://localhost:8090/api/Cours/Enseignants/SumHours";
-  private baseURLTypeCoursHeure="http://localhost:8090/api/Cours/TypeCours/SumHours";
+  //private baseURL="http://localhost:8090/api/Cours";
+ // private baseURLCreateCoursWithFormation="http://localhost:8090/api/Cours/saveCoursWithFormation";
+ // private baseURLAddCoursToFormation="http://localhost:8090/api/Cours/addCoursToFormation";
+  //private baseURLDeleteCoursToFormation="http://localhost:8090/api/Cours/deleteCoursToFormation";
+ // private baseURLEnseignant="http://localhost:8090/api/Cours/Enseignants";
+ // private baseURLEnseignantHeure="http://localhost:8090/api/Cours/Enseignants/SumHours";
+  //private baseURLTypeCoursHeure="http://localhost:8090/api/Cours/TypeCours/SumHours";
+  //private baseURLEnseignantHeureSup="http://localhost:8090/api/Cours/Enseignants/HeureSup/SumHours";
+  //private baseURLEnseignantHeureSousService="http://localhost:8090/api/Cours/Enseignants/HeureSousService/SumHours";
+ // private baseURLHeureGlobal="http://localhost:8090/api/Cours/Enseignants/Global/SumHours";
+ // private baseURLStatutHeure="http://localhost:8090/api/Cours/Enseignants/Statut/SumHours";
+  //private baseURLFormation="http://localhost:8090/api/Cours/FormationName";
+
+  private baseURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours";
+  private baseURLCreateCoursWithFormation="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/saveCoursWithFormation";
+  private baseURLAddCoursToFormation="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/addCoursToFormation";
+  private baseURLDeleteCoursToFormation="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/deleteCoursToFormation";
+  private baseURLEnseignant="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/Enseignants";
+  private baseURLEnseignantHeure="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/Enseignants/SumHours";
+  private baseURLTypeCoursHeure="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/TypeCours/SumHours";
   private baseURLEnseignantHeureSup="http://localhost:8090/api/Cours/Enseignants/HeureSup/SumHours";
-  private baseURLEnseignantHeureSousService="http://localhost:8090/api/Cours/Enseignants/HeureSousService/SumHours";
-  private baseURLHeureGlobal="http://localhost:8090/api/Cours/Enseignants/Global/SumHours";
-  private baseURLStatutHeure="http://localhost:8090/api/Cours/Enseignants/Statut/SumHours";
-  private baseURLFormation="http://localhost:8090/api/Cours/FormationName";
+  private baseURLEnseignantHeureSousService="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/Enseignants/HeureSousService/SumHours";
+  private baseURLHeureGlobal="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/Enseignants/Global/SumHours";
+  private baseURLStatutHeure="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/Enseignants/Statut/SumHours";
+  private baseURLFormation="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Cours/FormationName";
+
 
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
 

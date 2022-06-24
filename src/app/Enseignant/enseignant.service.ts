@@ -11,13 +11,21 @@ const httOptions={
 })
 export class EnseignantService {
   value!:string;
-  private baseURLCreateEnseignantWhithGroupe="http://localhost:8090/api/Enseignants/saveEnseignantWihtGroupe";
-  private baseURL="http://localhost:8090/api/Enseignants";
-  private baseURLAddEnseignantToGroupe="http://localhost:8090/api/Enseignants/addEnseignantToGroupe";
-  private baseURLDeleteEnseignantToGroupe="http://localhost:8090/api/Enseignants/deleteEnseignantToGroupe";
-  private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
-  private baseURLGroupe="http://localhost:8090/api/Enseignants/Groupe";
-  private baseURLMail="http://localhost:8090/api/Enseignants/Mail";
+  //private baseURLCreateEnseignantWhithGroupe="http://localhost:8090/api/Enseignants/saveEnseignantWihtGroupe";
+ // private baseURL="http://localhost:8090/api/Enseignants";
+ // private baseURLAddEnseignantToGroupe="http://localhost:8090/api/Enseignants/addEnseignantToGroupe";
+ // private baseURLDeleteEnseignantToGroupe="http://localhost:8090/api/Enseignants/deleteEnseignantToGroupe";
+  //private baseURLStatut="http://localhost:8090/api/Enseignants/Statut";
+  //private baseURLGroupe="http://localhost:8090/api/Enseignants/Groupe";
+  //private baseURLMail="http://localhost:8090/api/Enseignants/Mail";
+
+  private baseURLCreateEnseignantWhithGroupe="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants/saveEnseignantWihtGroupe";
+  private baseURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants";
+  private baseURLAddEnseignantToGroupe="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants/addEnseignantToGroupe";
+  private baseURLDeleteEnseignantToGroupe="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants/deleteEnseignantToGroupe";
+  private baseURLStatut="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants/Statut";
+  private baseURLGroupe="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants/Groupe";
+  private baseURLMail="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Enseignants/Mail";
 
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
     

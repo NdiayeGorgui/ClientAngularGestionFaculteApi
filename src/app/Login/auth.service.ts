@@ -13,17 +13,29 @@ const httOptions={
   providedIn: 'root'
 })
 export class AuthService {
-  private baseApiURL="http://localhost:8090/api"
-  private baseURL="http://localhost:8090/api/Users"
-  private baseURLUserbyId="http://localhost:8090/api/Users/User"
-  private baseURLRole="http://localhost:8090/api/Roles"
-  private baseURLRoleById="http://localhost:8090/api/Roles/Role"
-  private baseURLAddRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
-  private baseURLDeleteRoleToUser="http://localhost:8090/api/Users/deleteRoleToUser"
-  private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
-  private baseURLRolesListByUserName="http://localhost:8090/api/Users/Role/UserName"
-  private baseURLSearchUserbyRolesId="http://localhost:8090/api/Users/Role"
-  private baseURLSearcRolebyUsersId="http://localhost:8090/api/Roles/User"
+ // private baseApiURL="http://localhost:8090/api"
+  //private baseURL="http://localhost:8090/api/Users"
+ // private baseURLUserbyId="http://localhost:8090/api/Users/User"
+ // private baseURLRole="http://localhost:8090/api/Roles"
+ // private baseURLRoleById="http://localhost:8090/api/Roles/Role"
+ // private baseURLAddRoleToUser="http://localhost:8090/api/Users/addRoleToUser"
+ // private baseURLDeleteRoleToUser="http://localhost:8090/api/Users/deleteRoleToUser"
+ // private baseURLaddUserWithRole="http://localhost:8090/api/Users/addUserWithRole"
+  //private baseURLRolesListByUserName="http://localhost:8090/api/Users/Role/UserName"
+ // private baseURLSearchUserbyRolesId="http://localhost:8090/api/Users/Role"
+  //private baseURLSearcRolebyUsersId="http://localhost:8090/api/Roles/User"
+
+  private baseApiURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api"
+  private baseURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users"
+  private baseURLUserbyId="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users/User"
+  private baseURLRole="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Roles"
+  private baseURLRoleById="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Roles/Role"
+  private baseURLAddRoleToUser="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users/addRoleToUser"
+  private baseURLDeleteRoleToUser="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users/deleteRoleToUser"
+  private baseURLaddUserWithRole="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users/addUserWithRole"
+  private baseURLRolesListByUserName="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users/Role/UserName"
+  private baseURLSearchUserbyRolesId="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Users/Role"
+  private baseURLSearcRolebyUsersId="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Roles/User"
  
 
   constructor(private httpClient:HttpClient, private router:Router) { }
