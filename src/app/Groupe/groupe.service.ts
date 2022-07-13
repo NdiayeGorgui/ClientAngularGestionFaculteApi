@@ -12,14 +12,11 @@ const httOptions={
 export class GroupeService {
 
   
- // private baseURL="http://localhost:8090/api/Groupes"
- // private baseURLFormation="http://localhost:8090/api/Groupes/Formations/Nom"
-  //private baseURLEnseignant="http://localhost:8090/api/Groupes/Enseignants"
+ private baseURL="http://localhost:8090/api/Groupes"
+ private baseURLFormation="http://localhost:8090/api/Groupes/Formations/Nom"
+  private baseURLEnseignant="http://localhost:8090/api/Groupes/Enseignants"
 
-  private baseURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Groupes"
-  private baseURLFormation="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Groupes/Formations/Nom"
-  private baseURLEnseignant="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Groupes/Enseignants"
-
+ 
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
 
   getGroupeList():Observable<Groupe[]>{

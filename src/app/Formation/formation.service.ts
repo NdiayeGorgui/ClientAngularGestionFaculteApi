@@ -9,11 +9,9 @@ import { Formation } from './formation';
 })
 export class FormationService {
 
-  //private baseURL="http://localhost:8090/api/Formations"
-  //private baseURLCours="http://localhost:8090/api/Formations/Cours"
-  private baseURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Formations"
-  private baseURLCours="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/Formations/Cours"
-
+  private baseURL="http://localhost:8090/api/Formations"
+  private baseURLCours="http://localhost:8090/api/Formations/Cours"
+  
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
 
   getFormationList():Observable<Formation[]>{

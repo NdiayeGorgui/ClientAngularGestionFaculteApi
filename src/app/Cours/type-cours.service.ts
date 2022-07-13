@@ -9,9 +9,9 @@ import { TypeCours } from './type-cours';
 })
 export class TypeCoursService {
 
-  //private baseURL="http://localhost:8090/api/TypeCours"
+  private baseURL="http://localhost:8090/api/TypeCours"
 
-  private baseURL="http://springbootenseignementaws-env.eba-emmnagfi.ca-central-1.elasticbeanstalk.com/api/TypeCours"
+  
 
   constructor(private httpClient:HttpClient,private authService:AuthService) { }
 
